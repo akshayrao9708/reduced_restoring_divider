@@ -1,0 +1,303 @@
+Parsing file has started.
+Parse file is completed.
+Parsing file needed time in sec.: 0.087798
+findFAs() successfull. Number of found FAs is: 16
+findFAs() successfull. Number of found FAs is: 16
+findULs() successfull. Number of found ULs is: 0
+findMuxs() successfull. Number of found Muxs is: 16
+Simplifying circuit needed time in sec.: 1e-06
+revLevelizeCircuit() finished.
+Levelize Circuit needed time in sec.: 5.3e-05
+sortNodesByLevel() finished.
+SortNodesByLevel() needed time in sec.: 5.5e-05
+createDividerPrimarySignalsMap() started
+createDividerPrimarySignalsMap() ended
+full adders found: 16
+check DCs started
+s1: inv_1[0]
+s2: r_0[3]
+s3 FA:oneWire
+s1: inv_1[1]
+s2: r_0[4]
+s3 FA:_3_
+s1: inv_1[2]
+s2: r_0[5]
+s3 FA:_7_
+s1: inv_1[3]
+s2: r_0[6]
+s3 FA:_11_
+s1: inv_2[0]
+s2: r_1[2]
+s3 FA:oneWire
+s1: inv_2[1]
+s2: r_1[3]
+s3 FA:_31_
+s1: inv_2[2]
+s2: r_1[4]
+s3 FA:_35_
+s1: inv_2[3]
+s2: r_1[5]
+s3 FA:_39_
+s1: inv_3[0]
+s2: r_2[1]
+s3 FA:oneWire
+s1: inv_3[1]
+s2: r_2[2]
+s3 FA:_59_
+s1: inv_3[2]
+s2: r_2[3]
+s3 FA:_63_
+s1: inv_3[3]
+s2: r_2[4]
+s3 FA:_67_
+s1: inv_4[0]
+s2: r_3[0]
+s3 FA:oneWire
+s1: inv_4[1]
+s2: r_3[1]
+s3 FA:_87_
+s1: inv_4[2]
+s2: r_3[2]
+s3 FA:_91_
+s1: inv_4[3]
+s2: r_3[3]
+s3 FA:_95_
+s1_muxm_4[0]
+s2_mux_100_
+s3_muxsum_4[0]
+s1_muxm_4[1]
+s2_mux_103_
+s3_muxsum_4[1]
+s1_muxm_4[2]
+s2_mux_106_
+s3_muxsum_4[2]
+s1_muxm_4[3]
+s2_mux_109_
+s3_muxsum_4[3]
+s1_muxm_1[0]
+s2_mux_16_
+s3_muxsum_1[0]
+s1_muxm_1[1]
+s2_mux_19_
+s3_muxsum_1[1]
+s1_muxm_1[2]
+s2_mux_22_
+s3_muxsum_1[2]
+s1_muxm_1[3]
+s2_mux_25_
+s3_muxsum_1[3]
+s1_muxm_2[0]
+s2_mux_44_
+s3_muxsum_2[0]
+s1_muxm_2[1]
+s2_mux_47_
+s3_muxsum_2[1]
+s1_muxm_2[2]
+s2_mux_50_
+s3_muxsum_2[2]
+s1_muxm_2[3]
+s2_mux_53_
+s3_muxsum_2[3]
+s1_muxm_3[0]
+s2_mux_72_
+s3_muxsum_3[0]
+s1_muxm_3[1]
+s2_mux_75_
+s3_muxsum_3[1]
+s1_muxm_3[2]
+s2_mux_78_
+s3_muxsum_3[2]
+s1_muxm_3[3]
+s2_mux_81_
+s3_muxsum_3[3]
+inv_1[0] | r_0[3] | oneWire   lvl: 260
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_1[1] | r_0[4] | _3_   lvl: 251
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_1[2] | r_0[5] | _7_   lvl: 246
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_1[3] | r_0[6] | _11_   lvl: 241
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_1[0] | q[3] | sum_1[0]   lvl: 232
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_1[1] | q[3] | sum_1[1]   lvl: 231
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_1[2] | q[3] | sum_1[2]   lvl: 230
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_1[3] | q[3] | sum_1[3]   lvl: 229
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_2[0] | r_1[2] | oneWire   lvl: 204
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_2[1] | r_1[3] | _31_   lvl: 195
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_2[2] | r_1[4] | _35_   lvl: 190
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_2[3] | r_1[5] | _39_   lvl: 184
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_2[0] | q[2] | sum_2[0]   lvl: 176
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_2[1] | q[2] | sum_2[1]   lvl: 175
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_2[2] | q[2] | sum_2[2]   lvl: 174
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_2[3] | q[2] | sum_2[3]   lvl: 173
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_3[0] | r_2[1] | oneWire   lvl: 148
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_3[1] | r_2[2] | _59_   lvl: 139
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_3[2] | r_2[3] | _63_   lvl: 134
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_3[3] | r_2[4] | _67_   lvl: 128
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_3[0] | q[1] | sum_3[0]   lvl: 120
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_3[1] | q[1] | sum_3[1]   lvl: 119
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_3[2] | q[1] | sum_3[2]   lvl: 118
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_3[3] | q[1] | sum_3[3]   lvl: 117
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_4[0] | r_3[0] | oneWire   lvl: 92
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_4[1] | r_3[1] | _87_   lvl: 83
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_4[2] | r_3[2] | _91_   lvl: 78
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+inv_4[3] | r_3[3] | _95_   lvl: 72
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_4[0] | q[0] | sum_4[0]   lvl: 64
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_4[1] | q[0] | sum_4[1]   lvl: 63
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_4[2] | q[0] | sum_4[2]   lvl: 62
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+m_4[3] | q[0] | sum_4[3]   lvl: 61
+0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 count: 0
+
+SIMULATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Running first simulation needed time in sec. : 0.001659
+Simulation was executed with SimVectors of Size: 32768
+check DCs in Simulation started
+inv_1[0] | r_0[3] | oneWire   lvl: 260
+0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 count: 4
+FA1[0] dcs: 4
+
+inv_1[2] | r_0[5] | _7_   lvl: 246
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+FA1[2] dcs: 4
+
+inv_1[3] | r_0[6] | _11_   lvl: 241
+0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 count: 1
+FA1[3] dcs: 7
+
+m_1[0] | q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+mux1[0] dcs: 4
+
+m_1[1] | q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+mux1[1] dcs: 4
+
+m_1[2] | q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+mux1[2] dcs: 5
+
+m_1[3] | q[3] | sum_1[3]   lvl: 229
+0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 count: 1
+mux1[3] dcs: 7
+
+inv_2[0] | r_1[2] | oneWire   lvl: 204
+0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 count: 4
+FA2[0] dcs: 4
+
+inv_2[2] | r_1[4] | _35_   lvl: 190
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+FA2[2] dcs: 1
+
+inv_2[3] | r_1[5] | _39_   lvl: 184
+0 | 1 | 0 | 1 | 0 | 1 | 0 | 0 count: 3
+FA2[3] dcs: 5
+
+m_2[2] | q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+mux2[2] dcs: 1
+
+m_2[3] | q[2] | sum_2[3]   lvl: 173
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+mux2[3] dcs: 5
+
+inv_3[0] | r_2[1] | oneWire   lvl: 148
+0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 count: 4
+FA3[0] dcs: 4
+
+inv_3[2] | r_2[3] | _63_   lvl: 134
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+FA3[2] dcs: 1
+
+inv_3[3] | r_2[4] | _67_   lvl: 128
+0 | 1 | 0 | 1 | 0 | 1 | 0 | 0 count: 3
+FA3[3] dcs: 5
+
+m_3[2] | q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+mux3[2] dcs: 1
+
+m_3[3] | q[1] | sum_3[3]   lvl: 117
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+mux3[3] dcs: 5
+
+inv_4[0] | r_3[0] | oneWire   lvl: 92
+0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 count: 4
+FA4[0] dcs: 4
+
+inv_4[2] | r_3[2] | _91_   lvl: 78
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+FA4[2] dcs: 1
+
+inv_4[3] | r_3[3] | _95_   lvl: 72
+0 | 1 | 0 | 1 | 0 | 1 | 0 | 0 count: 3
+FA4[3] dcs: 5
+
+m_4[2] | q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+mux4[2] dcs: 1
+
+m_4[3] | q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+mux4[3] dcs: 5
+
+Simulation for DCs needed time: 0.186089
+Amount of DC cells found: 22
+FINISHED.
