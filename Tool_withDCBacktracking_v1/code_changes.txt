@@ -1,0 +1,184 @@
+1) Added the don't care for r_3[3] and Q[0] in the function checkDCCandidatesGeneral:
+
+vector<string> twoInputsInsert1 = {"r_3[3]","Q[0]"};
+dcCandidates.insert(gendc(twoInputsInsert1, 65));
+
+2) multiply  Q[0] to don't care r_3[3] | _95_ ( analogous to q_0*r^{n-1}_{n-1}*c{(n)}_{n-2} and not exactly don't care splitting).
+Added below code in function addVariableMonomialsFromDC
+
+for (auto& elem: dontCare.signals) {
+		
+		sigIndices.push_back(this->circuit.edges.at(elem).eIndex);
+		if(elem == "_95_" || elem == "_91_")
+		{
+			sigIndices.push_back(this->circuit.edges.at("Q[0]").eIndex);
+		}
+		else if(elem == "_67_" || elem == "_63_")
+		{
+			sigIndices.push_back(this->circuit.edges.at("Q[1]").eIndex);
+		}
+	}
+	
+	
+	const int maxVarIndex = *(std::max_element(sigIndices.begin(), sigIndices.end()));
+	varIndex* tempVars = new varIndex[dcSize];
+	int currMaxTemp = 1;
+	for (size_t i=0; i < dcSize+1; ++i) {  // Get enough temp variable indices which are not part of actual signal indices for replacement operations later on.
+		if (std::count(sigIndices.begin(), sigIndices.end(), currMaxTemp) == 0) {
+			tempVars[i] = currMaxTemp;
+			currMaxTemp++;
+		} else {
+			currMaxTemp++;
+			--i;
+		}
+	}
+//increase dcsize by 1
+
+	bool* dcPhases = new bool[dcSize];
+	for (size_t i=0; i < dontCare.possSize; ++i) {
+		if (!dontCare.poss[i]) {  // If poss[i]==false add this DC to polynomial.
+			int tempNum = i;
+			int step = 0;
+			while (tempNum > 0) {  // Check whether dc signals have to be 1 or 0.
+				dcPhases[step] = (tempNum % 2 == 1) ? 1 : 0;
+				tempNum = tempNum / 2;
+				step++;
+			}
+			while (step < dcSize+1) {  // Fill leading 0 bits in dcPhases array.
+				dcPhases[step] = 0;
+				step++;
+			}
+			Monom2 tempMon(tempVars, dcSize+1);  //Create tempMon from tempVars.
+			Polynom pTemp(maxVarIndex);
+			pTemp.addMonom(tempMon);
+			
+			for (size_t j=0; j < dcSize+1; ++j) {
+
+				
+				 pTemp.replaceBUFFER(tempVars[j], sigIndices.at(j));
+			}
+/=		}
+	}
+	delete[] tempVars;
+	delete[] dcPhases;
+	}
+   		this->addSingleDCPolynomial(pTemp);
+
+3) Added below code in function executereplacement() to stop the rewriting of stage_4
+if(currNode->outputs.at(0)->name=="r_3[0]")
+		{ 
+			break;
+		}
+
+4) Added below code in function executereplacement() to perform dc optimisation before starting the replacement of stage^{mux}_{n-1}
+
+if(currNode->inputs.at(0)->name=="D[2]"){
+			set_dc = 1;
+		this->applyGeneralDCOnRewriting(stopBacktrack, it, backTrackedDC, backTrackDCPoly, backTrackDCIterator, marginDC, multiplyMargin, additiveMargin, tDCOp);
+		cout<<"return from applyGeneralDCOnRewriting"<<endl;
+		++set_dc;
+		}
+
+5)Added below code at line 1032 in function applygeneraldconRewriting to use the don't care  (r^{(n-1)}_{n-1} - q_0r^{(n-1)}_{n-1}) for only once 
+
+if(set_dc==1){
+		pair<vector<int>, mpz_class> dcSol;
+		vector<mpz_class> sol;
+		
+		for(auto in = generalDCs.begin(); in != generalDCs.end(); ++in )
+		{
+			if(in->signals.at(1)=="Q[0]")
+			{
+				cout<<"print dc"<<*in<<endl;
+				cout<<"send for ilp"<<endl;
+				this->addVariableMonomialsFromDC(*in);
+				std::cout<<"solve ILP"<<endl;
+				dcSol = readDCPolynomialAndSolveILP(this->poly.maxDCNum);
+				for (auto& elem: dcSol.first) 
+				{
+					sol.push_back(elem * dcSol.second);
+				}
+				for (size_t i=0; i < sol.size(); ++i) 
+				{
+						if (sol.at(i) != 0) 
+						cout << "v" << i << " = " << sol.at(i) << endl;
+				}
+			cout << "poly before dc opt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1: " << this->poly << endl;
+		applyDCSolutionToPolynomial(sol, this->poly.maxDCNum);
+		cout << "polynomial after replacement is: " << this->poly << endl;
+		++set_dc;
+		cout<<"break"<<endl;
+		break;
+		}
+		}
+		break;}
+		
+		if (continueDCs) continue;
+		cout << "This dc present: ";
+		for (size_t i=0; i < eIndices.size(); ++i) {
+			cout << eIndices.at(i) << "|";
+		}
+
+6) added below code in function  addVariableMonomialsFromDC to facilitate the optimisation of the dc (r^{(n-1)}_{n-1} - q_0r^{(n-1)}_{n-1})
+
+
+if(set_dc){
+		for (auto& elem: dontCare.signals) {
+		sigIndices.push_back(this->circuit.edges.at(elem).eIndex);
+		cout<<this->circuit.edges.at(elem).eIndex<<endl;
+	}
+	
+	
+	const int maxVarIndex = *(std::max_element(sigIndices.begin(), sigIndices.end()));
+	varIndex* tempVars = new varIndex[dcSize];
+	int currMaxTemp = 1;
+	for (size_t i=0; i < dcSize; ++i) {  // Get enough temp variable indices which are not part of actual signal indices for replacement operations later on.
+		if (std::count(sigIndices.begin(), sigIndices.end(), currMaxTemp) == 0) {
+			tempVars[i] = currMaxTemp;
+			
+			currMaxTemp++;
+		} else {
+			currMaxTemp++;
+			--i;
+		}
+	}
+	
+	bool* dcPhases = new bool[dcSize];
+	for (size_t i=0; i < dontCare.possSize; ++i) {
+		
+		if (!dontCare.poss[i]) {  // If poss[i]==false add this DC to polynomial.
+			int tempNum = i;
+			int step = 0;
+			while (tempNum > 0) {  // Check whether dc signals have to be 1 or 0.
+				dcPhases[step] = (tempNum % 2 == 1) ? 1 : 0;
+				tempNum = tempNum / 2;
+				step++;
+			}
+			while (step < dcSize) {  // Fill leading 0 bits in dcPhases array.
+				dcPhases[step] = 0;
+				step++;
+			}
+			Monom2 tempMon(tempVars, dcSize);  //Create tempMon from tempVars.
+			Polynom pTemp(maxVarIndex);
+			pTemp.addMonom(tempMon);
+			
+			for (size_t j=0; j < dcSize; ++j) {
+
+				if(!dcPhases[j]) {
+					pTemp.replaceNOT(tempVars[j], sigIndices.at(j));}
+				
+				else{
+				 pTemp.replaceBUFFER(tempVars[j], sigIndices.at(j));
+				}
+			}
+//			cout << "polynomial before: " << this->poly << endl;
+	//	cout << "added poynomial after ILP optimization: " << pTemp << endl;
+//			this->poly.addPolynom(pTemp);
+			this->addSingleDCPolynomial(pTemp);
+	//		cout << "polynomial afterwards: " << this->poly << endl;
+		}
+	
+	}
+delete[] tempVars;
+	delete[] dcPhases;
+

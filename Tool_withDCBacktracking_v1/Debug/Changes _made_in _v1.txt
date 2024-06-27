@@ -1,0 +1,13 @@
+Changes made in v1.0
+
+1.Added class for multiplexer in circuit.h file 
+2.Added vector<Multiplexer> foundMuxs member in circuit.h file 
+3.Added std::vector<Multiplexer> findMUXs(); member function in circuit.h 
+4.Added this->foundMuxs = this->findMuxs() line in circuit.cpp
+5.Made Multiplexer class as friend class in Node.h 
+6.Added line : struct Multiplexer in Node.h
+7.Added memeber int mux=-1 in class Node
+8.Added findMuxs function in circuit.cpp file 
+9. https://www.diffchecker.com/7Utl4Vpy/(difference in circuit.cpp)
+7.Added insert Mux dc candidates in generateDccandidates in Verifizierer.cpp
+8. made Changes to remove dead edges function

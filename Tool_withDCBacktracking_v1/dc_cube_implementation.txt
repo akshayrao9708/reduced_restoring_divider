@@ -1,0 +1,246 @@
+Rough outline of dc cube logic and implementation:
+
+aim : to restrict the addition of dc cubes and find the exact match for the given dc in the backward rewriting polynomial.
+
+example if dc_poly = a-ab 
+
+find a-ab or ac-abc or -ad+abd  in the backward rewriting polynomial.
+
+Based on the size of the dc polynomial, split dc poly in 3 types:
+
+type1 contains constant 1 as the first terms/ monomials  in the given dc polynomial
+
+type 3: size of the dc_poly =1 , eg when (a,b)= (1,1) or (a,b,c) =(1,1,1)
+
+type 2 : dc_poly that does not belong to type1 or type 3 . eg. a -ab, a-ab-ac+abc.
+
+The initial set-up of the program include the following lines of code:
+			
+			auto it1 = pTemp.getSet()->begin();// iterator to the first monomial of the poly.
+			Monom2 tempMon_1, tempMon_split_cube, tempMon_single;
+			std::vector<Monom2*> res_1,res_cubes;
+			std::set<Monom2*> pure_dc_set;
+			Monom2* res_pure;// to fetch pure dc i.e. with out any dc splits. example (a,b)= (1,0) >> a-ab.
+			int count_og=0;
+			tempMon_1 = *it1;
+			cout<<" dc poly size "<<pTemp.size()<<endl;
+			//check if dc polynomial contains more than one term
+			auto sz = pTemp.size();
+			std::string s1 = tempMon_1.to_string(); s1 variable to check if the first monomial is equal to 1 in the current dc polynomial
+			cout<<"s1"<< s1<<endl;
+			
+if(pTemp.size()>1){ // condition to check if dc polynomial has more than one term.
+          
+""""" some line of code """"
+}
+
+else{ // if the dc is of type 2 
+""" some line of code for type 2 dc"""}
+
+
+a) Solve for type 3 dc:
+The type two dcs (ab- 2variabel dc  or abc - 3 variable dc)
+
+Using the findContaining(Mon) function that returns the monomials in this->poly that are associated with ab or abc 
+
+Example if the backward rewriting polynomial (poly) has terms like abd, abf, abe , these are candidates for dc cubes 
+that can be solved using ilp. The function (ab) would return abd, abf , abe if contained in poly . Add these monomials to solve for ilp. 
+
+				cout<<"type 3 dc"<<endl;
+				res_1 = this->poly.findContaining(tempMon_1);//get cubes matching the  dc_poly
+				if(res_1.empty()){cout<<"no dc cubes present"<<endl; continue;} // go to next dc candidate for the current atomic block.
+				std::set<Monom2> dc_cubes; // set data structure of type Monom2 to manage the results found in res1
+				for(auto elem_1 :res_1 ){cout<<"dc split candidates "<<*elem_1<<endl;
+			        dc_cubes.insert(*elem_1);}// add the results from res_1 to dc cube
+				for(auto it_cube = dc_cubes.begin();it_cube!= dc_cubes.end(); ++it_cube)
+				{Monom2 copy = *it_cube;// use copy constructor to avoid changing the original monomials present in this->poly.
+				copy.setFactor(1); since ab or abc dc poly has 1 as the cofactor.
+				if(dc_cubes.size()>10)
+				{Polynom pTemp1(maxVarIndex+100);} // to avoid segmentation fault. Not sure if it is the correct way to correct 
+				Polynom pTemp1(maxVarIndex+100);
+				pTemp1.addMonom(copy); // add the dc monomial to solve for ilp  
+				this->addSingleDCPolynomial(pTemp1);}
+
+b) Solve for type 2 dc 
+
+Examples of type 2 dc in 2 variables : (a,b) = (1,0) -> a-ab , (a,b) = (0,1) -> b-ab. 
+Examples of type 2 dc in 3 variables : (a,b,c) = (1,1,0)  -> ab-abc, (a,b,c) = (0,1,0) ->  b-ab-bc+abc.
+
+1. Find pure dc, i.e that if (a,b) = (1,0) -> a-ab. if a-ab is present in the poly, return the monomials using poly.findExact()
+ function. if all the monomials  of dc poly, in the above example a-ab is found in poly, then add these dc polynomials and solve for ilp
+
+2. To find dc cubes. Return all the monomials from poly associated with the first monomial. 
+For example, consider dc-poly = b-ab-bc+abc. Pick the first monomial 'b' and search for all monomials associated with 'b'
+findContaining('b') will return all monomials associated with 'b', which will also include monomials associated with 'ab', 'bc' and 'abc' 
+if there exists any in the backward rewriting monomial. This argument holds for all type 2 dc monomials because the first monomial is  
+present in all terms of the dc polynomial. This returns the candidate for dc_cubes.
+
+example if the original polynomial contains terms such as : bd-abd-bcd+abcd+ be-abf-bcf+abce 
+the candidates are [bd, -abd, -bcd, abcd, be,-abf,-bcf, abce]
+
+3. From the result obtained from step 2, remove all variables present in the DC poly for each candidate.
+In the current example, remove a,b,c from the candidates. 
+This would result to [d,-d,-d,d,e,-f,-f,e]
+ 
+4. count the literals present from the above step; if the count is equal to the size of the dc poly, there is a suitable candidate
+However, perform a sign check to get a perfect match.
+For any dc-polynomial if +ve sign is considered as +1 and -ve sign is considered as -1 the total sum of signs of each term should add up to zero.
+
+b-ab-bc+abc , b :+1 , ab:-1 , bc:-1 and abc:+1.
+the total sum is zero. 
+
+In the current example only 'd' is the perfect match .
+ 
+5. Multiply 'd' to dc-Poly and solve for ilp.
+
+The below code implements the above logic 
+
+					
+
+//code to search original dc poly in this->poly
+
+					for(auto it_og = pTemp.getSet()->begin(); it_og != pTemp.getSet()->end(); ++it_og)
+					{	Monom2 tempMon_og = *it_og;
+						cout<<"find pure dc for "<<tempMon_og<<endl;
+						res_pure= this->poly.findExact(tempMon_og);
+						if(res_pure!=NULL)
+						{cout<<"found pure dc "<<*res_pure<<endl;
+						pure_dc_set.insert(res_pure);
+						++count_og; 
+						}
+						if(res_pure==NULL){ cout<<" no pure dc"<<endl;}// no original dc found
+						// TBD if sign check is required
+						
+					}
+					if(count_og ==pTemp.size()){
+						this->addSingleDCPolynomial(pTemp);// add the original dc poly to this->poly.
+					}
+		
+					
+					\\ search for dc cubes.
+					
+					auto it_split_cube  =  pTemp.getSet()->begin();
+					tempMon_split_cube = *it_split_cube;
+					res_cubes = this->poly.findContaining(tempMon_split_cube);// For step two 
+					if(res_cubes.empty()){cout<<" no dc cubes present "<<endl; continue;}
+					std::set<Monom2> dc_cubes_split;
+					std::map<Monom2, std::pair<int, int>> map_modified; to keep track of the monomials associated with dc poly 
+					Monom2 modifiedMonom;
+
+					//remove duplicates found in pure dcs.
+					for(auto &elem1: res_cubes){
+					if(pure_dc_set.find(elem1) == pure_dc_set.end())
+						dc_cubes_split.insert(*elem1);}
+					if(dc_cubes_split.empty()){cout<<"no dc splits available"<<endl;}
+					
+					
+					for (auto it_set = dc_cubes_split.begin();it_set != dc_cubes_split.end();++it_set){
+						cout<<"elements in the split cubes :"<<*it_set<<endl;
+						} // to print the dc candidates.
+
+					for (auto it_set = dc_cubes_split.begin(); it_set != dc_cubes_split.end(); ++it_set) {
+ 				   			 modifiedMonom = it_set->removeVars(sigIndicesSet);/* removes variables contained in dc poly by creating a set out
+								
+								of sig Indices.*/
+
+							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1; //for sign check , step 
+							  map_modified[*modifiedMonom.getVars()].first++;// track the count
+            				  map_modified[*modifiedMonom.getVars()].second += sign;}// track the sign for sign check.
+					
+					for(auto &w:map_modified){
+						std::cout << "map_modified key " << w.first << std::endl;
+            			std::cout << "map_modified count " << w.second.first << std::endl;
+            			std::cout << "map_modified sign " << w.second.second << std::endl;
+						if (w.second.first  == pTemp.size() && w.second.second==0){ //for step 5. 
+							cout<<"dc cube successfully found "<<endl;
+							/* write a code to multiply the orginal 
+							dc poly with the vars found in w.first and this->polynomial 
+							addSingleDCPolynomial()*/ 
+						}
+					}
+
+C) Solve for type 1 dc.
+ Example for type 3 dc in 2 variables 1-a-b+ab.
+
+1. The first step is similar to the one discussed in b). This could be adjusted if monomial 1 is not found in the original poly.
+
+2. The next steps follow from b), the change is , the search for monomial in poly starts from the second monomial of dc poly
+
+In the current example , start from 'a' and 'b', no need to search for ab.
+
+For dc in 2 variable search twice('a','b') and for dc in 3 variable search thrice ('a','b,'c')
+
+3. Similar steps 3,4 from b) are followed. The only change would be, the count should be equal to size(dc_poly)-1.
+Pick the literal that passes the above step and use findexact('foundliteral') to check if it exists in the original poly.
+
+4. Perform sign check and add the dc to solve for ilp.
+
+				if(s1=="[1*]") // to check if it is a type 1 dc.
+				{ cout<<"this is type1 dc assignment"<<endl;
+					// code for dc with 1 as its term.  eg.  1-a-b+ab
+					for(auto it_og = pTemp.getSet()->begin(); it_og != pTemp.getSet()->end(); ++it_og)
+					{	Monom2 tempMon_og = *it_og;
+						cout<<"find pure dc for "<<tempMon_og<<endl;
+						res_pure= this->poly.findExact(tempMon_og);
+						if(res_pure!=NULL)
+						{cout<<"found pure dc "<<*res_pure<<endl;
+						pure_dc_set.insert(res_pure);
+						++count_og; 
+						}
+						else{cout<<" no pure dc"<<endl;}// no original dc found
+					}
+					
+					if(count_og ==pTemp.size()){
+						this->addSingleDCPolynomial(pTemp);// add the original dc poly to this->poly.
+					}
+					auto it_split_cube  =  pTemp.getSet()->begin();
+					auto it_split_cube_copy = it_split_cube;
+					// increment to avoid 1 as the first monomial to search in this->poly
+					int increment_end = (pTemp.size() ==4)? 2: (pTemp.size() ==8)? 3:0; // For step 2
+					int k=0;
+					
+						std::set<Monom2> dc_cubes_split;
+						std::map<Monom2, std::pair<int, int>> map_modified;
+						Monom2 modifiedMonom;
+					while (k < increment_end ){
+						++it_split_cube_copy;
+						++k;
+						//cout<<"value of k"<<k<<endl;
+						tempMon_split_cube = *it_split_cube_copy;
+						res_cubes = this->poly.findContaining(tempMon_split_cube);
+						if(res_cubes.empty()){cout<<" no dc cubes present "<<endl;break;}
+						for(auto &elem1: res_cubes){
+						if(pure_dc_set.find(elem1) == pure_dc_set.end())
+						dc_cubes_split.insert(*elem1);}
+					}
+					for (auto it_set = dc_cubes_split.begin();it_set != dc_cubes_split.end();++it_set){
+						cout<<"elements in the split cubes :"<<*it_set<<endl;
+						}// to display the split candidates.Can be commented out.
+
+					for (auto it_set = dc_cubes_split.begin(); it_set != dc_cubes_split.end(); ++it_set) {
+ 				   			 modifiedMonom = it_set->removeVars(sigIndicesSet);
+							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1;
+							  map_modified[*modifiedMonom.getVars()].first++;
+            				  map_modified[*modifiedMonom.getVars()].second += sign;}
+					for(auto &w:map_modified){
+						std::cout << "map_modified key " << w.first << std::endl;
+            			std::cout << "map_modified count " << w.second.first << std::endl;
+            			std::cout << "map_modified sign " << w.second.second << std::endl;
+						if (w.second.first  == pTemp.size()-1){
+							tempMon_single = w.first;
+							cout<<"find the exact match for"<<tempMon_single<<endl;
+							res_pure = this->poly.findExact(tempMon_single);
+							if(res_pure == NULL){continue;}
+							int sign = (res_pure->getFactor()< 0)? -1: 1;
+							if(sign +w.second.second ==0)
+							cout<<"dc cube successfully found "<<endl;
+							/* write a code to multiply the orginal 
+							dc poly with the vars found in w.first and this polynomial 
+							addSingleDCPolynomial()*/ 
+						} 
+
+ 
+
+
+  
+

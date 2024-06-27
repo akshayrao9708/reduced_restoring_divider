@@ -1,0 +1,1100 @@
+/**************************************************************
+*       
+*       Polynom Package // Polynom.cpp
+*
+*       Author:
+*         Alexander Konrad
+*         University of Freiburg
+*        konrada@informatik.uni-freiburg.de
+*
+***************************************************************/
+
+#include "Polynom.h"
+
+//***************************************************************************************
+Polynom::Polynom(){
+	this->refList = new MyList[1];
+	this->varSize = 1; 
+	this->maxDCNum = 0;
+	this->phases = {true};
+}
+
+//***************************************************************************************
+Polynom::Polynom(int varSize){
+	this->refList = new MyList[varSize+1];
+	this->varSize = varSize;
+	this->maxDCNum = 0;
+	this->phases = std::vector<bool>(varSize+1, true);
+}
+
+//***************************************************************************************
+/*
+Polynom::Polynom(Monom2 mon){
+	this->polySet.insert(mon);
+	this->varSize = 0;
+	for (size_t i=0; i < mon.size; i++) {
+		if (this->varSize < mon.vars[i]) this->varSize = mon.vars[i];
+	}
+	this->refList = new MyList[this->varSize];
+}
+*/
+
+//***************************************************************************************
+Polynom::Polynom(const Polynom& old){  // Copy constructor
+	this->varSize = old.varSize;
+	this->refList = new MyList[old.varSize];
+	this->polySet.clear(); 
+	for (std::set<Monom2>::iterator it = old.polySet.begin(); it != old.polySet.end(); ++it) {
+		this->addMonom(*it);
+	}
+	this->maxDCNum = old.maxDCNum;
+	this->phases = old.phases;
+
+	// Use extra function to copy DC list informations since pointers have to be set new.
+	this->copyDCEntries(old);
+}
+
+//***************************************************************************************
+Polynom& Polynom::operator=(const Polynom& other) {  // Assignment operator.
+	if (this != &other) {
+		this->varSize = other.varSize;
+		delete[] this->refList;
+		this->refList = new MyList[other.varSize];
+		this->polySet.clear();
+		for (std::set<Monom2>::iterator it = other.polySet.begin(); it != other.polySet.end(); ++it) {
+			this->addMonom(*it);
+		}
+		this->maxDCNum = other.maxDCNum;
+		// Use extra function to copy DC list informations since pointers have to be set new.
+		this->copyDCEntries(other);
+		this->phases = other.phases;
+	}
+	return *this;
+}
+
+//***************************************************************************************
+Polynom::~Polynom(){
+	delete[] this->refList;
+}
+
+//***************************************************************************************
+bool Polynom::addPolynom(const Polynom& other) {
+	if (this->varSize < other.varSize) {
+		std::cout << "Cant add big polynom to small polynom (considering variable range). " << std::endl;
+		return false;
+	} else {
+		for (std::set<Monom2>::iterator it = other.polySet.begin(); it != other.polySet.end(); ++it) {
+				this->addMonom(*it);
+		}
+		return true;
+	}
+}
+
+//***************************************************************************************
+Monom2* Polynom::addMonom(Monom2 mon){
+	std::pair<std::set<Monom2>::iterator,bool> ret;
+	ret = this->polySet.insert(mon);
+	if (ret.second == false) {  //Monom alredy exists. Just add the factor. Check for 0 factor monoms.
+		if ((ret.first->getFactor() + mon.getFactor()) == 0 && ret.first->getDCPair()->first == NULL) {
+			this->eraseMonom(*ret.first);  // Only erase monom if it has no DC variables.
+			return NULL;
+		} else {
+			ret.first->factor = ret.first->getFactor() + mon.getFactor();
+		}
+	} else { // New monom inserted.
+		varIndex* vars = ret.first->getVars();
+		int size = ret.first->getSize();
+		for (int i = 0; i < size; i++) {  // Add reference to newly inserted monomials.
+			this->addRefVar(const_cast<Monom2&>(*ret.first), vars[i], i);
+			/*ref1.varIndex = vars[i];
+			ref1.monPtr = &(*ret.first); 
+			this->addRefVar(ref1, const_cast<Monom2&>(*ret.first), i); */
+		}	
+	}
+	return &const_cast<Monom2&>(*ret.first);
+}
+
+//***************************************************************************************
+Monom2* Polynom::addMonomWithDC(Monom2 mon, dcMonEntry* dcEntry){
+	std::pair<std::set<Monom2>::iterator,bool> ret;
+	ret = this->polySet.insert(mon);
+	if (ret.second == false) {  //Monom alredy exists. Just add the factor. Check for 0 factor monoms.
+		if ((ret.first->getFactor() + mon.getFactor()) == 0 && ret.first->getDCPair()->first == NULL && dcEntry == NULL) {
+			this->eraseMonom(*ret.first);  // Only erase monom if it has no DC variables.
+			return NULL;	// If monom was deleted, return NULL.
+		} else {
+			ret.first->factor = ret.first->getFactor() + mon.getFactor();
+		}
+	} else { // New monom inserted.
+		varIndex* vars = ret.first->getVars();
+		int size = ret.first->getSize();
+		for (int i = 0; i < size; i++) {  // Add reference to newly inserted monomials.
+			this->addRefVar(const_cast<Monom2&>(*ret.first), vars[i], i);
+			/*ref1.varIndex = vars[i];
+			ref1.monPtr = &(*ret.first);
+			this->addRefVar(ref1, const_cast<Monom2&>(*ret.first), i); */
+		}
+	}
+	return &const_cast<Monom2&>(*ret.first);
+}
+
+//***************************************************************************************
+void Polynom::eraseMonom(Monom2 mon) {
+	varIndex var = 0;
+	for (int i = 0; i < mon.getSize(); i++) {
+		//std::cout << *(mon.getPtrs()[i]) << '\n';
+		//*(mon.getPtrs()[i]) = 0;
+		var = (mon.getVars())[i];
+		this->refList[var].deleteElement(mon.getPtrs()[i]);
+		
+	}
+	size_t deletedElements = 0;	
+	deletedElements = this->polySet.erase(mon);
+	//std::cout << "Monom erased: " << mon << " Amount: " << deletedElements << '\n';
+}
+
+//***************************************************************************************
+void Polynom::replaceAND(varIndex replace, varIndex in1, varIndex in2) {
+	varIndex tmp = -1;
+	if (in1 == in2) {
+		Monom2 oneMonom(in1);
+		std::list<Monom2> mons;
+		mons.push_back(oneMonom);
+		this->replaceVar(replace, mons);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+		}	
+//		varIndex* vars = new int[2]; 
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 andMon(in1, in2);
+		std::list<Monom2> mons;
+		mons.push_back(andMon);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceANDOneNegation(varIndex replace, varIndex in1, varIndex in2) {
+	// It is important, that in1 is the negation signal.
+	varIndex tmp = -1;
+	bool switched = false;
+	if (in1 == in2) {
+		Monom2 zeroMonom;
+		zeroMonom.setFactor(0);
+		std::list<Monom2> mons;
+		mons.push_back(zeroMonom);
+		this->replaceVar(replace, mons);
+	} else {
+		if (in1 > in2) { // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+			switched = true;
+		}
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 andMon(in1, in2);
+		andMon.setFactor(-1);
+		Monom2 andMon2;
+		if (switched) andMon2 = Monom2(in1);  // If signals were swapped, in1 is now the not inverted signal.
+		else andMon2 = Monom2(in2);
+		std::list<Monom2> mons;
+		mons.push_back(andMon);
+		mons.push_back(andMon2);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceANDDoubleNegation(varIndex replace, varIndex in1, varIndex in2) {
+	varIndex tmp = -1;
+	if (in1 == in2) {
+		replaceNOT(replace, in1);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+		}
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 andMon(in1, in2);
+		Monom2 andMon2(in1);
+		andMon2.setFactor(-1);
+		Monom2 andMon3(in2);
+		andMon3.setFactor(-1);
+		Monom2 andMon4;
+		andMon4.setFactor(1);
+		std::list<Monom2> mons;
+		mons.push_back(andMon);
+		mons.push_back(andMon2);
+		mons.push_back(andMon3);
+		mons.push_back(andMon4);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceOR(varIndex replace, varIndex in1, varIndex in2) {
+	varIndex tmp = -1;
+	if (in1 == in2) {
+		Monom2 oneMonom(in1);
+		std::list<Monom2> mons;
+		mons.push_back(oneMonom);
+		this->replaceVar(replace, mons);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;		
+		}	
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 orMon1(in1);
+		Monom2 orMon2(in2);
+		Monom2 orMon3(in1, in2);
+		orMon3.setFactor(-1);
+		std::list<Monom2> mons;
+		mons.push_back(orMon1);
+		mons.push_back(orMon2);
+		mons.push_back(orMon3);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceOROneNegation(varIndex replace, varIndex in1, varIndex in2) {
+	// It is important, that in1 is the negation signal.
+	varIndex tmp = -1;
+	bool switched = false;
+	if (in1 == in2) {
+		Monom2 oneMonom;
+		oneMonom.setFactor(1);
+		std::list<Monom2> mons;
+		mons.push_back(oneMonom);
+		this->replaceVar(replace, mons);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+			switched = true;
+		}
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 orMon1;
+		orMon1.setFactor(1);
+		Monom2 orMon2;
+		if (switched) orMon2 = Monom2(in2);  // If switched, in2 is now the negation signal.
+		else orMon2 = Monom2(in1);
+		orMon2.setFactor(-1);
+		Monom2 orMon3(in1, in2);
+		//orMon3.setFactor(1);
+		std::list<Monom2> mons;
+		mons.push_back(orMon1);
+		mons.push_back(orMon2);
+		mons.push_back(orMon3);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceORDoubleNegation(varIndex replace, varIndex in1, varIndex in2) { 
+	varIndex tmp = -1;
+	if (in1 == in2) {
+		replaceNOT(replace, in1);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+		}
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 orMon1;
+		orMon1.setFactor(1);
+		Monom2 orMon2(in1, in2);
+		orMon2.setFactor(-1);
+		std::list<Monom2> mons;
+		mons.push_back(orMon1);
+		mons.push_back(orMon2);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceXOR(varIndex replace, varIndex in1, varIndex in2) {
+	varIndex tmp = -1;
+	if (in1 == in2) {
+		Monom2 empty;
+		empty.setFactor(0);
+		std::list<Monom2> mons;
+		mons.push_back(empty);
+		this->replaceVar(replace, mons);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+		}	
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 xorMon1(in1);
+		Monom2 xorMon2(in2);
+		Monom2 xorMon3(in1, in2);
+		xorMon3.setFactor(-2);
+		std::list<Monom2> mons;
+		mons.push_back(xorMon1);
+		mons.push_back(xorMon2);
+		mons.push_back(xorMon3);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceXOROneNegation(varIndex replace, varIndex in1, varIndex in2) {
+	varIndex tmp = -1;
+	if (in1 == in2) {
+		Monom2 oneMonom;
+		oneMonom.setFactor(1);
+		std::list<Monom2> mons;
+		mons.push_back(oneMonom);
+		this->replaceVar(replace, mons);
+	} else {
+		if (in1 > in2) {  // Swap signals to assure in1 is the smaller one.
+			tmp = in1;
+			in1 = in2;
+			in2 = tmp;
+		}
+//		varIndex* vars = new int[2];
+//		vars[0] = in1;
+//		vars[1] = in2;
+		Monom2 xorMon1(in1);
+		xorMon1.setFactor(-1);
+		Monom2 xorMon2(in2);
+		xorMon2.setFactor(-1);
+		Monom2 xorMon3(in1, in2);
+		xorMon3.setFactor(2);
+		Monom2 xorMon4;
+		xorMon4.setFactor(1);
+		std::list<Monom2> mons;
+		mons.push_back(xorMon1);
+		mons.push_back(xorMon2);
+		mons.push_back(xorMon3);
+		mons.push_back(xorMon4);
+		this->replaceVar(replace, mons);
+//		delete[] vars;
+	}
+}
+
+//***************************************************************************************
+void Polynom::replaceNOT(varIndex replace, varIndex in1) {
+	Monom2 notMon1(in1);
+	notMon1.setFactor(-1);
+	Monom2 notMon2;
+	notMon2.setFactor(1);
+	std::list<Monom2> mons;
+	mons.push_back(notMon1);
+	mons.push_back(notMon2);
+	this->replaceVar(replace, mons);
+}
+
+//***************************************************************************************
+void Polynom::replaceBUFFER(varIndex replace, varIndex in1) {
+	if (replace == in1) {std::cout << "replaceBuffer with same variables" << std::endl; return; }
+	//std::cout << "buffer: replace " << replace << " by " << in1 << std::endl;
+	Monom2 notMon1(in1);
+	notMon1.setFactor(1);
+	std::list<Monom2> mons;
+	mons.push_back(notMon1);
+	this->replaceVar(replace, mons);
+}
+
+//***************************************************************************************
+void Polynom::replaceCON0(varIndex replace) {
+	Monom2 notMon1;
+	notMon1.setFactor(0);
+	std::list<Monom2> mons;
+	mons.push_back(notMon1);
+	this->replaceVar(replace, mons);
+}
+
+//***************************************************************************************
+void Polynom::replaceCON1(varIndex replace) {
+	Monom2 notMon1;
+	notMon1.setFactor(1);
+	std::list<Monom2> mons;
+	mons.push_back(notMon1);
+	this->replaceVar(replace, mons);
+}
+
+//***************************************************************************************
+void Polynom::replaceVar(varIndex replace, std::list<Monom2>& mons) {
+	Monom2 newMon;
+	Monom2 oldMon;
+	MyList::ListElement* nextElement;
+	Monom2* newMonPointer = NULL;
+	std::pair<std::set<Monom2>::iterator, bool> retPair;
+	dcMonEntry* dcEntry;
+	size_t dcPos;
+	for (MyList::Iterator it=this->refList[replace].begin(); it != this->refList[replace].end(); it = nextElement) {
+		if (refList[replace].isEmpty()) {
+			std::cout << "Reflist Empty. Something went wrong." << std::endl;
+			return;
+		}
+		oldMon = *(it.returnData());
+//		std::cout << "relaceVar: oldMon: " << oldMon << std::endl;
+		dcEntry = oldMon.dcPair.first;
+		dcPos = oldMon.dcPair.second;
+		nextElement = it.returnElement()->next;  // Save address of next element before deleting current element.
+		this->eraseMonom(*(it.returnData()));  // ATTENTION: Iterator on the current element gets invalid.
+		it = this->refList[replace].begin();
+		for (std::list<Monom2>::iterator it2=mons.begin(); it2 != mons.end(); ++it2) {
+			//newMon = (*it2).merge(replace, oldMon);
+			newMon = oldMon.merge(replace, *it2);
+//			std::cout << "replaceVar: newMon       : " << newMon << std::endl;
+			if (newMon.getFactor() == 0 && dcEntry == NULL) continue; // Dont add monom with factor 0. Only caused by XOR with same inputs.
+			if (dcEntry == NULL) {
+				newMonPointer = this->addMonom(newMon);
+//				if (newMonPointer != NULL) std::cout << "replaceVar: NULL newMonPointer: " << *newMonPointer << std::endl;
+//				else std::cout << "replaceVar: NULL newMonPointer is NULL. " << std::endl;
+			} else {
+				newMonPointer = this->addMonomWithDC(newMon, dcEntry);
+//				if (newMonPointer != NULL) std::cout << "replaceVar: WITH DC newMonPointer: " << *newMonPointer << std::endl;
+//				else std::cout << "replaceVar: WITH DC newMonPointer is NULL. THIS SHOULD NEVER HAPPEN!!!!! " << std::endl;
+			}
+			// If old Mon had dcEntry, change DCEntries for new monomials appropriately.
+			if (dcEntry != NULL) changeDCEntryAfterReplacement(dcEntry, dcPos, newMonPointer, (it2->getFactor()).get_si());
+		}
+	}
+}
+
+//***************************************************************************************
+void Polynom::negateVar(varIndex replace) {
+	varIndex tmp = 0;
+	assert(!this->containsVar(tmp));
+	this->replaceBUFFER(replace, tmp);
+	this->replaceNOT(tmp, replace);
+	this->phases[replace] = !this->phases[replace];
+}
+
+//***************************************************************************************
+int Polynom::greedyPhaseChange() {
+	int improvement = 0;
+	size_t sizeBefore = 0;
+	size_t sizeStart = this->size();
+	for (size_t i=0; i < getVarSize(); ++i) {
+		sizeBefore = this->size();
+		if (containsVar(i)) {
+			negateVar(i);
+			if (sizeBefore <= this->size()) negateVar(i);  // If changing phase does not help, revert the change.
+			else std::cout << i << " got negated." << std::endl;
+		}
+	}
+	improvement = (sizeStart - this->size());
+	return improvement;
+}
+
+//***************************************************************************************
+int Polynom::greedyPhaseChangeBackward() {
+	int improvement = 0;
+	size_t sizeBefore = 0;
+	size_t sizeStart = this->size();
+//	std::set<int> exceptSet{};  // 4bit: 15,16,17,18  8bit: 27,28,29,30,31,32,33,34 	12bit: 39,40,41,42,43,44,45,46,47,48,49,50
+	for (int i = getVarSize() - 1; i >= 0; --i) {
+		sizeBefore = this->size();
+//		if (exceptSet.count(i) > 0) continue; // Exception list. Do not consider this signals for negation.
+		if (containsVar(i)) {
+			negateVar(i);
+			if (sizeBefore <= this->size()) negateVar(i);  // If changing phase does not help, revert the change.
+			else std::cout << i << " got negated." << std::endl;
+		}
+	}
+	improvement = (sizeStart - this->size());
+	return improvement;
+}
+
+//***************************************************************************************
+int Polynom::greedyPhaseChangeCustom(std::vector<varIndex>& signalsToChange) {
+	int improvement = 0;
+	size_t sizeBefore = 0;
+	size_t sizeStart = this->size();
+	varIndex varToChange = 0;
+	for (size_t i=0; i < signalsToChange.size(); ++i) {
+		sizeBefore = this->size();
+		varToChange = signalsToChange.at(i);
+		if (containsVar(varToChange)) {
+			negateVar(varToChange);
+			if (sizeBefore <= this->size()) negateVar(varToChange);  // If changing phase does not help, revert the change.
+			else std::cout << varToChange << " got negated." << std::endl;
+		}
+	}
+	improvement = (sizeStart - this->size());
+	return improvement;
+}
+
+//***************************************************************************************
+void Polynom::reportVarPhases() {
+	std::cout << "Varialbes with face 0 are following: " << std::endl;
+	for (size_t i=0; i < getVarSize(); ++i) {
+		if (this->phases[i] == false) std::cout << "x" << i << " phase is " << this->phases[i] << std::endl;
+	}
+}
+
+//****************************************************************************************************************************
+std::vector<Monom2*> Polynom::findContaining(Monom2& mon) {
+	std::vector<Monom2*> resultVec;
+	int minListLength = INT_MAX;
+	varIndex minListVar = -1;
+	for (size_t i=0; i < mon.getSize(); i++) {  // Get the variable with shortest refList. 
+		//std::cout << "|" << mon.getVars()[i] << "|"; 
+		if (mon.getVars()[i] > this->getVarSize()) {
+			std::cout << "Error in findContaining(): Monomial to find includes a variable out ouf range of this polynomial variable range." << std::endl;
+			return resultVec;
+		}
+		if ((getRefList()[mon.getVars()[i]]).getSize() < minListLength) {
+			minListVar = mon.getVars()[i]; 
+			minListLength = (getRefList()[mon.getVars()[i]]).getSize();
+			if (minListLength == 0) return resultVec;  // If one refList length is zero, this variable is not contained, so mon cannot be contained in polynomial.
+		}
+	}
+	// Retrieve all monomials from shortest refList which contain mon.
+	bool add;
+	for (MyList::Iterator it=this->refList[minListVar].begin(); it != this->refList[minListVar].end(); it++) {
+		add = true;
+		for (size_t i=0; i < mon.getSize(); i++) {
+			if (mon.getVars()[i] == minListVar) continue;  // Not needed to check for minListVar, since it is the list of this variable.
+			if (it.returnData()->containsVar(mon.getVars()[i]) == false) {
+				add = false;
+				break;
+			}
+		}
+		if (add) resultVec.push_back(it.returnData());
+	}
+	return resultVec;
+}
+
+
+//****************************************************************************************************************************
+Monom2* Polynom::findExact(Monom2& mon) {
+	// First check if special case: mon is the empty monomial (only a coefficient without variables).
+	Monom2* temp;
+	if (mon.getSize() == 0) {  // If size=0 it is the empty monomial which is always first in polySet
+		temp = &const_cast<Monom2&>(*this->polySet.begin());
+		if (temp->getSize() == 0) return &const_cast<Monom2&>(*this->polySet.begin());
+		else return NULL;
+	}
+	//if (mon.getSize() == 0) return NULL;
+	int minListLength = INT_MAX;
+	varIndex minListVar = -1;
+	for (size_t i=0; i < mon.getSize(); i++) {  // Get the variable with shortest refList. 
+		//std::cout << "|" << mon.getVars()[i] << "|"; 
+		if (mon.getVars()[i] > this->getVarSize()) {
+			std::cout << "Error in findExact(): Monomial to find includes a variable out ouf range of this polynomial variable range." << std::endl;
+			return NULL;
+		}
+		if ((getRefList()[mon.getVars()[i]]).getSize() < minListLength) {
+			minListVar = mon.getVars()[i]; 
+			minListLength = (getRefList()[mon.getVars()[i]]).getSize();
+			if (minListLength == 0) return NULL;  // If one refList length is zero, this variable is not contained, so mon cannot be contained in polynomial.
+		}
+	}
+	// Find exact monomial mon from shortest refList.
+	for (MyList::Iterator it=this->refList[minListVar].begin(); it != this->refList[minListVar].end(); it++) {
+		if (*(it.returnData()) == mon) {
+			return it.returnData();
+		} 
+	}
+	return NULL;  // This case should never happen.
+}
+
+//****************************************************************************************************************************
+bool Polynom::containsVar(varIndex var) {
+	if (var > this->varSize) {
+		std::cout << "Searched varIndex exceeds variable range of polynomial." << std::endl;
+		return false;
+	} else {
+		if (this->refList[var].getSize() == 0) return false;
+		else return true;
+	}
+}
+
+//****************************************************************************************************************************
+void Polynom::copyDCEntries(const Polynom& old) {
+//	std::cout << "in copyDCEntries" << std::endl;
+	this->dcList.clear();
+	Monom2* refMon;
+	Monom2* changeMon;
+	dcMonEntry* oldEntry;
+	dcMonEntry* currEntry;
+	int monPos;
+	for (std::set<Monom2>::iterator it = old.polySet.begin(); it != old.polySet.end(); ++it) {
+		// Check if monomial has dc variables.
+		oldEntry = it->getDCPair()->first;
+		if (oldEntry == NULL) continue;
+		else {
+			this->dcList.push_back(*oldEntry);
+			this->dcList.back().pToMon.clear();
+			currEntry = &this->dcList.back();
+			changeMon = this->findExact(const_cast<Monom2&>(*it));
+			currEntry->pToMon.push_back(changeMon);
+			monPos = currEntry->pToMon.size() - 1;
+			changeMon->setDCPair(currEntry, monPos);
+		}
+	}
+	/*
+	for (auto& elem: old.dcList) {
+		std::cout << "beginning for " << std::endl;
+		this->dcList.push_back(elem);
+		this->dcList.back().pToMon.clear();
+		currEntry = &this->dcList.back();
+		std::cout << "beginning inner for " << std::endl;
+		for (size_t i=0; i < elem.pToMon.size(); ++i) {
+			changeMon = NULL;
+			std::cout << "before reading refMon " << std::endl;
+			std::cout << "before reading refMon " << *elem.pToMon.at(i) << std::endl;
+			refMon = elem.pToMon.at(i);
+			std::cout << "refMon is " << *refMon << std::endl;
+			changeMon = this->findExact(*refMon);
+			std::cout << "after finding changeMon " << std::endl;
+			if (changeMon != NULL) std::cout << "changeMon is " << *changeMon << std::endl;
+			else std::cout << "changeMon is NULL!!! " << std::endl;
+			currEntry->pToMon.push_back(changeMon);
+			monPos = currEntry->pToMon.size() - 1;
+			changeMon->setDCPair(currEntry, monPos);
+		}
+	}
+	*/
+//	std::cout << "out copyDCEntries" << std::endl;
+}
+
+
+//***************************************************************************************
+void Polynom::addRefVar(Monom2& mon, varIndex index, int i) {
+	(mon.ptrs)[i] = this->refList[index].add(&mon);
+	return;
+}
+
+//***************************************************************************************
+const std::set<Monom2>* Polynom::getSet() const {
+	return &this->polySet;
+}
+
+//***************************************************************************************
+std::list<dcMonEntry>* Polynom::getDCList() {
+	return &this->dcList;
+}
+
+//***************************************************************************************
+MyList* Polynom::getRefList() {
+	return this->refList;
+}
+
+//***************************************************************************************
+std::vector<bool>* Polynom::getPhases() {
+	return &this->phases;
+}
+
+//***************************************************************************************
+size_t Polynom::getVarSize() {
+	return this->varSize;
+}
+
+//***************************************************************************************
+size_t Polynom::size() {
+	return this->polySet.size();
+}
+
+//***************************************************************************************
+size_t Polynom::sizeNoDCs() {
+	size_t tempSizeNoDCs = 0;
+	for (auto& elem: *this->getSet()) {
+			if (elem.getFactor() != 0) ++tempSizeNoDCs;
+	}
+	return tempSizeNoDCs;
+}
+
+//***************************************************************************************
+void Polynom::resize(size_t varSize) {
+	delete[] this->refList;
+	this->polySet.clear();
+	this->refList = new MyList[varSize];
+	this->phases= std::vector<bool>(varSize+1, true);
+	this->varSize = varSize;
+}
+
+//***************************************************************************************
+Polynom Polynom::multiplyPoly(Polynom& p1, Polynom& p2) {
+	int maxSize = 0;
+	if (p1.getVarSize() < p2.getVarSize()) {
+		maxSize = p2.getVarSize();
+	} else {
+		maxSize = p1.getVarSize();
+	}
+	Polynom mult(maxSize);
+	
+	Monom2 temp;
+	for (std::set<Monom2>::iterator it= p1.polySet.begin(); it != p1.polySet.end(); ++it) {
+		for (std::set<Monom2>::iterator it2= p2.polySet.begin(); it2 != p2.polySet.end(); ++it2) {
+			temp = Monom2::multiply(*it, *it2);
+			mult.addMonom(temp);
+		}
+	}
+	
+	return mult;
+}
+
+//***************************************************************************************
+void Polynom::changeDCEntryAfterReplacement(dcMonEntry* dcEntry, size_t dcPos, Monom2* newMonP, signed long int replaceCoef) {
+	if (newMonP == NULL) std::cout << "changeDCEntryAfterReplacement(): newMonP is NULL!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+//	std::cout << "changeDCEntry for " << *newMonP << " with replaceCoef " << replaceCoef << std::endl;
+	dcMonEntry* newEntryP;
+	dcEntry->changePointer(dcPos, NULL);  // First invalidate reference to old monomial which has been replaced.
+	// Now check if new created monomial already has an dcEntry.
+	if (newMonP->dcPair.first == NULL) {  // newMon has no dcEntry. Add dcEntry of old mon to it.
+//		std::cout << "newMonP NULL" << std::endl;
+		if (replaceCoef != 1) {
+//			std::cout << "replaceCoef != 1" << std::endl;
+			dcMonEntry changedEntry(*dcEntry);
+			changedEntry.pToMon.clear();
+			changedEntry.addPointer(newMonP);
+			changedEntry.multCoefs(replaceCoef);
+			this->dcList.emplace_back(changedEntry);  // Add merged entry for dcMonEntry.
+			newEntryP = &(dcList.back());
+			assert(newEntryP != NULL);
+//			newMonP->getDCPair()->first->pToMon.at(newMonP->getDCPair()->second) = NULL;  // Set old DCMonEntry for this monomial to 0 since it was changed.
+			newMonP->setDCPair(newEntryP, 0);
+		} else {
+//			std::cout << "replaceCoef ist 1" << std::endl;
+			newMonP->setDCPair(dcEntry, dcEntry->pToMon.size());  // IMPORTANT: First setDCPair and afterwards addMonEntry. Otherwise the position information of newMonPs dcPair is wrong.
+			dcEntry->addMonEntry(newMonP);
+		}
+	} else {  // newMon has already an dcEntry. Merge old and new Entry into a new one.
+//		std::cout << "newMonP has dcEntry." << std::endl;
+		std::vector<int> oldVars = newMonP->getDCPair()->first->dcVars;
+		std::vector<int> oldCoefs = newMonP->getDCPair()->first->coefs;
+		std::vector<int> prevVars = dcEntry->dcVars;
+		std::vector<int> prevCoefs = dcEntry->coefs;
+		if (replaceCoef != 1) {
+			for (size_t i=0; i < prevCoefs.size(); ++i) {
+				prevCoefs.at(i) = prevCoefs.at(i) * replaceCoef;
+			}
+		}
+		std::pair<std::vector<int>, std::vector<int>> mergeResult = mergeTwoEntries(prevVars, prevCoefs, oldVars, oldCoefs);
+		if (mergeResult.first.size() > 0) {
+			this->dcList.emplace_back(mergeResult.first, newMonP, mergeResult.second);  // Add merged entry for dcMonEntry.
+			newEntryP = &(dcList.back());
+			assert(newEntryP != NULL);
+			newMonP->getDCPair()->first->pToMon.at(newMonP->getDCPair()->second) = NULL;  // Set old DCMonEntry for this monomial to 0 since it was changed.
+			newMonP->setDCPair(newEntryP, 0);
+		} else {
+			newMonP->getDCPair()->first->pToMon.at(newMonP->getDCPair()->second) = NULL;
+			newMonP->setDCPair(NULL, 0);  // DC entries cancelled out each other, monomial has no longer dc Variables.
+			if (newMonP->getFactor() == 0) this->eraseMonom(*newMonP);  // If monomial coefficient is 0, erase monomial since it has no dc Variable anymore.
+		}
+	}
+}
+
+//***************************************************************************************
+void Polynom::addDCListEntry(std::vector<int> dcEntries, std::vector<int> dcCoefs, Monom2& mon) {
+	assert(dcEntries.size() == dcCoefs.size() && dcEntries.size() > 0);
+	dcMonEntry* entryP;
+	Monom2* monP = this->findExact(mon);  // Find monomial in polynomial.
+	if (monP == NULL) {   // if not found, monomial need to be created.
+//		std::cout << "addDCListEntry: monomial not found!" << std::endl;
+//		std::cout << mon << std::endl;
+		mon.setFactor(0);
+		this->addMonom(mon);
+		monP = this->findExact(mon);
+	}
+	assert(monP != NULL);
+	if (monP->getDCPair()->first != NULL) {  // This monomial already has DC variables.
+		std::vector<int> tempVec = monP->getDCPair()->first->dcVars; // = monP->getDCPair()->first->dcVars;
+		std::vector<int> tempCoef = monP->getDCPair()->first->coefs;
+		std::pair<std::vector<int>, std::vector<int>> mergeResult = mergeTwoEntries(tempVec, tempCoef, dcEntries, dcCoefs);
+		if (mergeResult.first.size() > 0) {
+			this->dcList.emplace_back(mergeResult.first, monP, mergeResult.second);  // Add merged entry for dcMonEntry.
+			entryP = &(dcList.back());
+			assert(entryP != NULL);
+			monP->getDCPair()->first->pToMon.at(monP->getDCPair()->second) = NULL;  // Set old DCMonEntry for this monomial to 0 since it was changed.
+			monP->setDCPair(entryP, 0);
+		} else {
+			monP->getDCPair()->first->pToMon.at(monP->getDCPair()->second) = NULL;
+			monP->setDCPair(NULL, 0);  // DC entries cancelled out each other. monomial has no longer dc Variables.
+			if (monP->getFactor() == 0) this->eraseMonom(*monP);  // If monomial coefficient is 0, erase monomial since it has no dc Variable anymore.
+		}
+	} else {
+		this->dcList.emplace_back(dcEntries, monP, dcCoefs);  // Add new entry for dcMonEntry.
+		entryP = &(dcList.back());
+		assert(entryP != NULL);
+		monP->setDCPair(entryP, 0);
+	}
+}
+
+//***************************************************************************************
+std::pair<std::vector<int>, std::vector<int>> Polynom::mergeTwoEntries(std::vector<int>& firstVec, std::vector<int>& firstCoef, std::vector<int>& addVec, std::vector<int>& addCoef) {
+	// Assumption: retVec and addVec are already sorted.
+	std::vector<int> retVec;
+	std::vector<int> retCoef;
+	int firstPos = 0;
+	int addPos = 0;
+	bool firstStop = false;  // Remember that end of firstVec was reached.
+	bool addStop = false;	// Remember that end of addVec was reached.
+	if (firstVec.size() == 0) firstStop = true;
+	if (addVec.size() == 0) addStop = true;
+	int coefSum = 0;
+	while (!(firstStop || addStop)) {  // Stop as soon as one vector has been traversed to the end.
+		if (firstVec.at(firstPos) < addVec.at(addPos)) {  // Case 1: firstVec entry is smaller one.
+			retVec.push_back(firstVec.at(firstPos));
+			retCoef.push_back(firstCoef.at(firstPos));
+			if (++firstPos == firstVec.size()) firstStop = true;
+			continue;
+		} else if (addVec.at(addPos) < firstVec.at(firstPos)) {  // Case 2: addVec entry is smaller one.
+			retVec.push_back(addVec.at(addPos));
+			retCoef.push_back(addCoef.at(addPos));
+			if (++addPos == addVec.size()) addStop = true;
+			continue;
+		} else if (addVec.at(addPos) == firstVec.at(firstPos)) {  // Case 3: both entries are equal. Add up coefs and advance both positions.
+			coefSum = firstCoef.at(firstPos) + addCoef.at(addPos);
+			if (coefSum != 0) {
+				retVec.push_back(firstVec.at(firstPos));
+				retCoef.push_back(coefSum);
+			}
+			if (++firstPos == firstVec.size()) firstStop = true;
+			if (++addPos == addVec.size()) addStop = true;
+			continue;
+		}
+	}
+	if (firstStop) {  // firstVec is finished. Add remaining of addVec to result vectors.
+		while (!addStop) {
+			retVec.push_back(addVec.at(addPos));
+			retCoef.push_back(addCoef.at(addPos));
+			//if (!addStop) {
+			if (++addPos == addVec.size()) addStop = true;
+		}
+	}
+	if (addStop) {  // addVec is finished. Add remaining of firstVec to result vectors.
+		while (!firstStop) {
+			retVec.push_back(firstVec.at(firstPos));
+			retCoef.push_back(firstCoef.at(firstPos));
+			//if (!addStop) {
+			if (++firstPos == firstVec.size()) firstStop = true;
+		}
+	}
+//	std::cout << "Vector: ";
+//	for (auto& elem: retVec) {
+//		std::cout << elem << "|";
+//	}
+//	std::cout << std::endl;
+//	std::cout << "Coef: ";
+//	for (auto& elem: retCoef) {
+//		std::cout << elem << "|";
+//	}
+//	std::cout << std::endl;
+
+	return std::pair<std::vector<int>, std::vector<int>>{retVec, retCoef};
+}
+
+//***************************************************************************************
+void Polynom::clearDCList() {
+	this->dcList.clear();
+}
+
+//***************************************************************************************
+Polynom Polynom::adderSpecification(uint32_t sumSize, std::vector<uint32_t> outputs)
+{
+	mpz_class coef = 1;
+	Polynom spec(outputs[sumSize - 1]+1);
+	std::vector<Monom2> monomials;
+	for (int i = sumSize - 1; i >= 0; --i)
+	{
+		Monom2 m(outputs[i]);
+		m.setFactor(coef);
+		monomials.push_back(m);
+		coef *= 2;
+	}
+	mpz_class temp1;
+	mpz_class temp2;
+	mpz_class temp;
+	mpz_class two = 2;
+	for (int i = (sumSize - 1); i >= 1; --i)  // Input A.
+	{
+		mpz_pow_ui (temp.get_mpz_t(), two.get_mpz_t(), (sumSize - 1) - i);
+		temp*=-1;
+		Monom2 m(i);
+		m.setFactor(temp);
+		monomials.push_back(m);
+
+	}
+	for (int i = (sumSize - 1); i >= 1; --i)  // Input B.
+	{
+		mpz_pow_ui (temp.get_mpz_t(), two.get_mpz_t(), (sumSize - 1) - i);
+		temp*=-1;
+		Monom2 m(i + sumSize - 1);
+		m.setFactor(temp);
+		monomials.push_back(m);
+
+	}
+	Monom2 m(2*sumSize-1);
+	m.setFactor(-1);
+	monomials.push_back(m);
+	for (auto &i: monomials)
+	{
+		spec.addMonom(i);
+	}
+	return spec;
+}
+
+//***************************************************************************************
+Polynom Polynom::multiplierSpecification(uint32_t multSize, std::vector<uint32_t> outputs)
+{
+	mpz_class coef = 1;
+	Polynom spec(outputs[multSize - 1]+1);
+	std::vector<Monom2> monomials;
+	for (int i = 0; i < multSize; i++)
+	{
+		Monom2 m(outputs[i]);
+		m.setFactor(coef);
+		monomials.push_back(m);
+		coef *= 2;
+	}
+	mpz_class temp1;
+	mpz_class temp2;
+	mpz_class temp;
+	mpz_class two = 2;
+	for (int i = 0; i < multSize / 2; i++)
+	{
+		for (int j = 0; j < multSize / 2; j++)
+		{
+			mpz_pow_ui (temp1.get_mpz_t(), two.get_mpz_t(), i);
+			mpz_pow_ui (temp2.get_mpz_t(), two.get_mpz_t(), j);
+			temp = temp1*temp2;
+			temp*=-1;
+
+			Monom2 m (i+1, j+ (multSize / 2)+1);
+			m.setFactor(temp);
+			monomials.push_back(m);
+		}
+	}
+	for (auto &i: monomials)
+	{
+		spec.addMonom(i);
+	}
+	return spec;
+}
+
+//***************************************************************************************
+Polynom Polynom::dividerSpecification(int maxVar, std::vector<uint32_t> dividend, std::vector<uint32_t> divisor, std::vector<uint32_t> quotient, std::vector<uint32_t> remainder, std::vector<bool> quotientSigns, std::vector<bool> remainderSigns)
+{
+	mpz_class coef;
+	Polynom spec(maxVar + 1);
+	//std::vector<Monom2> monomials;
+
+	Polynom dividendPol(maxVar + 1);
+	coef = -1;
+	for (int i = 0; i < dividend.size(); ++i)
+	{
+		Monom2 m(dividend[i]);
+		m.setFactor(coef);
+		dividendPol.addMonom(m);
+		coef *= 2;
+	}
+	std::cout << "Dividend Pol is " << dividendPol << std::endl;
+
+	Polynom divisorPol(maxVar + 1);
+	coef = 1;
+	for (int i = 0; i < divisor.size(); ++i)
+	{
+		Monom2 m(divisor[i]);
+		m.setFactor(coef);
+		divisorPol.addMonom(m);
+		coef *= 2;
+	}
+	std::cout << "Divisor Pol is " << divisorPol << std::endl;
+
+	assert(quotient.size() == quotientSigns.size());
+	Polynom quotientPol(maxVar + 1);
+	coef = 1;
+	for (int i = 0; i < quotient.size(); ++i)
+	{
+		Monom2 m(quotient[i]);
+		m.setFactor(coef);
+		quotientPol.addMonom(m);
+		if (!quotientSigns[i]) {
+			quotientPol.replaceBUFFER(quotient[i], 0);
+			quotientPol.replaceNOT(0, quotient[i]);
+		}
+		coef *= 2;
+	}
+	std::cout << "Quotient Pol is " << quotientPol << std::endl;
+
+	assert(remainder.size() == remainderSigns.size());
+	Polynom remainderPol(maxVar + 1);
+	coef = 1;
+	for (int i = 0; i < remainder.size(); ++i)
+	{
+		Monom2 m(remainder[i]);
+		m.setFactor(coef);
+		remainderPol.addMonom(m);
+		if (!remainderSigns[i]) {
+			remainderPol.replaceBUFFER(remainder[i], 0);
+			remainderPol.replaceNOT(0, remainder[i]);
+		}
+		coef *= 2;
+		//if (i == remainder.size() - 2) coef *= -1;
+	}
+	std::cout << "Remainder Pol is " << remainderPol << std::endl;
+
+	spec.addPolynom(dividendPol);
+	spec.addPolynom(remainderPol);
+	spec.addPolynom(multiplyPoly(divisorPol, quotientPol));
+
+	std::cout << "Specification polynomial is " << spec << std::endl;
+
+	return spec;
+}
+
+//***************************************************************************************
+std::ostream& operator<<(std::ostream& stdout, const Polynom& obj) {
+    std::string start = "", end = "", delim = " + ";
+    std::string s;
+    int size = obj.getSet()->size();
+    if (!obj.getSet()->empty()){
+        s += start;
+        int num = 0;
+        for (std::set<Monom2>::iterator it=obj.getSet()->begin(); it != obj.getSet()->end(); ++it) {
+            s += (*it).to_string();
+            num += 1;
+            //s += Integer.toString(obj.vars[i]);
+            if (num != size) s += delim;
+        }
+        s += end;
+        //Add factor at the end
+        //std::string fact = "[" + std::to_string(obj.getFactor()) + "]";
+        //s += fact;
+    }
+    else{
+        //s += start;
+        //s += end;
+        s += "0 (empty polynomial)";
+    }
+    stdout << s;
+    return stdout;
+}

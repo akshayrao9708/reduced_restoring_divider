@@ -1,0 +1,2192 @@
+************************************************************************
+VERIFICATION OF DIVIDER CIRCUIT STARTED
+************************************************************************
+Parsing file has started.
+edge name _0_
+edge index 1
+edge name _1_
+edge index 2
+edge name _2_
+edge index 3
+edge name _3_
+edge index 4
+edge name _4_
+edge index 5
+edge name _5_
+edge index 6
+edge name _6_
+edge index 7
+edge name _7_
+edge index 8
+edge name _8_
+edge index 9
+edge name _9_
+edge index 10
+edge name _10_
+edge index 11
+edge name _11_
+edge index 12
+edge name _12_
+edge index 13
+edge name _13_
+edge index 14
+edge name _14_
+edge index 15
+edge name _15_
+edge index 16
+edge name _16_
+edge index 17
+edge name _17_
+edge index 18
+edge name _18_
+edge index 19
+edge name _19_
+edge index 20
+edge name _20_
+edge index 21
+edge name _21_
+edge index 22
+edge name _22_
+edge index 23
+edge name _23_
+edge index 24
+edge name _24_
+edge index 25
+edge name _25_
+edge index 26
+edge name _26_
+edge index 27
+edge name _27_
+edge index 28
+edge name _28_
+edge index 29
+edge name _29_
+edge index 30
+edge name _30_
+edge index 31
+edge name _31_
+edge index 32
+edge name _32_
+edge index 33
+edge name _33_
+edge index 34
+edge name _34_
+edge index 35
+edge name _35_
+edge index 36
+edge name _36_
+edge index 37
+edge name _37_
+edge index 38
+edge name _38_
+edge index 39
+edge name _39_
+edge index 40
+edge name _40_
+edge index 41
+edge name _41_
+edge index 42
+edge name _42_
+edge index 43
+edge name _43_
+edge index 44
+edge name _44_
+edge index 45
+edge name _45_
+edge index 46
+edge name _46_
+edge index 47
+edge name _47_
+edge index 48
+edge name _48_
+edge index 49
+edge name _49_
+edge index 50
+edge name _50_
+edge index 51
+edge name _51_
+edge index 52
+edge name _52_
+edge index 53
+edge name _53_
+edge index 54
+edge name _54_
+edge index 55
+edge name _55_
+edge index 56
+edge name _56_
+edge index 57
+edge name _57_
+edge index 58
+edge name _58_
+edge index 59
+edge name _59_
+edge index 60
+edge name _60_
+edge index 61
+edge name _61_
+edge index 62
+edge name _62_
+edge index 63
+edge name _63_
+edge index 64
+edge name _64_
+edge index 65
+edge name _65_
+edge index 66
+edge name _66_
+edge index 67
+edge name _67_
+edge index 68
+edge name _68_
+edge index 69
+edge name _69_
+edge index 70
+edge name _70_
+edge index 71
+edge name _71_
+edge index 72
+edge name _72_
+edge index 73
+edge name _73_
+edge index 74
+edge name _74_
+edge index 75
+edge name _75_
+edge index 76
+edge name _76_
+edge index 77
+edge name _77_
+edge index 78
+edge name _78_
+edge index 79
+edge name _79_
+edge index 80
+edge name _80_
+edge index 81
+edge name _81_
+edge index 82
+edge name _82_
+edge index 83
+edge name _83_
+edge index 84
+edge name _84_
+edge index 85
+edge name _85_
+edge index 86
+edge name _86_
+edge index 87
+edge name _87_
+edge index 88
+edge name _88_
+edge index 89
+edge name _89_
+edge index 90
+edge name _90_
+edge index 91
+edge name _91_
+edge index 92
+edge name _92_
+edge index 93
+edge name _93_
+edge index 94
+edge name _94_
+edge index 95
+edge name _95_
+edge index 96
+edge name _96_
+edge index 97
+edge name _97_
+edge index 98
+edge name _98_
+edge index 99
+edge name _99_
+edge index 100
+edge name _100_
+edge index 101
+edge name _101_
+edge index 102
+edge name _102_
+edge index 103
+edge name _103_
+edge index 104
+edge name _104_
+edge index 105
+edge name _105_
+edge index 106
+edge name _106_
+edge index 107
+edge name _107_
+edge index 108
+edge name _108_
+edge index 109
+edge name _109_
+edge index 110
+edge name _110_
+edge index 111
+edge name _111_
+edge index 112
+edge name r_0[6]
+edge index 113
+edge name r_0[5]
+edge index 114
+edge name r_0[4]
+edge index 115
+edge name r_0[3]
+edge index 116
+edge name r_0[2]
+edge index 117
+edge name r_0[1]
+edge index 118
+edge name r_0[0]
+edge index 119
+edge name r_1[6]
+edge index 120
+edge name r_1[5]
+edge index 121
+edge name r_1[4]
+edge index 122
+edge name r_1[3]
+edge index 123
+edge name r_1[2]
+edge index 124
+edge name r_1[1]
+edge index 125
+edge name r_1[0]
+edge index 126
+edge name m_1[3]
+edge index 127
+edge name m_1[2]
+edge index 128
+edge name m_1[1]
+edge index 129
+edge name m_1[0]
+edge index 130
+edge name sum_1[3]
+edge index 131
+edge name sum_1[2]
+edge index 132
+edge name sum_1[1]
+edge index 133
+edge name sum_1[0]
+edge index 134
+edge name inv_1[3]
+edge index 135
+edge name inv_1[2]
+edge index 136
+edge name inv_1[1]
+edge index 137
+edge name inv_1[0]
+edge index 138
+edge name r_2[5]
+edge index 139
+edge name r_2[4]
+edge index 140
+edge name r_2[3]
+edge index 141
+edge name r_2[2]
+edge index 142
+edge name r_2[1]
+edge index 143
+edge name r_2[0]
+edge index 144
+edge name m_2[3]
+edge index 145
+edge name m_2[2]
+edge index 146
+edge name m_2[1]
+edge index 147
+edge name m_2[0]
+edge index 148
+edge name sum_2[3]
+edge index 149
+edge name sum_2[2]
+edge index 150
+edge name sum_2[1]
+edge index 151
+edge name sum_2[0]
+edge index 152
+edge name inv_2[3]
+edge index 153
+edge name inv_2[2]
+edge index 154
+edge name inv_2[1]
+edge index 155
+edge name inv_2[0]
+edge index 156
+edge name r_3[4]
+edge index 157
+edge name r_3[3]
+edge index 158
+edge name r_3[2]
+edge index 159
+edge name r_3[1]
+edge index 160
+edge name r_3[0]
+edge index 161
+edge name m_3[3]
+edge index 162
+edge name m_3[2]
+edge index 163
+edge name m_3[1]
+edge index 164
+edge name m_3[0]
+edge index 165
+edge name sum_3[3]
+edge index 166
+edge name sum_3[2]
+edge index 167
+edge name sum_3[1]
+edge index 168
+edge name sum_3[0]
+edge index 169
+edge name inv_3[3]
+edge index 170
+edge name inv_3[2]
+edge index 171
+edge name inv_3[1]
+edge index 172
+edge name inv_3[0]
+edge index 173
+edge name r_4[3]
+edge index 174
+edge name r_4[2]
+edge index 175
+edge name r_4[1]
+edge index 176
+edge name r_4[0]
+edge index 177
+edge name m_4[3]
+edge index 178
+edge name m_4[2]
+edge index 179
+edge name m_4[1]
+edge index 180
+edge name m_4[0]
+edge index 181
+edge name sum_4[3]
+edge index 182
+edge name sum_4[2]
+edge index 183
+edge name sum_4[1]
+edge index 184
+edge name sum_4[0]
+edge index 185
+edge name inv_4[3]
+edge index 186
+edge name inv_4[2]
+edge index 187
+edge name inv_4[1]
+edge index 188
+edge name inv_4[0]
+edge index 189
+edge name zeroWire
+edge index 190
+edge name oneWire
+edge index 191
+edge name R_0[5]
+edge index 192
+edge name R_0[4]
+edge index 193
+edge name R_0[3]
+edge index 194
+edge name R_0[2]
+edge index 195
+edge name R_0[1]
+edge index 196
+edge name R_0[0]
+edge index 197
+edge name D[2]
+edge index 198
+edge name D[1]
+edge index 199
+edge name D[0]
+edge index 200
+edge name Q[3]
+edge index 201
+edge name Q[2]
+edge index 202
+edge name Q[1]
+edge index 203
+edge name Q[0]
+edge index 204
+edge name R_n1[3]
+edge index 205
+edge name R_n1[2]
+edge index 206
+edge name R_n1[1]
+edge index 207
+edge name R_n1[0]
+edge index 208
+Parse file is completed.
+findFAs() successfull. Number of found FAs is: 16
+findMuxs() successfull. Number of found Muxs is: 16
+before quicksort
+sortNodesByLevel() successfull
+Parsing part needed time: 0.083548
+check DCs started
+16
+SIMULATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Running first simulation needed time in sec. : 0.000905
+Simulation was executed with SimVectors of Size: 16384
+check DCs in Simulation started
+
+dc candidates before clean up
+inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+
+m_1[0] | Q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[1] | Q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+
+inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+
+m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+
+m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_3[3] | Q[1] | sum_3[3]   lvl: 117
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+
+r_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+
+m_4[2] | Q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+Simulation for DCs needed time: 0.075009
+cleanDCcandidates started.
+Amount of DC cells found after clean up : 16
+inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+
+m_1[0] | Q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[1] | Q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+
+inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+
+m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+
+m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_3[3] | Q[1] | sum_3[3]   lvl: 117
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+
+r_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+
+m_4[2] | Q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+inside const0Prop 
+finished const0 propagation
+inside const1 prop
+finished const1 propagation
+removed dead edges after const prop
+Complete DC computation needed time: 0.075165
+startAdvancedVerification started.
+before quicksort
+sortNodesByLevel() successfull
+read signatureFile started
+read signatureFile ended
+create signature polynom started
+inside while
+end createPolynom
+Starting polynomial has size: 22
+Anfangspolynom ist: [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x205] + [4*x206] + [2*x207] + [1*x208] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+Starting backward rewriting process. 
+Step: 1, Replacement Typ: 6 with Vars: R_n1[0], r_4[0] |  Atomic Num: -1 level: 0
+inside replaceSingleNodeWithRepr
+in1177
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 2, Replacement Typ: 6 with Vars: R_n1[1], r_4[1] |  Atomic Num: -1 level: 1
+inside replaceSingleNodeWithRepr
+in1176
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 3, Replacement Typ: 6 with Vars: R_n1[2], r_4[2] |  Atomic Num: -1 level: 2
+inside replaceSingleNodeWithRepr
+in1175
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 4, Replacement Typ: 6 with Vars: R_n1[3], r_4[3] |  Atomic Num: -1 level: 3
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1174
+replacing buffer
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 5, Replacement Typ: 2 with Vars: r_4[3], _111_, _110_ |  Atomic Num: -1 level: 44
+inside replaceSingleNodeWithRepr
+in1112
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 6, Replacement Typ: 1 with Vars: _111_, m_4[3], _109_ |  Atomic Num: -1 level: 45
+inside replaceSingleNodeWithRepr
+in1178
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 7, Replacement Typ: 1 with Vars: _110_, sum_4[3], Q[0] |  Atomic Num: -1 level: 46
+inside replaceSingleNodeWithRepr
+in1182
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 8, Replacement Typ: 5 with Vars: _109_, Q[0] |  Atomic Num: -1 level: 47
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 9, Replacement Typ: 2 with Vars: r_4[2], _108_, _107_ |  Atomic Num: -1 level: 48
+inside replaceSingleNodeWithRepr
+in1109
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 10, Replacement Typ: 1 with Vars: _108_, m_4[2], _106_ |  Atomic Num: -1 level: 49
+inside replaceSingleNodeWithRepr
+in1179
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 11, Replacement Typ: 1 with Vars: _107_, sum_4[2], Q[0] |  Atomic Num: -1 level: 50
+inside replaceSingleNodeWithRepr
+in1183
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 12, Replacement Typ: 5 with Vars: _106_, Q[0] |  Atomic Num: -1 level: 51
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 13, Replacement Typ: 2 with Vars: r_4[1], _105_, _104_ |  Atomic Num: -1 level: 52
+inside replaceSingleNodeWithRepr
+in1106
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 14, Replacement Typ: 1 with Vars: _105_, m_4[1], _103_ |  Atomic Num: -1 level: 53
+inside replaceSingleNodeWithRepr
+in1180
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 15, Replacement Typ: 1 with Vars: _104_, sum_4[1], Q[0] |  Atomic Num: -1 level: 54
+inside replaceSingleNodeWithRepr
+in1184
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 16, Replacement Typ: 5 with Vars: _103_, Q[0] |  Atomic Num: -1 level: 55
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 17, Replacement Typ: 2 with Vars: r_4[0], _102_, _101_ |  Atomic Num: -1 level: 56
+inside replaceSingleNodeWithRepr
+in1103
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 18, Replacement Typ: 1 with Vars: _102_, m_4[0], _100_ |  Atomic Num: -1 level: 57
+inside replaceSingleNodeWithRepr
+in1181
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 19, Replacement Typ: 1 with Vars: _101_, sum_4[0], Q[0] |  Atomic Num: -1 level: 58
+inside replaceSingleNodeWithRepr
+in1185
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 20, Replacement Typ: 5 with Vars: _100_, Q[0] |  Atomic Num: -1 level: 59
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :178
+eIndices.at(i)178
+This dc present: 178|204|182|inner :m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 21, Replacement Typ: 6 with Vars: m_4[3], r_3[3] |  Atomic Num: -1 level: 61
+inside replaceSingleNodeWithRepr
+in1158
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 22, Replacement Typ: 6 with Vars: m_4[2], r_3[2] |  Atomic Num: -1 level: 62
+inside replaceSingleNodeWithRepr
+in1159
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 23, Replacement Typ: 6 with Vars: m_4[1], r_3[1] |  Atomic Num: -1 level: 63
+inside replaceSingleNodeWithRepr
+in1160
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 24, Replacement Typ: 6 with Vars: m_4[0], r_3[0] |  Atomic Num: -1 level: 64
+inside replaceSingleNodeWithRepr
+in1161
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 25, Replacement Typ: 5 with Vars: Q[0], sum_4[3] |  Atomic Num: -1 level: 65
+Here we are between two atomics
+atomic block is adder 
+skipping quotient replacement
+Step: 26, Replacement Typ: 3 with Vars: sum_4[3], _96_, _95_ |  Atomic Num: 15 level: 70
+inside replaceSingleNodeWithRepr
+in197
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 27, Replacement Typ: 5 with Vars: _96_, r_3[3] |  Atomic Num: 15 level: 71
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1158
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :96
+eIndices.at(i)96
+This dc present: 158|96|inner :r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+tempMon is [1*x96*x158*x204]
+solve ILP
+ggt is -16
+viNum = 2
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 3 columns and 4 nonzeros
+Model fingerprint: 0x8d8c473c
+Variable types: 0 continuous, 3 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 10.0000000
+Presolve removed 2 rows and 3 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 0 10 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+v1 = 16
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 31
+Step: 28, Replacement Typ: 2 with Vars: _95_, _93_, _94_ |  Atomic Num: 14 level: 72
+inside replaceSingleNodeWithRepr
+in194
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 29, Replacement Typ: 1 with Vars: _94_, inv_4[2], r_3[2] |  Atomic Num: 14 level: 73
+inside replaceSingleNodeWithRepr
+in1187
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 30, Replacement Typ: 1 with Vars: _93_, _92_, _91_ |  Atomic Num: 14 level: 74
+inside replaceSingleNodeWithRepr
+in193
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 31, Replacement Typ: 3 with Vars: sum_4[2], _92_, _91_ |  Atomic Num: 14 level: 75
+inside replaceSingleNodeWithRepr
+in193
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 32, Replacement Typ: 3 with Vars: _92_, inv_4[2], r_3[2] |  Atomic Num: 14 level: 76
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1187
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :92
+eIndices.at(i)92
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+tempMon is [1*x92*x159*x187*x204]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 3
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 4 columns and 4 nonzeros
+Model fingerprint: 0x30877686
+Variable types: 0 continuous, 4 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 33, Replacement Typ: 2 with Vars: _91_, _89_, _90_ |  Atomic Num: 13 level: 77
+inside replaceSingleNodeWithRepr
+in190
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 34, Replacement Typ: 1 with Vars: _90_, inv_4[1], r_3[1] |  Atomic Num: 13 level: 78
+inside replaceSingleNodeWithRepr
+in1188
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 35, Replacement Typ: 1 with Vars: _89_, _88_, _87_ |  Atomic Num: 13 level: 79
+inside replaceSingleNodeWithRepr
+in189
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 36, Replacement Typ: 3 with Vars: sum_4[1], _88_, _87_ |  Atomic Num: 13 level: 80
+inside replaceSingleNodeWithRepr
+in189
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 37, Replacement Typ: 3 with Vars: _88_, inv_4[1], r_3[1] |  Atomic Num: 13 level: 81
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1188
+replace xor
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 29
+Step: 38, Replacement Typ: 2 with Vars: _87_, _84_, _86_ |  Atomic Num: 12 level: 83
+inside replaceSingleNodeWithRepr
+in185
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 31
+Step: 39, Replacement Typ: 1 with Vars: _86_, inv_4[0], r_3[0] |  Atomic Num: 12 level: 84
+inside replaceSingleNodeWithRepr
+in1189
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 31
+Step: 40, Replacement Typ: 5 with Vars: sum_4[0], _84_ |  Atomic Num: 12 level: 86
+inside replaceSingleNodeWithRepr
+in185
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 41, Replacement Typ: 3 with Vars: _84_, inv_4[0], r_3[0] |  Atomic Num: 12 level: 87
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1189
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :187
+eIndices.at(i)187
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 42, Replacement Typ: 5 with Vars: inv_4[2], D[2] |  Atomic Num: -1 level: 90
+inside replaceSingleNodeWithRepr
+in1198
+replace not
+inside applyGeneralDCOnRewriting
+print dcr_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+send for ilp
+158
+204
+tempMon is [1*x158]
+tempMon is [-1*x158*x204]
+solve ILP
+ggt is -8
+viNum = 4
+diNum = 2
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 4 rows, 6 columns and 8 nonzeros
+Model fingerprint: 0xff5b32b2
+Variable types: 0 continuous, 6 integer (2 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 11.0000000
+Presolve removed 4 rows and 6 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 1 11 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.000000000000e+00, best bound 1.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 1
+end ILP
+v3 = 16
+applyDCSolutionToPolynomial started.
+break
+return from applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 43, Replacement Typ: 5 with Vars: inv_4[1], D[1] |  Atomic Num: -1 level: 91
+inside replaceSingleNodeWithRepr
+in1199
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 44, Replacement Typ: 5 with Vars: inv_4[0], D[0] |  Atomic Num: -1 level: 92
+inside replaceSingleNodeWithRepr
+in1200
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 19
+Step: 45, Replacement Typ: 6 with Vars: r_3[0], r_2[0] |  Atomic Num: -1 level: 99
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1144
+replacing buffer
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 19
+Step: 46, Replacement Typ: 2 with Vars: r_3[4], _83_, _82_ |  Atomic Num: -1 level: 100
+inside replaceSingleNodeWithRepr
+in184
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 19
+Step: 47, Replacement Typ: 1 with Vars: _83_, m_3[3], _81_ |  Atomic Num: -1 level: 101
+inside replaceSingleNodeWithRepr
+in1162
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 19
+Step: 48, Replacement Typ: 1 with Vars: _82_, sum_3[3], Q[1] |  Atomic Num: -1 level: 102
+inside replaceSingleNodeWithRepr
+in1166
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 19
+Step: 49, Replacement Typ: 5 with Vars: _81_, Q[1] |  Atomic Num: -1 level: 103
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :158
+eIndices.at(i)158
+This dc present: 158|96|inner :r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 19
+Step: 50, Replacement Typ: 2 with Vars: r_3[3], _80_, _79_ |  Atomic Num: -1 level: 104
+inside replaceSingleNodeWithRepr
+in181
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 21
+Step: 51, Replacement Typ: 1 with Vars: _80_, m_3[2], _78_ |  Atomic Num: -1 level: 105
+inside replaceSingleNodeWithRepr
+in1163
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 21
+Step: 52, Replacement Typ: 1 with Vars: _79_, sum_3[2], Q[1] |  Atomic Num: -1 level: 106
+inside replaceSingleNodeWithRepr
+in1167
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 21
+Step: 53, Replacement Typ: 5 with Vars: _78_, Q[1] |  Atomic Num: -1 level: 107
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :159
+eIndices.at(i)159
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 21
+Step: 54, Replacement Typ: 2 with Vars: r_3[2], _77_, _76_ |  Atomic Num: -1 level: 108
+inside replaceSingleNodeWithRepr
+in178
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 23
+Step: 55, Replacement Typ: 1 with Vars: _77_, m_3[1], _75_ |  Atomic Num: -1 level: 109
+inside replaceSingleNodeWithRepr
+in1164
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 23
+Step: 56, Replacement Typ: 1 with Vars: _76_, sum_3[1], Q[1] |  Atomic Num: -1 level: 110
+inside replaceSingleNodeWithRepr
+in1168
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 23
+Step: 57, Replacement Typ: 5 with Vars: _75_, Q[1] |  Atomic Num: -1 level: 111
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 23
+Step: 58, Replacement Typ: 2 with Vars: r_3[1], _74_, _73_ |  Atomic Num: -1 level: 112
+inside replaceSingleNodeWithRepr
+in175
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 59, Replacement Typ: 1 with Vars: _74_, m_3[0], _72_ |  Atomic Num: -1 level: 113
+inside replaceSingleNodeWithRepr
+in1165
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 60, Replacement Typ: 1 with Vars: _73_, sum_3[0], Q[1] |  Atomic Num: -1 level: 114
+inside replaceSingleNodeWithRepr
+in1169
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 61, Replacement Typ: 5 with Vars: _72_, Q[1] |  Atomic Num: -1 level: 115
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :162
+eIndices.at(i)162
+This dc present: 162|203|166|inner :m_3[3] | Q[1] | sum_3[3]   lvl: 117
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 62, Replacement Typ: 6 with Vars: m_3[3], r_2[4] |  Atomic Num: -1 level: 117
+inside replaceSingleNodeWithRepr
+in1140
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 63, Replacement Typ: 6 with Vars: m_3[2], r_2[3] |  Atomic Num: -1 level: 118
+inside replaceSingleNodeWithRepr
+in1141
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 64, Replacement Typ: 6 with Vars: m_3[1], r_2[2] |  Atomic Num: -1 level: 119
+inside replaceSingleNodeWithRepr
+in1142
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 65, Replacement Typ: 6 with Vars: m_3[0], r_2[1] |  Atomic Num: -1 level: 120
+inside replaceSingleNodeWithRepr
+in1143
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 66, Replacement Typ: 5 with Vars: Q[1], sum_3[3] |  Atomic Num: -1 level: 121
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1166
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :166
+eIndices.at(i)166
+This dc present: 162|203|166|inner :m_3[3] | Q[1] | sum_3[3]   lvl: 117
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 67, Replacement Typ: 3 with Vars: sum_3[3], _68_, _67_ |  Atomic Num: 11 level: 126
+inside replaceSingleNodeWithRepr
+in169
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 46
+Step: 68, Replacement Typ: 5 with Vars: _68_, r_2[4] |  Atomic Num: 11 level: 127
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1140
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :68
+eIndices.at(i)68
+This dc present: 140|68|inner :r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+140
+68
+tempMon is [1*x68*x140]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 5
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 6 columns and 4 nonzeros
+Model fingerprint: 0x8074445c
+Variable types: 0 continuous, 6 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 43
+Step: 69, Replacement Typ: 2 with Vars: _67_, _65_, _66_ |  Atomic Num: 10 level: 128
+inside replaceSingleNodeWithRepr
+in166
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 70, Replacement Typ: 1 with Vars: _66_, inv_3[2], r_2[3] |  Atomic Num: 10 level: 129
+inside replaceSingleNodeWithRepr
+in1171
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 71, Replacement Typ: 1 with Vars: _65_, _64_, _63_ |  Atomic Num: 10 level: 130
+inside replaceSingleNodeWithRepr
+in165
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 72, Replacement Typ: 3 with Vars: sum_3[2], _64_, _63_ |  Atomic Num: 10 level: 131
+inside replaceSingleNodeWithRepr
+in165
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 73, Replacement Typ: 3 with Vars: _64_, inv_3[2], r_2[3] |  Atomic Num: 10 level: 132
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1171
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :64
+eIndices.at(i)64
+This dc present: 171|141|64|inner :inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+171
+141
+64
+tempMon is [1*x64*x141*x171]
+solve ILP
+ggt is 16
+viNum = 6
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 7 columns and 4 nonzeros
+Model fingerprint: 0x5d1eee5c
+Variable types: 0 continuous, 7 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 10.0000000
+Presolve removed 2 rows and 7 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 0 10 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+v5 = -16
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 84
+Step: 74, Replacement Typ: 2 with Vars: _63_, _61_, _62_ |  Atomic Num: 9 level: 133
+inside replaceSingleNodeWithRepr
+in162
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 174
+Step: 75, Replacement Typ: 1 with Vars: _62_, inv_3[1], r_2[2] |  Atomic Num: 9 level: 134
+inside replaceSingleNodeWithRepr
+in1172
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 170
+Step: 76, Replacement Typ: 1 with Vars: _61_, _60_, _59_ |  Atomic Num: 9 level: 135
+inside replaceSingleNodeWithRepr
+in161
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 170
+Step: 77, Replacement Typ: 3 with Vars: sum_3[1], _60_, _59_ |  Atomic Num: 9 level: 136
+inside replaceSingleNodeWithRepr
+in161
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 168
+Step: 78, Replacement Typ: 3 with Vars: _60_, inv_3[1], r_2[2] |  Atomic Num: 9 level: 137
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1172
+replace xor
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 175
+Step: 79, Replacement Typ: 2 with Vars: _59_, _56_, _58_ |  Atomic Num: 8 level: 139
+inside replaceSingleNodeWithRepr
+in157
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 385
+Step: 80, Replacement Typ: 1 with Vars: _58_, inv_3[0], r_2[1] |  Atomic Num: 8 level: 140
+inside replaceSingleNodeWithRepr
+in1173
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 361
+Step: 81, Replacement Typ: 5 with Vars: sum_3[0], _56_ |  Atomic Num: 8 level: 142
+inside replaceSingleNodeWithRepr
+in157
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 292
+Step: 82, Replacement Typ: 3 with Vars: _56_, inv_3[0], r_2[1] |  Atomic Num: 8 level: 143
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1173
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :171
+eIndices.at(i)171
+This dc present: 171|141|64|inner :inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 267
+Step: 83, Replacement Typ: 5 with Vars: inv_3[2], D[2] |  Atomic Num: -1 level: 146
+inside replaceSingleNodeWithRepr
+in1198
+replace not
+inside applyGeneralDCOnRewriting
+print dcr_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+send for ilp
+158
+204
+tempMon is [1*x158]
+tempMon is [-1*x158*x204]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 7
+diNum = 2
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 4 rows, 9 columns and 8 nonzeros
+Model fingerprint: 0xac358f2b
+Variable types: 0 continuous, 9 integer (2 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+break
+return from applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 278
+Step: 84, Replacement Typ: 5 with Vars: inv_3[1], D[1] |  Atomic Num: -1 level: 147
+inside replaceSingleNodeWithRepr
+in1199
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 242
+Step: 85, Replacement Typ: 5 with Vars: inv_3[0], D[0] |  Atomic Num: -1 level: 148
+inside replaceSingleNodeWithRepr
+in1200
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 86, Replacement Typ: 6 with Vars: r_2[1], r_1[1] |  Atomic Num: -1 level: 154
+inside replaceSingleNodeWithRepr
+in1125
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 87, Replacement Typ: 6 with Vars: r_2[0], r_1[0] |  Atomic Num: -1 level: 155
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1126
+replacing buffer
+inside applyGeneralDCOnRewriting
+nextIndex :140
+eIndices.at(i)140
+This dc present: 140|68|inner :r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 79
+Step: 88, Replacement Typ: 2 with Vars: r_2[4], _52_, _51_ |  Atomic Num: -1 level: 160
+inside replaceSingleNodeWithRepr
+in153
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 163
+Step: 89, Replacement Typ: 1 with Vars: _52_, m_2[2], _50_ |  Atomic Num: -1 level: 161
+inside replaceSingleNodeWithRepr
+in1146
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 163
+Step: 90, Replacement Typ: 1 with Vars: _51_, sum_2[2], Q[2] |  Atomic Num: -1 level: 162
+inside replaceSingleNodeWithRepr
+in1150
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 163
+Step: 91, Replacement Typ: 5 with Vars: _50_, Q[2] |  Atomic Num: -1 level: 163
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1202
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :141
+eIndices.at(i)141
+This dc present: 171|141|64|inner :inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 163
+Step: 92, Replacement Typ: 2 with Vars: r_2[3], _49_, _48_ |  Atomic Num: -1 level: 164
+inside replaceSingleNodeWithRepr
+in150
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 333
+Step: 93, Replacement Typ: 1 with Vars: _49_, m_2[1], _47_ |  Atomic Num: -1 level: 165
+inside replaceSingleNodeWithRepr
+in1147
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 333
+Step: 94, Replacement Typ: 1 with Vars: _48_, sum_2[1], Q[2] |  Atomic Num: -1 level: 166
+inside replaceSingleNodeWithRepr
+in1151
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 249
+Step: 95, Replacement Typ: 5 with Vars: _47_, Q[2] |  Atomic Num: -1 level: 167
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1202
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 207
+Step: 96, Replacement Typ: 2 with Vars: r_2[2], _46_, _45_ |  Atomic Num: -1 level: 168
+inside replaceSingleNodeWithRepr
+in147
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 389
+Step: 97, Replacement Typ: 1 with Vars: _46_, m_2[0], _44_ |  Atomic Num: -1 level: 169
+inside replaceSingleNodeWithRepr
+in1148
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 389
+Step: 98, Replacement Typ: 1 with Vars: _45_, sum_2[0], Q[2] |  Atomic Num: -1 level: 170
+inside replaceSingleNodeWithRepr
+in1152
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 269
+Step: 99, Replacement Typ: 5 with Vars: _44_, Q[2] |  Atomic Num: -1 level: 171
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1202
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :146
+eIndices.at(i)146
+This dc present: 146|202|150|inner :m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 209
+Step: 100, Replacement Typ: 6 with Vars: m_2[2], r_1[4] |  Atomic Num: -1 level: 174
+inside replaceSingleNodeWithRepr
+in1122
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 209
+Step: 101, Replacement Typ: 6 with Vars: m_2[1], r_1[3] |  Atomic Num: -1 level: 175
+inside replaceSingleNodeWithRepr
+in1123
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 209
+Step: 102, Replacement Typ: 6 with Vars: m_2[0], r_1[2] |  Atomic Num: -1 level: 176
+inside replaceSingleNodeWithRepr
+in1124
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 209
+Step: 103, Replacement Typ: 5 with Vars: Q[2], sum_2[3] |  Atomic Num: -1 level: 177
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1149
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 212
+Step: 104, Replacement Typ: 3 with Vars: sum_2[3], _40_, _39_ |  Atomic Num: 7 level: 182
+inside replaceSingleNodeWithRepr
+in141
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 478
+Step: 105, Replacement Typ: 5 with Vars: _40_, r_1[5] |  Atomic Num: 7 level: 183
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1121
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :40
+eIndices.at(i)40
+This dc present: 121|40|inner :r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+121
+40
+tempMon is [1*x40*x121]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 8
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 9 columns and 4 nonzeros
+Model fingerprint: 0x78b2daf2
+Variable types: 0 continuous, 9 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 475
+Step: 106, Replacement Typ: 2 with Vars: _39_, _37_, _38_ |  Atomic Num: 6 level: 184
+inside replaceSingleNodeWithRepr
+in138
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 1007
+Step: 107, Replacement Typ: 1 with Vars: _38_, inv_2[2], r_1[4] |  Atomic Num: 6 level: 185
+inside replaceSingleNodeWithRepr
+in1154
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 863
+Step: 108, Replacement Typ: 1 with Vars: _37_, _36_, _35_ |  Atomic Num: 6 level: 186
+inside replaceSingleNodeWithRepr
+in137
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 863
+Step: 109, Replacement Typ: 3 with Vars: sum_2[2], _36_, _35_ |  Atomic Num: 6 level: 187
+inside replaceSingleNodeWithRepr
+in137
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 850
+Step: 110, Replacement Typ: 3 with Vars: _36_, inv_2[2], r_1[4] |  Atomic Num: 6 level: 188
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1154
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :36
+eIndices.at(i)36
+This dc present: 154|122|36|inner :inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+154
+122
+36
+tempMon is [1*x36*x122*x154]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 9
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 10 columns and 4 nonzeros
+Model fingerprint: 0xf5dc94bc
+Variable types: 0 continuous, 10 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 695
+Step: 111, Replacement Typ: 2 with Vars: _35_, _33_, _34_ |  Atomic Num: 5 level: 189
+inside replaceSingleNodeWithRepr
+in134
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 1423
+Step: 112, Replacement Typ: 1 with Vars: _34_, inv_2[1], r_1[3] |  Atomic Num: 5 level: 190
+inside replaceSingleNodeWithRepr
+in1155
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 1279
+Step: 113, Replacement Typ: 1 with Vars: _33_, _32_, _31_ |  Atomic Num: 5 level: 191
+inside replaceSingleNodeWithRepr
+in133
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 1279
+Step: 114, Replacement Typ: 3 with Vars: sum_2[1], _32_, _31_ |  Atomic Num: 5 level: 192
+inside replaceSingleNodeWithRepr
+in133
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 1283
+Step: 115, Replacement Typ: 3 with Vars: _32_, inv_2[1], r_1[3] |  Atomic Num: 5 level: 193
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1155
+replace xor
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 1143
+Step: 116, Replacement Typ: 2 with Vars: _31_, _28_, _30_ |  Atomic Num: 4 level: 195
+inside replaceSingleNodeWithRepr
+in129
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 2367
+Step: 117, Replacement Typ: 1 with Vars: _30_, inv_2[0], r_1[2] |  Atomic Num: 4 level: 196
+inside replaceSingleNodeWithRepr
+in1156
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 2009
+Step: 118, Replacement Typ: 5 with Vars: sum_2[0], _28_ |  Atomic Num: 4 level: 198
+inside replaceSingleNodeWithRepr
+in129
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 1052
+Step: 119, Replacement Typ: 3 with Vars: _28_, inv_2[0], r_1[2] |  Atomic Num: 4 level: 199
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1156
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :154
+eIndices.at(i)154
+This dc present: 154|122|36|inner :inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 918
+Step: 120, Replacement Typ: 5 with Vars: inv_2[2], D[2] |  Atomic Num: -1 level: 202
+inside replaceSingleNodeWithRepr
+in1198
+replace not
+inside applyGeneralDCOnRewriting
+print dcr_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+send for ilp
+158
+204
+tempMon is [1*x158]
+tempMon is [-1*x158*x204]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 10
+diNum = 2
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 4 rows, 12 columns and 8 nonzeros
+Model fingerprint: 0xf5f5c509
+Variable types: 0 continuous, 12 integer (2 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+break
+return from applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 610
+Step: 121, Replacement Typ: 5 with Vars: inv_2[1], D[1] |  Atomic Num: -1 level: 203
+inside replaceSingleNodeWithRepr
+in1199
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 326
+Step: 122, Replacement Typ: 5 with Vars: inv_2[0], D[0] |  Atomic Num: -1 level: 204
+inside replaceSingleNodeWithRepr
+in1200
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 103
+Step: 123, Replacement Typ: 6 with Vars: r_1[2], r_0[2] |  Atomic Num: -1 level: 209
+inside replaceSingleNodeWithRepr
+in1117
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 103
+Step: 124, Replacement Typ: 6 with Vars: r_1[1], r_0[1] |  Atomic Num: -1 level: 210
+inside replaceSingleNodeWithRepr
+in1118
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 103
+Step: 125, Replacement Typ: 6 with Vars: r_1[0], r_0[0] |  Atomic Num: -1 level: 211
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1119
+replacing buffer
+inside applyGeneralDCOnRewriting
+nextIndex :121
+eIndices.at(i)121
+This dc present: 121|40|inner :r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 103
+Step: 126, Replacement Typ: 2 with Vars: r_1[5], _24_, _23_ |  Atomic Num: -1 level: 216
+inside replaceSingleNodeWithRepr
+in125
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 223
+Step: 127, Replacement Typ: 1 with Vars: _24_, m_1[2], _22_ |  Atomic Num: -1 level: 217
+inside replaceSingleNodeWithRepr
+in1128
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 223
+Step: 128, Replacement Typ: 1 with Vars: _23_, sum_1[2], Q[3] |  Atomic Num: -1 level: 218
+inside replaceSingleNodeWithRepr
+in1132
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 223
+Step: 129, Replacement Typ: 5 with Vars: _22_, Q[3] |  Atomic Num: -1 level: 219
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1201
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :122
+eIndices.at(i)122
+This dc present: 154|122|36|inner :inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 223
+Step: 130, Replacement Typ: 2 with Vars: r_1[4], _21_, _20_ |  Atomic Num: -1 level: 220
+inside replaceSingleNodeWithRepr
+in122
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 453
+Step: 131, Replacement Typ: 1 with Vars: _21_, m_1[1], _19_ |  Atomic Num: -1 level: 221
+inside replaceSingleNodeWithRepr
+in1129
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 453
+Step: 132, Replacement Typ: 1 with Vars: _20_, sum_1[1], Q[3] |  Atomic Num: -1 level: 222
+inside replaceSingleNodeWithRepr
+in1133
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 325
+Step: 133, Replacement Typ: 5 with Vars: _19_, Q[3] |  Atomic Num: -1 level: 223
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1201
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 261
+Step: 134, Replacement Typ: 2 with Vars: r_1[3], _18_, _17_ |  Atomic Num: -1 level: 224
+inside replaceSingleNodeWithRepr
+in119
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 513
+Step: 135, Replacement Typ: 1 with Vars: _18_, m_1[0], _16_ |  Atomic Num: -1 level: 225
+inside replaceSingleNodeWithRepr
+in1130
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 513
+Step: 136, Replacement Typ: 1 with Vars: _17_, sum_1[0], Q[3] |  Atomic Num: -1 level: 226
+inside replaceSingleNodeWithRepr
+in1134
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 361
+Step: 137, Replacement Typ: 5 with Vars: _16_, Q[3] |  Atomic Num: -1 level: 227
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1201
+replace not
+inside applyGeneralDCOnRewriting
+nextIndex :128
+eIndices.at(i)128
+This dc present: 128|201|132|inner :m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 285
+Step: 138, Replacement Typ: 6 with Vars: m_1[2], r_0[5] |  Atomic Num: -1 level: 230
+inside replaceSingleNodeWithRepr
+in1114
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 285
+Step: 139, Replacement Typ: 6 with Vars: m_1[1], r_0[4] |  Atomic Num: -1 level: 231
+inside replaceSingleNodeWithRepr
+in1115
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 285
+Step: 140, Replacement Typ: 6 with Vars: m_1[0], r_0[3] |  Atomic Num: -1 level: 232
+inside replaceSingleNodeWithRepr
+in1116
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 285
+Step: 141, Replacement Typ: 5 with Vars: Q[3], sum_1[3] |  Atomic Num: -1 level: 233
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1131
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 288
+Step: 142, Replacement Typ: 5 with Vars: sum_1[3], _11_ |  Atomic Num: 3 level: 238
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in112
+replace not
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 285
+Step: 143, Replacement Typ: 2 with Vars: _11_, _9_, _10_ |  Atomic Num: 2 level: 240
+inside replaceSingleNodeWithRepr
+in110
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 655
+Step: 144, Replacement Typ: 1 with Vars: _10_, inv_1[2], r_0[5] |  Atomic Num: 2 level: 241
+inside replaceSingleNodeWithRepr
+in1136
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 583
+Step: 145, Replacement Typ: 1 with Vars: _9_, _8_, _7_ |  Atomic Num: 2 level: 242
+inside replaceSingleNodeWithRepr
+in19
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 583
+Step: 146, Replacement Typ: 3 with Vars: sum_1[2], _8_, _7_ |  Atomic Num: 2 level: 243
+inside replaceSingleNodeWithRepr
+in19
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 549
+Step: 147, Replacement Typ: 3 with Vars: _8_, inv_1[2], r_0[5] |  Atomic Num: 2 level: 244
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1136
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :8
+eIndices.at(i)8
+This dc present: 136|114|8|inner :inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+136
+114
+8
+tempMon is [1*x114*x136]
+tempMon is [-1*x8*x114*x136]
+tempMon is [1*x8*x136]
+tempMon is [-1*x8*x114*x136]
+tempMon is [1*x8*x114]
+tempMon is [-1*x8*x114*x136]
+tempMon is [1*x8*x114*x136]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 14
+diNum = 4
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 8 rows, 18 columns and 22 nonzeros
+Model fingerprint: 0x78e90122
+Variable types: 0 continuous, 18 integer (4 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 452
+Step: 148, Replacement Typ: 2 with Vars: _7_, _5_, _6_ |  Atomic Num: 1 level: 245
+inside replaceSingleNodeWithRepr
+in16
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 978
+Step: 149, Replacement Typ: 1 with Vars: _6_, inv_1[1], r_0[4] |  Atomic Num: 1 level: 246
+inside replaceSingleNodeWithRepr
+in1137
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 838
+Step: 150, Replacement Typ: 1 with Vars: _5_, _4_, _3_ |  Atomic Num: 1 level: 247
+inside replaceSingleNodeWithRepr
+in15
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 838
+Step: 151, Replacement Typ: 3 with Vars: sum_1[1], _4_, _3_ |  Atomic Num: 1 level: 248
+inside replaceSingleNodeWithRepr
+in15
+replace xor
+return from applyGeneralDCOnRewriting
+Poly size: 810
+Step: 152, Replacement Typ: 3 with Vars: _4_, inv_1[1], r_0[4] |  Atomic Num: 1 level: 249
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1137
+replace xor
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 714
+Step: 153, Replacement Typ: 2 with Vars: _3_, _0_, _2_ |  Atomic Num: 0 level: 251
+inside replaceSingleNodeWithRepr
+in11
+replace or
+return from applyGeneralDCOnRewriting
+Poly size: 1492
+Step: 154, Replacement Typ: 1 with Vars: _2_, inv_1[0], r_0[3] |  Atomic Num: 0 level: 252
+inside replaceSingleNodeWithRepr
+in1138
+replace AND
+return from applyGeneralDCOnRewriting
+Poly size: 1338
+Step: 155, Replacement Typ: 5 with Vars: sum_1[0], _0_ |  Atomic Num: 0 level: 254
+inside replaceSingleNodeWithRepr
+in11
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 822
+Step: 156, Replacement Typ: 3 with Vars: _0_, inv_1[0], r_0[3] |  Atomic Num: 0 level: 255
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1138
+replace xor
+inside applyGeneralDCOnRewriting
+nextIndex :136
+eIndices.at(i)136
+This dc present: 136|114|8|inner :inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+return from applyGeneralDCOnRewriting
+Poly size: 623
+Step: 157, Replacement Typ: 5 with Vars: inv_1[2], D[2] |  Atomic Num: -1 level: 258
+inside replaceSingleNodeWithRepr
+in1198
+replace not
+inside applyGeneralDCOnRewriting
+print dcr_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+send for ilp
+158
+204
+tempMon is [1*x158]
+tempMon is [-1*x158*x204]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 15
+diNum = 2
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 4 rows, 17 columns and 8 nonzeros
+Model fingerprint: 0x2e76c470
+Variable types: 0 continuous, 17 integer (2 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+break
+return from applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 390
+Step: 158, Replacement Typ: 5 with Vars: inv_1[1], D[1] |  Atomic Num: -1 level: 259
+inside replaceSingleNodeWithRepr
+in1199
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 219
+Step: 159, Replacement Typ: 5 with Vars: inv_1[0], D[0] |  Atomic Num: -1 level: 260
+inside replaceSingleNodeWithRepr
+in1200
+replace not
+return from applyGeneralDCOnRewriting
+Poly size: 87
+Step: 160, Replacement Typ: 6 with Vars: r_0[5], R_0[5] |  Atomic Num: -1 level: 262
+inside replaceSingleNodeWithRepr
+in1192
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 87
+Step: 161, Replacement Typ: 6 with Vars: r_0[4], R_0[4] |  Atomic Num: -1 level: 263
+inside replaceSingleNodeWithRepr
+in1193
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 87
+Step: 162, Replacement Typ: 6 with Vars: r_0[3], R_0[3] |  Atomic Num: -1 level: 264
+inside replaceSingleNodeWithRepr
+in1194
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 86
+Step: 163, Replacement Typ: 6 with Vars: r_0[2], R_0[2] |  Atomic Num: -1 level: 265
+inside replaceSingleNodeWithRepr
+in1195
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 84
+Step: 164, Replacement Typ: 6 with Vars: r_0[1], R_0[1] |  Atomic Num: -1 level: 266
+inside replaceSingleNodeWithRepr
+in1196
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 82
+Step: 165, Replacement Typ: 6 with Vars: r_0[0], R_0[0] |  Atomic Num: -1 level: 267
+inside replaceSingleNodeWithRepr
+in1197
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 80
+Backward rewriting total all together time in sec. : 0.067858
+Start polynomial size was: 22
+Maximum polynomial size was: 2367
+Number of backtrackings: 0
+with number monomials: 80
+Ending polynomial is not empty.80
+ending polynomial is [-32*x192] + [-16*x193] + [-16*x194] + [32*x192*x198] + [32*x192*x199] + [16*x193*x198] + [16*x192*x200] + [16*x193*x199] + [16*x194*x198] + [16*x193*x200] + [16*x194*x199] + [16*x194*x200] + [-16*x192*x193*x199] + [-16*x192*x193*x200] + [-16*x192*x194*x200] + [-16*x192*x195*x199] + [-16*x193*x194*x200] + [-32*x192*x198*x199] + [-16*x192*x198*x200] + [-16*x193*x198*x199] + [-16*x192*x199*x200] + [-16*x193*x198*x200] + [-16*x194*x198*x199] + [-16*x193*x199*x200] + [-16*x194*x198*x200] + [-16*x194*x199*x200] + [-16*x192*x193*x194*x199] + [32*x192*x193*x194*x200] + [-16*x192*x193*x195*x200] + [-16*x192*x193*x196*x200] + [16*x192*x193*x198*x199] + [16*x193*x194*x195*x200] + [16*x192*x193*x198*x200] + [-16*x192*x195*x196*x200] + [32*x192*x193*x199*x200] + [16*x192*x194*x198*x200] + [16*x192*x195*x198*x199] + [-16*x193*x195*x196*x200] + [16*x192*x194*x199*x200] + [16*x193*x194*x198*x200] + [16*x192*x195*x199*x200] + [16*x193*x194*x199*x200] + [16*x192*x198*x199*x200] + [16*x193*x198*x199*x200] + [16*x194*x198*x199*x200] + [-16*x192*x193*x194*x195*x200] + [16*x192*x193*x194*x198*x199] + [48*x192*x193*x195*x196*x200] + [-32*x192*x193*x194*x198*x200] + [16*x192*x194*x195*x196*x200] + [-16*x192*x193*x194*x199*x200] + [16*x192*x193*x195*x198*x200] + [16*x192*x193*x195*x199*x200] + [16*x192*x193*x196*x198*x200] + [-16*x193*x194*x195*x198*x200] + [16*x192*x195*x196*x198*x200] + [-16*x193*x194*x195*x199*x200] + [-32*x192*x193*x198*x199*x200] + [16*x192*x195*x196*x199*x200] + [16*x193*x195*x196*x198*x200] + [-16*x192*x194*x198*x199*x200] + [16*x193*x195*x196*x199*x200] + [-16*x192*x195*x198*x199*x200] + [-16*x193*x194*x198*x199*x200] + [-16*x192*x193*x194*x195*x196*x200] + [16*x192*x193*x194*x195*x198*x200] + [-48*x192*x193*x195*x196*x198*x200] + [-32*x192*x193*x195*x196*x199*x200] + [-16*x192*x194*x195*x196*x198*x200] + [16*x192*x193*x194*x198*x199*x200] + [-16*x192*x194*x195*x196*x199*x200] + [-16*x192*x193*x195*x198*x199*x200] + [16*x193*x194*x195*x198*x199*x200] + [-16*x192*x195*x196*x198*x199*x200] + [-16*x193*x195*x196*x198*x199*x200] + [16*x192*x193*x194*x195*x196*x198*x200] + [16*x192*x193*x194*x195*x196*x199*x200] + [32*x192*x193*x195*x196*x198*x199*x200] + [16*x192*x194*x195*x196*x198*x199*x200] + [-16*x192*x193*x194*x195*x196*x198*x199*x200]
+Apply input constraint.
+Applying Input constraint on polynomial started.
+step: 0
+DVAR: 198 R0VAR: 192
+polynomial: [-16*x193] + [-16*x194] + [16*x193*x198] + [16*x193*x199] + [16*x194*x198] + [16*x193*x200] + [16*x194*x199] + [16*x194*x200] + [-16*x193*x194*x200] + [-16*x193*x198*x199] + [-16*x193*x198*x200] + [-16*x194*x198*x199] + [-16*x193*x199*x200] + [-16*x194*x198*x200] + [-16*x194*x199*x200] + [16*x193*x194*x195*x200] + [-16*x193*x195*x196*x200] + [16*x193*x194*x198*x200] + [16*x193*x194*x199*x200] + [16*x193*x198*x199*x200] + [16*x194*x198*x199*x200] + [-16*x193*x194*x195*x198*x200] + [-16*x193*x194*x195*x199*x200] + [16*x193*x195*x196*x198*x200] + [16*x193*x195*x196*x199*x200] + [-16*x193*x194*x198*x199*x200] + [16*x193*x194*x195*x198*x199*x200] + [-16*x193*x195*x196*x198*x199*x200]
+polynomial size: 28
+step: 1
+DVAR: 199 R0VAR: 193
+polynomial: [-16*x194] + [16*x194*x198] + [16*x194*x199] + [16*x194*x200] + [-16*x194*x198*x199] + [-16*x194*x198*x200] + [-16*x194*x199*x200] + [16*x194*x198*x199*x200]
+polynomial size: 8
+step: 2
+DVAR: 200 R0VAR: 194
+VERIFICATION SUCCESSFUL.
+Complete Verification process needed time: 0.068649
+Complete rewriting time: 0.068666
+************************************************************************
+SUMMARY TIME NEEDED 
+Parsing part needed time: 0.083548
+Complete DC computation needed time: 0.075165
+Complete rewriting time: 0.068666
+Overall time: 0.227379

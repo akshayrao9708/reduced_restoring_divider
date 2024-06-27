@@ -1,0 +1,236 @@
+//============================================================================
+// Name        : ParserMain.cpp
+// Author      : Alexander Konrad
+// Version     :
+// Copyright   : Copyright 2019
+//============================================================================
+
+
+
+#include <list>
+#include <iostream>
+#include "Circuit.h"
+#include "ParseError.h"
+#include "Monom2.h"
+#include "Polynom.h"
+#include "Verifizierer.h"
+#include "math.h"
+#include <thread>
+#include <chrono>
+
+using namespace std;
+using namespace vp;
+
+void test5(Verifizierer& veri, char* file, bool& status) {
+	veri.startVerification(file);
+	status = true;	
+}
+
+int main(int argc, char* argv[]) {
+	if (argc != 3) {
+		cout << " Wrong number of arguments. Usage: " << argv[0] << " [Verilog Circuit File] " << " [Signature Description File] " << endl; 
+		return 1;   
+	}
+
+	auto start_time = std::chrono::high_resolution_clock::now();
+	auto current_time = std::chrono::high_resolution_clock::now();
+
+	Verifizierer test1(argv[1], argv[2]);
+	
+	//std::atomic<bool> done(false); // Use an atomic flag.
+
+	bool status = false;
+	
+	std::thread t1(test5, std::ref(test1), argv[2], std::ref(status));
+	
+	//std::this_thread::sleep_for(std::chrono::seconds(10));
+	
+	
+	std::cout << "Program has been running for " << std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() << " seconds" << std::endl;
+	
+	while (!status) {
+		current_time = std::chrono::high_resolution_clock::now();
+		if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() < 86400) {
+			std::this_thread::sleep_for(std::chrono::seconds(60));
+		} else {
+			status = true;
+		}
+	}
+
+	//std::terminate();
+	
+	//test1.startVerification(argv[2]);
+	
+	//test1.startAdvancedVerification(argv[2]);
+	
+	//test1.circuit.writeCircuitToFile("./CircuitToFile2.v");
+	
+	/*
+	pair<pair<vector<int>, vector<int>>, vector<int>> testPair;
+	testPair = test1.readVarsForBDD();
+	
+	test1.buildBDDConstraint(testPair, test1.makeReplaceList(test1.createReplaceOrder()));
+	//*/
+	
+	
+	/*
+	for (auto& elem: test1.antiPairs) {
+		cout << "Pair has index1 " << elem.first << " and index2 " << elem.second.first << " and equi: " << elem.second.second << endl;
+	}
+	
+	cout << "equiPairs has length: " << test1.antiPairs.size() << endl;
+	
+	int testNum = 3165;
+	std::pair <std::multimap<int, std::pair<int, bool>>::iterator, std::multimap<int, std::pair<int, bool>>::iterator> ret;
+    ret = test1.antiPairs.equal_range(testNum);
+    cout << testNum << " => ";
+    for (std::multimap<int, std::pair<int, bool>>::iterator it=ret.first; it!=ret.second; ++it)
+      std::cout << it->second.first << ", ";
+	*/
+	
+	//test1.circuit.pushNotFanouts();
+	
+	//cout << "Doubles entfernt: " << test1.circuit.checkForDoubleNot() << endl;
+	
+	//test1.circuit.writeCircuitToFile("./CircuitToFile.v");
+	
+	//test1.circuit.orderReverseFAs();
+	
+	//std::vector<fullAdder> adders = test1.circuit.findFAs();
+	
+	//test1.circuit.orderAllNodes(adders);
+	
+	//cout << "here." << endl;
+	/*
+	for (auto& elem: adders) {
+		cout << "start." << endl;
+		cout << "FA: " << "or: " << test1.circuit.nodes.at(elem.or1).name << " and1: " << test1.circuit.nodes.at(elem.and1).name << " xor1: " << test1.circuit.nodes.at(elem.xor1).name << " and2: " << test1.circuit.nodes.at(elem.and2).name << " xor2: " << test1.circuit.nodes.at(elem.xor2).name << endl;
+		cout << "or1 points to FA with adder number: " << test1.circuit.nodes.at(elem.or1).adder << endl;
+		cout << "has in1 FA: " << elem.prevIn1IsFA << " with node: " << test1.circuit.nodes.at(elem.prevIn1).name << endl;
+		cout << "has in2 FA: " << elem.prevIn2IsFA << " with node: " << test1.circuit.nodes.at(elem.prevIn2).name << endl;
+		cout << "has cin FA: " << elem.prevCinIsFA << " with node: " << test1.circuit.nodes.at(elem.prevCin).name << endl;
+		for (size_t i = 0; i < elem.nextOr.size(); i++) {
+			cout << "has next or FA: " << elem.nextOrIsFA.at(i) << " with node: " << test1.circuit.nodes.at(elem.nextOr.at(i)).name << endl;
+		}
+		for (size_t i = 0; i < elem.nextXor.size(); i++) {
+			cout << "has next xor FA: " << elem.nextXorIsFA.at(i) << " with node: " << test1.circuit.nodes.at(elem.nextXor.at(i)).name << endl;
+		}
+	}
+	
+	cout << "Länge. " << adders.size() << endl;
+	//*/
+	
+	/* Check properties of NOT nodes.
+	//test1.circuit.sortNodesByLevel();
+	//std::vector<vp::Node> allNodes = test1.circuit.sortedNodes;
+	int i = 0;
+	for (auto& currNode: test1.circuit.nodes) {
+		i++;
+		if (currNode.type == "not") {
+			cout << "Node name: " << currNode.name << " ,type: " << currNode.type << endl;
+			//cout << "Node number: " << i << " nodeIndex: " << test1.circuit.nodeIndex.at(currNode.name) << " ,name: " << currNode.name << " ,type: " << currNode.type  << endl;	
+			//cout << "and input1: " << currNode.inputs.at(0)->name << " and output: " << currNode.outputs.at(0)->name << endl; 
+			if (currNode.getInputsCount() != 1 || currNode.getOutputsCount() != 1) cout << "inputs: " << currNode.getInputsCount() << " outputs: " << currNode.getOutputsCount() << endl;
+			if (currNode.revLevel - currNode.outputNode(0).revLevel != 1) cout << "Level is: " << currNode.revLevel << ", Level of pre is: " << currNode.outputNode(0).revLevel << endl;
+			//cout << "Level is: " << currNode.revLevel << ", Level of pre is: " << currNode.outputNode(0).revLevel << endl;
+		}
+	} 
+	//*/
+	
+	/* Show all nodes.
+	//test1.circuit.sortNodesByLevel();
+	//std::vector<vp::Node> allNodes = test1.circuit.sortedNodes;
+	int i = 0;
+	for (auto& currNode: test1.circuit.nodes) {
+		i++;
+		if (currNode.type == "not") {
+			cout << "Node number: " << i << " nodeIndex: " << test1.circuit.nodeIndex.at(currNode.name) << " ,name: " << currNode.name << " ,type: " << currNode.type << " ,level: " << currNode.revLevel << " adder: " << currNode.adder << endl;	
+			cout << "and input1: " << currNode.inputs.at(0)->name << " and output: " << currNode.outputs.at(0)->name << endl; 
+			cout << "inputs: " << currNode.getInputsCount() << " outputs: " << currNode.getOutputsCount() << endl;
+		}
+	} 
+	//*/
+	
+	
+	/*
+	pair<vector<int>, vector<int>> testPair;
+	testPair = test1.readVarsForBDD();
+	
+	test1.buildBDDConstraint(testPair, test1.makeReplaceList(test1.createReplaceOrder()));
+	//*/
+	
+	//*/
+	//vp::Edge* e1 = &test1.circuit.edges.at("R_n1[2]");
+	//vp::Edge* e2 = &test1.circuit.edges.at("R_n1[3]");
+	//test1.testSAT(e1, e2, true);
+	
+	/*
+	int i = 0;
+	for (auto& elem: test1.circuit.edges) {
+		cout << " Edge name: " << elem.second.name << " has source " << test1.circuit.nodes.at(elem.second.getSource()).name << " and destinations size: " << elem.second.nDestinations() << endl;
+		i++;
+	}	
+	//*/
+    	
+	/*
+	int j = 0;
+	for (auto& currEdge: test1.circuit.edgeIndex) {
+		j++;
+		cout << "Edge number: " << j << " ,name: " << currEdge.first.name << " ,index: " << currEdge.second << endl;		
+	} //*/
+	
+	
+	/* // Show all edges with index and name.
+	for (map<Edge, int>::iterator it = test1.circuit.edgeIndex.begin(); it != test1.circuit.edgeIndex.end(); ++it) {
+		cout << "Index: " << it->first.name << " , Index: " << it->second << endl;
+	}
+	//*/
+	
+	/*// Show all primary edges with index and name.
+	for (map<int, Edge>::iterator it = test1.circuit.primaryEdgeIndex.begin(); it != test1.circuit.primaryEdgeIndex.end(); ++it) {
+		cout << "Index: " << it->first << " , Name: " << it->second.name << endl;
+	}
+	//*/
+	
+	/*  Show all input nodes.
+	for (int i = 0; i < test1.circuit.getInputNodesCount(); i++) {
+		cout << "Step: " << i << endl;
+		cout << " Input node number: " << test1.circuit.inputNodes.at(i) << endl;
+		cout << "Input node has name: " << test1.circuit.inputNode(i).name << " and type: " << test1.circuit.inputNode(i).type << " and output edge name: " << test1.circuit.inputNode(i).outputs.at(0)->destinations.size() << endl;
+	}
+	//*/
+	
+	/* Show all output nodes.
+	for (int i = 0; i < test1.circuit.getOutputNodesCount(); i++) {
+		cout << "Step: " << i << endl;
+		cout << " Output node number: " << test1.circuit.outputNodes.at(i) << endl;
+		cout << "Output node has name: " << test1.circuit.outputNode(i).name << " and type: " << test1.circuit.outputNode(i).type << " and revLevel: " << test1.circuit.edgeIndex.at(*test1.circuit.outputNode(i).inputs.at(0)) << endl;
+	}
+	//*/
+	
+	/*  
+	Node testNode;
+	testNode = test1.circuit.outputNode(2);
+	cout << "Output node name: " << testNode.name << endl;
+	int i = 0;
+	while (testNode.type != "INPUT_PORT") { // testNode.type != "INPUT_PORT"
+		cout << "Step: " << i << " has type: " << testNode.type << " with name: " << testNode.name << endl;
+		//if (testNode.type != "INPUT_PORT") { 
+		testNode = testNode.inputNode(0);  
+		//}
+		i++;
+		
+	}
+	//*/
+	
+	/* Alle Nodes anzeigen
+	for (int i=0; i < test1.circuit.nodes.size(); i++) {
+		cout << "Node number " << i << " with name " << test1.circuit.nodes.at(i).name << " has type " << test1.circuit.nodes.at(i).type << " and revLevel " << test1.circuit.nodes.at(i).revLevel << endl;
+		if (test1.circuit.nodes.at(i).type != "OUTPUT_PORT") {
+		cout << "Output edge name: " << test1.circuit.nodes.at(i).outputs.at(0)->name << endl;
+		}
+	}
+	//*/
+	
+	return 0;
+}

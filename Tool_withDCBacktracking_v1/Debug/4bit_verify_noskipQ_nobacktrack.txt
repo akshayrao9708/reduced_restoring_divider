@@ -1,0 +1,1857 @@
+************************************************************************
+VERIFICATION OF DIVIDER CIRCUIT STARTED
+************************************************************************
+Parsing file has started.
+Parse file is completed.
+findFAs() successfull. Number of found FAs is: 16
+findMuxs() successfull. Number of found Muxs is: 16
+before quicksort
+sortNodesByLevel() successfull
+Parsing part needed time: 0.078231
+check DCs started
+16
+s2: r_1[5]
+s2: r_2[4]
+s2: r_3[3]
+SIMULATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Running first simulation needed time in sec. : 0.000853
+Simulation was executed with SimVectors of Size: 16384
+check DCs in Simulation started
+
+dc candidates before clean up
+inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+
+m_1[0] | Q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[1] | Q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+
+inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+
+m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+
+m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+
+m_4[2] | Q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+Simulation for DCs needed time: 0.046595
+cleanDCcandidates started.
+Amount of DC cells found after clean up : 14
+inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+
+m_1[0] | Q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[1] | Q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+
+inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+
+m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+
+m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+
+m_4[2] | Q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+inside const0Prop 
+ new edge eindex190
+ new edge eindex135
+finished const0 propagation
+inside const1 prop
+ new edge eindex191
+ new edge eindex1
+ new edge eindex191
+ new edge eindex29
+ new edge eindex191
+ new edge eindex57
+ new edge eindex191
+ new edge eindex85
+finished const1 propagation
+removed dead edges after const prop
+Complete DC computation needed time: 0.046759
+startAdvancedVerification started.
+before quicksort
+sortNodesByLevel() successfull
+read signatureFile started
+read signatureFile ended
+create signature polynom started
+end createPolynom
+Starting polynomial has size: 22
+Anfangspolynom ist: [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x205] + [4*x206] + [2*x207] + [1*x208] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+Starting backward rewriting process. 
+Step: 1, Replacement Typ: 6 with Vars: R_n1[0], r_4[0] |  Atomic Num: -1 level: 0
+inside replaceSingleNodeWithRepr
+in1177
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 2, Replacement Typ: 6 with Vars: R_n1[1], r_4[1] |  Atomic Num: -1 level: 1
+inside replaceSingleNodeWithRepr
+in1176
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 3, Replacement Typ: 6 with Vars: R_n1[2], r_4[2] |  Atomic Num: -1 level: 2
+inside replaceSingleNodeWithRepr
+in1175
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 4, Replacement Typ: 6 with Vars: R_n1[3], r_4[3] |  Atomic Num: -1 level: 3
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1174
+replacing buffer
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 5, Replacement Typ: 2 with Vars: r_4[3], _111_, _110_ |  Atomic Num: -1 level: 44
+inside replaceSingleNodeWithRepr
+in1112
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 6, Replacement Typ: 1 with Vars: _111_, m_4[3], _109_ |  Atomic Num: -1 level: 45
+inside replaceSingleNodeWithRepr
+in1178
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 7, Replacement Typ: 1 with Vars: _110_, sum_4[3], Q[0] |  Atomic Num: -1 level: 46
+inside replaceSingleNodeWithRepr
+in1182
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 8, Replacement Typ: 5 with Vars: _109_, Q[0] |  Atomic Num: -1 level: 47
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 9, Replacement Typ: 2 with Vars: r_4[2], _108_, _107_ |  Atomic Num: -1 level: 48
+inside replaceSingleNodeWithRepr
+in1109
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 10, Replacement Typ: 1 with Vars: _108_, m_4[2], _106_ |  Atomic Num: -1 level: 49
+inside replaceSingleNodeWithRepr
+in1179
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 11, Replacement Typ: 1 with Vars: _107_, sum_4[2], Q[0] |  Atomic Num: -1 level: 50
+inside replaceSingleNodeWithRepr
+in1183
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 12, Replacement Typ: 5 with Vars: _106_, Q[0] |  Atomic Num: -1 level: 51
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 13, Replacement Typ: 2 with Vars: r_4[1], _105_, _104_ |  Atomic Num: -1 level: 52
+inside replaceSingleNodeWithRepr
+in1106
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 14, Replacement Typ: 1 with Vars: _105_, m_4[1], _103_ |  Atomic Num: -1 level: 53
+inside replaceSingleNodeWithRepr
+in1180
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 15, Replacement Typ: 1 with Vars: _104_, sum_4[1], Q[0] |  Atomic Num: -1 level: 54
+inside replaceSingleNodeWithRepr
+in1184
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 16, Replacement Typ: 5 with Vars: _103_, Q[0] |  Atomic Num: -1 level: 55
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 17, Replacement Typ: 2 with Vars: r_4[0], _102_, _101_ |  Atomic Num: -1 level: 56
+inside replaceSingleNodeWithRepr
+in1103
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 18, Replacement Typ: 1 with Vars: _102_, m_4[0], _100_ |  Atomic Num: -1 level: 57
+inside replaceSingleNodeWithRepr
+in1181
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 19, Replacement Typ: 1 with Vars: _101_, sum_4[0], Q[0] |  Atomic Num: -1 level: 58
+inside replaceSingleNodeWithRepr
+in1185
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 20, Replacement Typ: 5 with Vars: _100_, Q[0] |  Atomic Num: -1 level: 59
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+inside applyGeneralDCOnRewriting
+This dc present: 178|204|182|inner :m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+solve ILP
+ggt is -8
+viNum = 6
+diNum = 8
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 16 rows, 14 columns and 50 nonzeros
+Model fingerprint: 0x4c7d60c7
+Variable types: 0 continuous, 14 integer (8 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 21.0000000
+Presolve removed 6 rows and 7 columns
+Presolve time: 0.00s
+Presolved: 10 rows, 7 columns, 24 nonzeros
+Found heuristic solution: objective 0.0000000
+Variable types: 0 continuous, 7 integer (5 binary)
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0 21 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+v2 = 8
+v3 = 8
+v4 = 8
+v5 = 8
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 21, Replacement Typ: 6 with Vars: m_4[3], r_3[3] |  Atomic Num: -1 level: 61
+inside replaceSingleNodeWithRepr
+in1158
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 22, Replacement Typ: 6 with Vars: m_4[2], r_3[2] |  Atomic Num: -1 level: 62
+inside replaceSingleNodeWithRepr
+in1159
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 23, Replacement Typ: 6 with Vars: m_4[1], r_3[1] |  Atomic Num: -1 level: 63
+inside replaceSingleNodeWithRepr
+in1160
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 24, Replacement Typ: 6 with Vars: m_4[0], r_3[0] |  Atomic Num: -1 level: 64
+inside replaceSingleNodeWithRepr
+in1161
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 25, Replacement Typ: 5 with Vars: Q[0], sum_4[3] |  Atomic Num: -1 level: 65
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1182
+inside applyGeneralDCOnRewriting
+This dc present: 178|204|182|inner :m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 11
+diNum = 8
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 16 rows, 19 columns and 50 nonzeros
+Model fingerprint: 0xcfb77b58
+Variable types: 0 continuous, 19 integer (8 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 26, Replacement Typ: 3 with Vars: sum_4[3], _96_, _95_ |  Atomic Num: 15 level: 70
+inside replaceSingleNodeWithRepr
+in197
+return from applyGeneralDCOnRewriting
+Poly size: 48
+Step: 27, Replacement Typ: 5 with Vars: _96_, r_3[3] |  Atomic Num: 15 level: 71
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1158
+inside applyGeneralDCOnRewriting
+This dc present: 158|96|inner :r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 12
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 13 columns and 4 nonzeros
+Model fingerprint: 0x1f89cf4e
+Variable types: 0 continuous, 13 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 45
+Step: 28, Replacement Typ: 2 with Vars: _95_, _93_, _94_ |  Atomic Num: 14 level: 72
+inside replaceSingleNodeWithRepr
+in194
+return from applyGeneralDCOnRewriting
+Poly size: 81
+Step: 29, Replacement Typ: 1 with Vars: _94_, inv_4[2], r_3[2] |  Atomic Num: 14 level: 73
+inside replaceSingleNodeWithRepr
+in1187
+return from applyGeneralDCOnRewriting
+Poly size: 81
+Step: 30, Replacement Typ: 1 with Vars: _93_, _92_, _91_ |  Atomic Num: 14 level: 74
+inside replaceSingleNodeWithRepr
+in193
+return from applyGeneralDCOnRewriting
+Poly size: 81
+Step: 31, Replacement Typ: 3 with Vars: sum_4[2], _92_, _91_ |  Atomic Num: 14 level: 75
+inside replaceSingleNodeWithRepr
+in193
+return from applyGeneralDCOnRewriting
+Poly size: 81
+Step: 32, Replacement Typ: 3 with Vars: _92_, inv_4[2], r_3[2] |  Atomic Num: 14 level: 76
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1187
+inside applyGeneralDCOnRewriting
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 8
+viNum = 13
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 14 columns and 4 nonzeros
+Model fingerprint: 0xa16e916d
+Variable types: 0 continuous, 14 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 10.0000000
+Presolve removed 2 rows and 14 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 0 10 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+v12 = -8
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 86
+Step: 33, Replacement Typ: 2 with Vars: _91_, _89_, _90_ |  Atomic Num: 13 level: 77
+inside replaceSingleNodeWithRepr
+in190
+return from applyGeneralDCOnRewriting
+Poly size: 176
+Step: 34, Replacement Typ: 1 with Vars: _90_, inv_4[1], r_3[1] |  Atomic Num: 13 level: 78
+inside replaceSingleNodeWithRepr
+in1188
+return from applyGeneralDCOnRewriting
+Poly size: 172
+Step: 35, Replacement Typ: 1 with Vars: _89_, _88_, _87_ |  Atomic Num: 13 level: 79
+inside replaceSingleNodeWithRepr
+in189
+return from applyGeneralDCOnRewriting
+Poly size: 172
+Step: 36, Replacement Typ: 3 with Vars: sum_4[1], _88_, _87_ |  Atomic Num: 13 level: 80
+inside replaceSingleNodeWithRepr
+in189
+return from applyGeneralDCOnRewriting
+Poly size: 170
+Step: 37, Replacement Typ: 3 with Vars: _88_, inv_4[1], r_3[1] |  Atomic Num: 13 level: 81
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1188
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 177
+Step: 38, Replacement Typ: 2 with Vars: _87_, _84_, _86_ |  Atomic Num: 12 level: 83
+inside replaceSingleNodeWithRepr
+in185
+return from applyGeneralDCOnRewriting
+Poly size: 387
+Step: 39, Replacement Typ: 1 with Vars: _86_, inv_4[0], r_3[0] |  Atomic Num: 12 level: 84
+inside replaceSingleNodeWithRepr
+in1189
+return from applyGeneralDCOnRewriting
+Poly size: 363
+Step: 40, Replacement Typ: 5 with Vars: sum_4[0], _84_ |  Atomic Num: 12 level: 86
+inside replaceSingleNodeWithRepr
+in185
+return from applyGeneralDCOnRewriting
+Poly size: 294
+Step: 41, Replacement Typ: 3 with Vars: _84_, inv_4[0], r_3[0] |  Atomic Num: 12 level: 87
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1189
+inside applyGeneralDCOnRewriting
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 14
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 15 columns and 4 nonzeros
+Model fingerprint: 0xf8004e17
+Variable types: 0 continuous, 15 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 269
+Step: 42, Replacement Typ: 5 with Vars: inv_4[2], D[2] |  Atomic Num: -1 level: 90
+inside replaceSingleNodeWithRepr
+in1198
+return from applyGeneralDCOnRewriting
+Poly size: 280
+Step: 43, Replacement Typ: 5 with Vars: inv_4[1], D[1] |  Atomic Num: -1 level: 91
+inside replaceSingleNodeWithRepr
+in1199
+return from applyGeneralDCOnRewriting
+Poly size: 244
+Step: 44, Replacement Typ: 5 with Vars: inv_4[0], D[0] |  Atomic Num: -1 level: 92
+inside replaceSingleNodeWithRepr
+in1200
+return from applyGeneralDCOnRewriting
+Poly size: 81
+Step: 45, Replacement Typ: 6 with Vars: r_3[0], r_2[0] |  Atomic Num: -1 level: 99
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1144
+replacing buffer
+inside applyGeneralDCOnRewriting
+This dc present: 158|96|inner :r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 15
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 16 columns and 4 nonzeros
+Model fingerprint: 0xfb34863d
+Variable types: 0 continuous, 16 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 81
+Step: 46, Replacement Typ: 2 with Vars: r_3[3], _80_, _79_ |  Atomic Num: -1 level: 104
+inside replaceSingleNodeWithRepr
+in181
+return from applyGeneralDCOnRewriting
+Poly size: 165
+Step: 47, Replacement Typ: 1 with Vars: _80_, m_3[2], _78_ |  Atomic Num: -1 level: 105
+inside replaceSingleNodeWithRepr
+in1163
+return from applyGeneralDCOnRewriting
+Poly size: 165
+Step: 48, Replacement Typ: 1 with Vars: _79_, sum_3[2], Q[1] |  Atomic Num: -1 level: 106
+inside replaceSingleNodeWithRepr
+in1167
+return from applyGeneralDCOnRewriting
+Poly size: 165
+Step: 49, Replacement Typ: 5 with Vars: _78_, Q[1] |  Atomic Num: -1 level: 107
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+inside applyGeneralDCOnRewriting
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 16
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 17 columns and 4 nonzeros
+Model fingerprint: 0xa68ed98f
+Variable types: 0 continuous, 17 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 165
+Step: 50, Replacement Typ: 2 with Vars: r_3[2], _77_, _76_ |  Atomic Num: -1 level: 108
+inside replaceSingleNodeWithRepr
+in178
+return from applyGeneralDCOnRewriting
+Poly size: 335
+Step: 51, Replacement Typ: 1 with Vars: _77_, m_3[1], _75_ |  Atomic Num: -1 level: 109
+inside replaceSingleNodeWithRepr
+in1164
+return from applyGeneralDCOnRewriting
+Poly size: 335
+Step: 52, Replacement Typ: 1 with Vars: _76_, sum_3[1], Q[1] |  Atomic Num: -1 level: 110
+inside replaceSingleNodeWithRepr
+in1168
+return from applyGeneralDCOnRewriting
+Poly size: 251
+Step: 53, Replacement Typ: 5 with Vars: _75_, Q[1] |  Atomic Num: -1 level: 111
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 209
+Step: 54, Replacement Typ: 2 with Vars: r_3[1], _74_, _73_ |  Atomic Num: -1 level: 112
+inside replaceSingleNodeWithRepr
+in175
+return from applyGeneralDCOnRewriting
+Poly size: 391
+Step: 55, Replacement Typ: 1 with Vars: _74_, m_3[0], _72_ |  Atomic Num: -1 level: 113
+inside replaceSingleNodeWithRepr
+in1165
+return from applyGeneralDCOnRewriting
+Poly size: 391
+Step: 56, Replacement Typ: 1 with Vars: _73_, sum_3[0], Q[1] |  Atomic Num: -1 level: 114
+inside replaceSingleNodeWithRepr
+in1169
+return from applyGeneralDCOnRewriting
+Poly size: 271
+Step: 57, Replacement Typ: 5 with Vars: _72_, Q[1] |  Atomic Num: -1 level: 115
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+inside applyGeneralDCOnRewriting
+This dc present: 163|203|167|inner :m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 17
+diNum = 4
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 8 rows, 21 columns and 16 nonzeros
+Model fingerprint: 0xa0bce271
+Variable types: 0 continuous, 21 integer (4 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 211
+Step: 58, Replacement Typ: 6 with Vars: m_3[2], r_2[3] |  Atomic Num: -1 level: 118
+inside replaceSingleNodeWithRepr
+in1141
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 211
+Step: 59, Replacement Typ: 6 with Vars: m_3[1], r_2[2] |  Atomic Num: -1 level: 119
+inside replaceSingleNodeWithRepr
+in1142
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 211
+Step: 60, Replacement Typ: 6 with Vars: m_3[0], r_2[1] |  Atomic Num: -1 level: 120
+inside replaceSingleNodeWithRepr
+in1143
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 211
+Step: 61, Replacement Typ: 5 with Vars: Q[1], sum_3[3] |  Atomic Num: -1 level: 121
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1166
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 214
+Step: 62, Replacement Typ: 3 with Vars: sum_3[3], _68_, _67_ |  Atomic Num: 11 level: 126
+inside replaceSingleNodeWithRepr
+in169
+return from applyGeneralDCOnRewriting
+Poly size: 480
+Step: 63, Replacement Typ: 5 with Vars: _68_, r_2[4] |  Atomic Num: 11 level: 127
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1140
+inside applyGeneralDCOnRewriting
+This dc present: 140|68|inner :r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 18
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 19 columns and 4 nonzeros
+Model fingerprint: 0xedc1137f
+Variable types: 0 continuous, 19 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 477
+Step: 64, Replacement Typ: 2 with Vars: _67_, _65_, _66_ |  Atomic Num: 10 level: 128
+inside replaceSingleNodeWithRepr
+in166
+return from applyGeneralDCOnRewriting
+Poly size: 1009
+Step: 65, Replacement Typ: 1 with Vars: _66_, inv_3[2], r_2[3] |  Atomic Num: 10 level: 129
+inside replaceSingleNodeWithRepr
+in1171
+return from applyGeneralDCOnRewriting
+Poly size: 865
+Step: 66, Replacement Typ: 1 with Vars: _65_, _64_, _63_ |  Atomic Num: 10 level: 130
+inside replaceSingleNodeWithRepr
+in165
+return from applyGeneralDCOnRewriting
+Poly size: 865
+Step: 67, Replacement Typ: 3 with Vars: sum_3[2], _64_, _63_ |  Atomic Num: 10 level: 131
+inside replaceSingleNodeWithRepr
+in165
+return from applyGeneralDCOnRewriting
+Poly size: 852
+Step: 68, Replacement Typ: 3 with Vars: _64_, inv_3[2], r_2[3] |  Atomic Num: 10 level: 132
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1171
+inside applyGeneralDCOnRewriting
+This dc present: 171|141|64|inner :inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 19
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 20 columns and 4 nonzeros
+Model fingerprint: 0xb7fbc1a6
+Variable types: 0 continuous, 20 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 697
+Step: 69, Replacement Typ: 2 with Vars: _63_, _61_, _62_ |  Atomic Num: 9 level: 133
+inside replaceSingleNodeWithRepr
+in162
+return from applyGeneralDCOnRewriting
+Poly size: 1425
+Step: 70, Replacement Typ: 1 with Vars: _62_, inv_3[1], r_2[2] |  Atomic Num: 9 level: 134
+inside replaceSingleNodeWithRepr
+in1172
+return from applyGeneralDCOnRewriting
+Poly size: 1281
+Step: 71, Replacement Typ: 1 with Vars: _61_, _60_, _59_ |  Atomic Num: 9 level: 135
+inside replaceSingleNodeWithRepr
+in161
+return from applyGeneralDCOnRewriting
+Poly size: 1281
+Step: 72, Replacement Typ: 3 with Vars: sum_3[1], _60_, _59_ |  Atomic Num: 9 level: 136
+inside replaceSingleNodeWithRepr
+in161
+return from applyGeneralDCOnRewriting
+Poly size: 1285
+Step: 73, Replacement Typ: 3 with Vars: _60_, inv_3[1], r_2[2] |  Atomic Num: 9 level: 137
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1172
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 1145
+Step: 74, Replacement Typ: 2 with Vars: _59_, _56_, _58_ |  Atomic Num: 8 level: 139
+inside replaceSingleNodeWithRepr
+in157
+return from applyGeneralDCOnRewriting
+Poly size: 2369
+Step: 75, Replacement Typ: 1 with Vars: _58_, inv_3[0], r_2[1] |  Atomic Num: 8 level: 140
+inside replaceSingleNodeWithRepr
+in1173
+return from applyGeneralDCOnRewriting
+Poly size: 2011
+Step: 76, Replacement Typ: 5 with Vars: sum_3[0], _56_ |  Atomic Num: 8 level: 142
+inside replaceSingleNodeWithRepr
+in157
+return from applyGeneralDCOnRewriting
+Poly size: 1054
+Step: 77, Replacement Typ: 3 with Vars: _56_, inv_3[0], r_2[1] |  Atomic Num: 8 level: 143
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1173
+inside applyGeneralDCOnRewriting
+This dc present: 171|141|64|inner :inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 20
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 21 columns and 4 nonzeros
+Model fingerprint: 0x8e22e34a
+Variable types: 0 continuous, 21 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 920
+Step: 78, Replacement Typ: 5 with Vars: inv_3[2], D[2] |  Atomic Num: -1 level: 146
+inside replaceSingleNodeWithRepr
+in1198
+return from applyGeneralDCOnRewriting
+Poly size: 612
+Step: 79, Replacement Typ: 5 with Vars: inv_3[1], D[1] |  Atomic Num: -1 level: 147
+inside replaceSingleNodeWithRepr
+in1199
+return from applyGeneralDCOnRewriting
+Poly size: 328
+Step: 80, Replacement Typ: 5 with Vars: inv_3[0], D[0] |  Atomic Num: -1 level: 148
+inside replaceSingleNodeWithRepr
+in1200
+return from applyGeneralDCOnRewriting
+Poly size: 105
+Step: 81, Replacement Typ: 6 with Vars: r_2[1], r_1[1] |  Atomic Num: -1 level: 154
+inside replaceSingleNodeWithRepr
+in1125
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 105
+Step: 82, Replacement Typ: 6 with Vars: r_2[0], r_1[0] |  Atomic Num: -1 level: 155
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1126
+replacing buffer
+inside applyGeneralDCOnRewriting
+This dc present: 140|68|inner :r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 21
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 22 columns and 4 nonzeros
+Model fingerprint: 0x22fda0f5
+Variable types: 0 continuous, 22 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 105
+Step: 83, Replacement Typ: 2 with Vars: r_2[4], _52_, _51_ |  Atomic Num: -1 level: 160
+inside replaceSingleNodeWithRepr
+in153
+return from applyGeneralDCOnRewriting
+Poly size: 225
+Step: 84, Replacement Typ: 1 with Vars: _52_, m_2[2], _50_ |  Atomic Num: -1 level: 161
+inside replaceSingleNodeWithRepr
+in1146
+return from applyGeneralDCOnRewriting
+Poly size: 225
+Step: 85, Replacement Typ: 1 with Vars: _51_, sum_2[2], Q[2] |  Atomic Num: -1 level: 162
+inside replaceSingleNodeWithRepr
+in1150
+return from applyGeneralDCOnRewriting
+Poly size: 225
+Step: 86, Replacement Typ: 5 with Vars: _50_, Q[2] |  Atomic Num: -1 level: 163
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1202
+inside applyGeneralDCOnRewriting
+This dc present: 171|141|64|inner :inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 22
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 23 columns and 4 nonzeros
+Model fingerprint: 0x9ad4aa70
+Variable types: 0 continuous, 23 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 225
+Step: 87, Replacement Typ: 2 with Vars: r_2[3], _49_, _48_ |  Atomic Num: -1 level: 164
+inside replaceSingleNodeWithRepr
+in150
+return from applyGeneralDCOnRewriting
+Poly size: 455
+Step: 88, Replacement Typ: 1 with Vars: _49_, m_2[1], _47_ |  Atomic Num: -1 level: 165
+inside replaceSingleNodeWithRepr
+in1147
+return from applyGeneralDCOnRewriting
+Poly size: 455
+Step: 89, Replacement Typ: 1 with Vars: _48_, sum_2[1], Q[2] |  Atomic Num: -1 level: 166
+inside replaceSingleNodeWithRepr
+in1151
+return from applyGeneralDCOnRewriting
+Poly size: 327
+Step: 90, Replacement Typ: 5 with Vars: _47_, Q[2] |  Atomic Num: -1 level: 167
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1202
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 263
+Step: 91, Replacement Typ: 2 with Vars: r_2[2], _46_, _45_ |  Atomic Num: -1 level: 168
+inside replaceSingleNodeWithRepr
+in147
+return from applyGeneralDCOnRewriting
+Poly size: 515
+Step: 92, Replacement Typ: 1 with Vars: _46_, m_2[0], _44_ |  Atomic Num: -1 level: 169
+inside replaceSingleNodeWithRepr
+in1148
+return from applyGeneralDCOnRewriting
+Poly size: 515
+Step: 93, Replacement Typ: 1 with Vars: _45_, sum_2[0], Q[2] |  Atomic Num: -1 level: 170
+inside replaceSingleNodeWithRepr
+in1152
+return from applyGeneralDCOnRewriting
+Poly size: 363
+Step: 94, Replacement Typ: 5 with Vars: _44_, Q[2] |  Atomic Num: -1 level: 171
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1202
+inside applyGeneralDCOnRewriting
+This dc present: 146|202|150|inner :m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 23
+diNum = 4
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 8 rows, 27 columns and 16 nonzeros
+Model fingerprint: 0x80617829
+Variable types: 0 continuous, 27 integer (4 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 287
+Step: 95, Replacement Typ: 6 with Vars: m_2[2], r_1[4] |  Atomic Num: -1 level: 174
+inside replaceSingleNodeWithRepr
+in1122
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 287
+Step: 96, Replacement Typ: 6 with Vars: m_2[1], r_1[3] |  Atomic Num: -1 level: 175
+inside replaceSingleNodeWithRepr
+in1123
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 287
+Step: 97, Replacement Typ: 6 with Vars: m_2[0], r_1[2] |  Atomic Num: -1 level: 176
+inside replaceSingleNodeWithRepr
+in1124
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 287
+Step: 98, Replacement Typ: 5 with Vars: Q[2], sum_2[3] |  Atomic Num: -1 level: 177
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1149
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 290
+Step: 99, Replacement Typ: 3 with Vars: sum_2[3], _40_, _39_ |  Atomic Num: 7 level: 182
+inside replaceSingleNodeWithRepr
+in141
+return from applyGeneralDCOnRewriting
+Poly size: 660
+Step: 100, Replacement Typ: 5 with Vars: _40_, r_1[5] |  Atomic Num: 7 level: 183
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1121
+inside applyGeneralDCOnRewriting
+This dc present: 121|40|inner :r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 24
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 25 columns and 4 nonzeros
+Model fingerprint: 0x3a629d49
+Variable types: 0 continuous, 25 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 657
+Step: 101, Replacement Typ: 2 with Vars: _39_, _37_, _38_ |  Atomic Num: 6 level: 184
+inside replaceSingleNodeWithRepr
+in138
+return from applyGeneralDCOnRewriting
+Poly size: 1397
+Step: 102, Replacement Typ: 1 with Vars: _38_, inv_2[2], r_1[4] |  Atomic Num: 6 level: 185
+inside replaceSingleNodeWithRepr
+in1154
+return from applyGeneralDCOnRewriting
+Poly size: 1253
+Step: 103, Replacement Typ: 1 with Vars: _37_, _36_, _35_ |  Atomic Num: 6 level: 186
+inside replaceSingleNodeWithRepr
+in137
+return from applyGeneralDCOnRewriting
+Poly size: 1253
+Step: 104, Replacement Typ: 3 with Vars: sum_2[2], _36_, _35_ |  Atomic Num: 6 level: 187
+inside replaceSingleNodeWithRepr
+in137
+return from applyGeneralDCOnRewriting
+Poly size: 1271
+Step: 105, Replacement Typ: 3 with Vars: _36_, inv_2[2], r_1[4] |  Atomic Num: 6 level: 188
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1154
+inside applyGeneralDCOnRewriting
+This dc present: 154|122|36|inner :inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 25
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 26 columns and 4 nonzeros
+Model fingerprint: 0xff93190b
+Variable types: 0 continuous, 26 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 1117
+Step: 106, Replacement Typ: 2 with Vars: _35_, _33_, _34_ |  Atomic Num: 5 level: 189
+inside replaceSingleNodeWithRepr
+in134
+return from applyGeneralDCOnRewriting
+Poly size: 2325
+Step: 107, Replacement Typ: 1 with Vars: _34_, inv_2[1], r_1[3] |  Atomic Num: 5 level: 190
+inside replaceSingleNodeWithRepr
+in1155
+return from applyGeneralDCOnRewriting
+Poly size: 2069
+Step: 108, Replacement Typ: 1 with Vars: _33_, _32_, _31_ |  Atomic Num: 5 level: 191
+inside replaceSingleNodeWithRepr
+in133
+return from applyGeneralDCOnRewriting
+Poly size: 2069
+Step: 109, Replacement Typ: 3 with Vars: sum_2[1], _32_, _31_ |  Atomic Num: 5 level: 192
+inside replaceSingleNodeWithRepr
+in133
+return from applyGeneralDCOnRewriting
+Poly size: 2082
+Step: 110, Replacement Typ: 3 with Vars: _32_, inv_2[1], r_1[3] |  Atomic Num: 5 level: 193
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1155
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 1845
+Step: 111, Replacement Typ: 2 with Vars: _31_, _28_, _30_ |  Atomic Num: 4 level: 195
+inside replaceSingleNodeWithRepr
+in129
+return from applyGeneralDCOnRewriting
+Poly size: 3867
+Step: 112, Replacement Typ: 1 with Vars: _30_, inv_2[0], r_1[2] |  Atomic Num: 4 level: 196
+inside replaceSingleNodeWithRepr
+in1156
+return from applyGeneralDCOnRewriting
+Poly size: 3491
+Step: 113, Replacement Typ: 5 with Vars: sum_2[0], _28_ |  Atomic Num: 4 level: 198
+inside replaceSingleNodeWithRepr
+in129
+return from applyGeneralDCOnRewriting
+Poly size: 2032
+Step: 114, Replacement Typ: 3 with Vars: _28_, inv_2[0], r_1[2] |  Atomic Num: 4 level: 199
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1156
+inside applyGeneralDCOnRewriting
+This dc present: 154|122|36|inner :inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 26
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 27 columns and 4 nonzeros
+Model fingerprint: 0x1f92c83e
+Variable types: 0 continuous, 27 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 1607
+Step: 115, Replacement Typ: 5 with Vars: inv_2[2], D[2] |  Atomic Num: -1 level: 202
+inside replaceSingleNodeWithRepr
+in1198
+return from applyGeneralDCOnRewriting
+Poly size: 933
+Step: 116, Replacement Typ: 5 with Vars: inv_2[1], D[1] |  Atomic Num: -1 level: 203
+inside replaceSingleNodeWithRepr
+in1199
+return from applyGeneralDCOnRewriting
+Poly size: 480
+Step: 117, Replacement Typ: 5 with Vars: inv_2[0], D[0] |  Atomic Num: -1 level: 204
+inside replaceSingleNodeWithRepr
+in1200
+return from applyGeneralDCOnRewriting
+Poly size: 221
+Step: 118, Replacement Typ: 6 with Vars: r_1[2], r_0[2] |  Atomic Num: -1 level: 209
+inside replaceSingleNodeWithRepr
+in1117
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 221
+Step: 119, Replacement Typ: 6 with Vars: r_1[1], r_0[1] |  Atomic Num: -1 level: 210
+inside replaceSingleNodeWithRepr
+in1118
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 221
+Step: 120, Replacement Typ: 6 with Vars: r_1[0], r_0[0] |  Atomic Num: -1 level: 211
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1119
+replacing buffer
+inside applyGeneralDCOnRewriting
+This dc present: 121|40|inner :r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 27
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 28 columns and 4 nonzeros
+Model fingerprint: 0xc973c9e0
+Variable types: 0 continuous, 28 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 221
+Step: 121, Replacement Typ: 2 with Vars: r_1[5], _24_, _23_ |  Atomic Num: -1 level: 216
+inside replaceSingleNodeWithRepr
+in125
+return from applyGeneralDCOnRewriting
+Poly size: 485
+Step: 122, Replacement Typ: 1 with Vars: _24_, m_1[2], _22_ |  Atomic Num: -1 level: 217
+inside replaceSingleNodeWithRepr
+in1128
+return from applyGeneralDCOnRewriting
+Poly size: 485
+Step: 123, Replacement Typ: 1 with Vars: _23_, sum_1[2], Q[3] |  Atomic Num: -1 level: 218
+inside replaceSingleNodeWithRepr
+in1132
+return from applyGeneralDCOnRewriting
+Poly size: 485
+Step: 124, Replacement Typ: 5 with Vars: _22_, Q[3] |  Atomic Num: -1 level: 219
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1201
+inside applyGeneralDCOnRewriting
+This dc present: 154|122|36|inner :inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 28
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 29 columns and 4 nonzeros
+Model fingerprint: 0x4c004b8d
+Variable types: 0 continuous, 29 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 485
+Step: 125, Replacement Typ: 2 with Vars: r_1[4], _21_, _20_ |  Atomic Num: -1 level: 220
+inside replaceSingleNodeWithRepr
+in122
+return from applyGeneralDCOnRewriting
+Poly size: 989
+Step: 126, Replacement Typ: 1 with Vars: _21_, m_1[1], _19_ |  Atomic Num: -1 level: 221
+inside replaceSingleNodeWithRepr
+in1129
+return from applyGeneralDCOnRewriting
+Poly size: 989
+Step: 127, Replacement Typ: 1 with Vars: _20_, sum_1[1], Q[3] |  Atomic Num: -1 level: 222
+inside replaceSingleNodeWithRepr
+in1133
+return from applyGeneralDCOnRewriting
+Poly size: 721
+Step: 128, Replacement Typ: 5 with Vars: _19_, Q[3] |  Atomic Num: -1 level: 223
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1201
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 587
+Step: 129, Replacement Typ: 2 with Vars: r_1[3], _18_, _17_ |  Atomic Num: -1 level: 224
+inside replaceSingleNodeWithRepr
+in119
+return from applyGeneralDCOnRewriting
+Poly size: 1171
+Step: 130, Replacement Typ: 1 with Vars: _18_, m_1[0], _16_ |  Atomic Num: -1 level: 225
+inside replaceSingleNodeWithRepr
+in1130
+return from applyGeneralDCOnRewriting
+Poly size: 1171
+Step: 131, Replacement Typ: 1 with Vars: _17_, sum_1[0], Q[3] |  Atomic Num: -1 level: 226
+inside replaceSingleNodeWithRepr
+in1134
+return from applyGeneralDCOnRewriting
+Poly size: 807
+Step: 132, Replacement Typ: 5 with Vars: _16_, Q[3] |  Atomic Num: -1 level: 227
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1201
+inside applyGeneralDCOnRewriting
+This dc present: 128|201|132|inner :m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 33
+diNum = 6
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 12 rows, 39 columns and 38 nonzeros
+Model fingerprint: 0x8796b08a
+Variable types: 0 continuous, 39 integer (6 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 625
+Step: 133, Replacement Typ: 6 with Vars: m_1[2], r_0[5] |  Atomic Num: -1 level: 230
+inside replaceSingleNodeWithRepr
+in1114
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 625
+Step: 134, Replacement Typ: 6 with Vars: m_1[1], r_0[4] |  Atomic Num: -1 level: 231
+inside replaceSingleNodeWithRepr
+in1115
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 625
+Step: 135, Replacement Typ: 6 with Vars: m_1[0], r_0[3] |  Atomic Num: -1 level: 232
+inside replaceSingleNodeWithRepr
+in1116
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 625
+Step: 136, Replacement Typ: 5 with Vars: Q[3], sum_1[3] |  Atomic Num: -1 level: 233
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1131
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 628
+Step: 137, Replacement Typ: 5 with Vars: sum_1[3], _11_ |  Atomic Num: 3 level: 238
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in112
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 625
+Step: 138, Replacement Typ: 2 with Vars: _11_, _9_, _10_ |  Atomic Num: 2 level: 240
+inside replaceSingleNodeWithRepr
+in110
+return from applyGeneralDCOnRewriting
+Poly size: 1439
+Step: 139, Replacement Typ: 1 with Vars: _10_, inv_1[2], r_0[5] |  Atomic Num: 2 level: 241
+inside replaceSingleNodeWithRepr
+in1136
+return from applyGeneralDCOnRewriting
+Poly size: 1297
+Step: 140, Replacement Typ: 1 with Vars: _9_, _8_, _7_ |  Atomic Num: 2 level: 242
+inside replaceSingleNodeWithRepr
+in19
+return from applyGeneralDCOnRewriting
+Poly size: 1297
+Step: 141, Replacement Typ: 3 with Vars: sum_1[2], _8_, _7_ |  Atomic Num: 2 level: 243
+inside replaceSingleNodeWithRepr
+in19
+return from applyGeneralDCOnRewriting
+Poly size: 1206
+Step: 142, Replacement Typ: 3 with Vars: _8_, inv_1[2], r_0[5] |  Atomic Num: 2 level: 244
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1136
+inside applyGeneralDCOnRewriting
+This dc present: 136|114|8|inner :inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 37
+diNum = 4
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 8 rows, 41 columns and 22 nonzeros
+Model fingerprint: 0x433e6871
+Variable types: 0 continuous, 41 integer (4 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 989
+Step: 143, Replacement Typ: 2 with Vars: _7_, _5_, _6_ |  Atomic Num: 1 level: 245
+inside replaceSingleNodeWithRepr
+in16
+return from applyGeneralDCOnRewriting
+Poly size: 2123
+Step: 144, Replacement Typ: 1 with Vars: _6_, inv_1[1], r_0[4] |  Atomic Num: 1 level: 246
+inside replaceSingleNodeWithRepr
+in1137
+return from applyGeneralDCOnRewriting
+Poly size: 1811
+Step: 145, Replacement Typ: 1 with Vars: _5_, _4_, _3_ |  Atomic Num: 1 level: 247
+inside replaceSingleNodeWithRepr
+in15
+return from applyGeneralDCOnRewriting
+Poly size: 1811
+Step: 146, Replacement Typ: 3 with Vars: sum_1[1], _4_, _3_ |  Atomic Num: 1 level: 248
+inside replaceSingleNodeWithRepr
+in15
+return from applyGeneralDCOnRewriting
+Poly size: 1731
+Step: 147, Replacement Typ: 3 with Vars: _4_, inv_1[1], r_0[4] |  Atomic Num: 1 level: 249
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1137
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 1444
+Step: 148, Replacement Typ: 2 with Vars: _3_, _0_, _2_ |  Atomic Num: 0 level: 251
+inside replaceSingleNodeWithRepr
+in11
+return from applyGeneralDCOnRewriting
+Poly size: 2948
+Step: 149, Replacement Typ: 1 with Vars: _2_, inv_1[0], r_0[3] |  Atomic Num: 0 level: 252
+inside replaceSingleNodeWithRepr
+in1138
+return from applyGeneralDCOnRewriting
+Poly size: 2532
+Step: 150, Replacement Typ: 5 with Vars: sum_1[0], _0_ |  Atomic Num: 0 level: 254
+inside replaceSingleNodeWithRepr
+in11
+return from applyGeneralDCOnRewriting
+Poly size: 1560
+Step: 151, Replacement Typ: 3 with Vars: _0_, inv_1[0], r_0[3] |  Atomic Num: 0 level: 255
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1138
+inside applyGeneralDCOnRewriting
+This dc present: 136|114|8|inner :inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 41
+diNum = 4
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 8 rows, 45 columns and 22 nonzeros
+Model fingerprint: 0xe5be3b6b
+Variable types: 0 continuous, 45 integer (4 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+applyDCSolutionToPolynomial started.
+return from applyGeneralDCOnRewriting
+Poly size: 1202
+Step: 152, Replacement Typ: 5 with Vars: inv_1[2], D[2] |  Atomic Num: -1 level: 258
+inside replaceSingleNodeWithRepr
+in1198
+return from applyGeneralDCOnRewriting
+Poly size: 725
+Step: 153, Replacement Typ: 5 with Vars: inv_1[1], D[1] |  Atomic Num: -1 level: 259
+inside replaceSingleNodeWithRepr
+in1199
+return from applyGeneralDCOnRewriting
+Poly size: 359
+Step: 154, Replacement Typ: 5 with Vars: inv_1[0], D[0] |  Atomic Num: -1 level: 260
+inside replaceSingleNodeWithRepr
+in1200
+return from applyGeneralDCOnRewriting
+Poly size: 153
+Step: 155, Replacement Typ: 6 with Vars: r_0[5], R_0[5] |  Atomic Num: -1 level: 262
+inside replaceSingleNodeWithRepr
+in1192
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 153
+Step: 156, Replacement Typ: 6 with Vars: r_0[4], R_0[4] |  Atomic Num: -1 level: 263
+inside replaceSingleNodeWithRepr
+in1193
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 153
+Step: 157, Replacement Typ: 6 with Vars: r_0[3], R_0[3] |  Atomic Num: -1 level: 264
+inside replaceSingleNodeWithRepr
+in1194
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 153
+Step: 158, Replacement Typ: 6 with Vars: r_0[2], R_0[2] |  Atomic Num: -1 level: 265
+inside replaceSingleNodeWithRepr
+in1195
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 152
+Step: 159, Replacement Typ: 6 with Vars: r_0[1], R_0[1] |  Atomic Num: -1 level: 266
+inside replaceSingleNodeWithRepr
+in1196
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 150
+Step: 160, Replacement Typ: 6 with Vars: r_0[0], R_0[0] |  Atomic Num: -1 level: 267
+inside replaceSingleNodeWithRepr
+in1197
+replacing buffer
+return from applyGeneralDCOnRewriting
+Poly size: 148
+Backward rewriting total all together time in sec. : 0.15756
+Start polynomial size was: 22
+Maximum polynomial size was: 3867
+Number of backtrackings: 0
+with number monomials: 148
+Ending polynomial is not empty.148
+Apply input constraint.
+Applying Input constraint on polynomial started.
+step: 0
+polynomial: [-16*x193] + [-8*x194] + [-8*x195] + [16*x193*x198] + [16*x193*x199] + [8*x194*x198] + [16*x193*x200] + [8*x194*x199] + [8*x195*x198] + [8*x194*x200] + [8*x195*x199] + [8*x195*x200] + [-8*x193*x194*x200] + [-8*x193*x195*x200] + [-16*x193*x198*x199] + [-16*x193*x198*x200] + [-8*x194*x198*x199] + [-16*x193*x199*x200] + [-8*x194*x198*x200] + [-8*x195*x198*x199] + [-8*x194*x199*x200] + [-8*x195*x198*x200] + [-8*x195*x199*x200] + [8*x193*x195*x196*x200] + [8*x193*x194*x198*x200] + [8*x193*x194*x199*x200] + [8*x193*x195*x198*x200] + [-8*x193*x196*x197*x200] + [8*x193*x195*x199*x200] + [16*x193*x198*x199*x200] + [8*x194*x198*x199*x200] + [8*x195*x198*x199*x200] + [-8*x193*x194*x195*x196*x200] + [-8*x193*x195*x196*x198*x200] + [-8*x193*x195*x196*x199*x200] + [-8*x193*x194*x198*x199*x200] + [8*x193*x196*x197*x198*x200] + [-8*x193*x195*x198*x199*x200] + [8*x193*x196*x197*x199*x200] + [8*x193*x194*x195*x196*x197*x200] + [8*x193*x194*x195*x196*x198*x200] + [8*x193*x194*x195*x196*x199*x200] + [8*x193*x195*x196*x198*x199*x200] + [-8*x193*x196*x197*x198*x199*x200] + [-8*x193*x194*x195*x196*x197*x198*x200] + [-8*x193*x194*x195*x196*x197*x199*x200] + [-8*x193*x194*x195*x196*x198*x199*x200] + [8*x193*x194*x195*x196*x197*x198*x199*x200]
+polynomial size: 48
+step: 1
+polynomial: [-8*x194] + [-8*x195] + [8*x194*x198] + [8*x194*x199] + [8*x195*x198] + [8*x194*x200] + [8*x195*x199] + [8*x195*x200] + [-8*x194*x198*x199] + [-8*x194*x198*x200] + [-8*x195*x198*x199] + [-8*x194*x199*x200] + [-8*x195*x198*x200] + [-8*x195*x199*x200] + [8*x194*x198*x199*x200] + [8*x195*x198*x199*x200]
+polynomial size: 16
+step: 2
+VERIFICATION SUCCESSFUL.
+Complete Verification process needed time: 0.158844
+Complete rewriting time: 0.158862
+************************************************************************
+SUMMARY TIME NEEDED 
+Parsing part needed time: 0.078231
+Complete DC computation needed time: 0.046759
+Complete rewriting time: 0.158862
+Overall time: 0.283852

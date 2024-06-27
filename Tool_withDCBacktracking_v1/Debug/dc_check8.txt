@@ -1,0 +1,1170 @@
+************************************************************************
+VERIFICATION OF DIVIDER CIRCUIT STARTED
+************************************************************************
+Parsing file has started.
+edge name _0_
+edge index 1
+edge name _1_
+edge index 2
+edge name _2_
+edge index 3
+edge name _3_
+edge index 4
+edge name _4_
+edge index 5
+edge name _5_
+edge index 6
+edge name _6_
+edge index 7
+edge name _7_
+edge index 8
+edge name _8_
+edge index 9
+edge name _9_
+edge index 10
+edge name _10_
+edge index 11
+edge name _11_
+edge index 12
+edge name _12_
+edge index 13
+edge name _13_
+edge index 14
+edge name _14_
+edge index 15
+edge name _15_
+edge index 16
+edge name _16_
+edge index 17
+edge name _17_
+edge index 18
+edge name _18_
+edge index 19
+edge name _19_
+edge index 20
+edge name _20_
+edge index 21
+edge name _21_
+edge index 22
+edge name _22_
+edge index 23
+edge name _23_
+edge index 24
+edge name _24_
+edge index 25
+edge name _25_
+edge index 26
+edge name _26_
+edge index 27
+edge name _27_
+edge index 28
+edge name _28_
+edge index 29
+edge name _29_
+edge index 30
+edge name _30_
+edge index 31
+edge name _31_
+edge index 32
+edge name _32_
+edge index 33
+edge name _33_
+edge index 34
+edge name _34_
+edge index 35
+edge name _35_
+edge index 36
+edge name _36_
+edge index 37
+edge name _37_
+edge index 38
+edge name _38_
+edge index 39
+edge name _39_
+edge index 40
+edge name _40_
+edge index 41
+edge name _41_
+edge index 42
+edge name _42_
+edge index 43
+edge name _43_
+edge index 44
+edge name _44_
+edge index 45
+edge name _45_
+edge index 46
+edge name _46_
+edge index 47
+edge name _47_
+edge index 48
+edge name _48_
+edge index 49
+edge name _49_
+edge index 50
+edge name _50_
+edge index 51
+edge name _51_
+edge index 52
+edge name _52_
+edge index 53
+edge name _53_
+edge index 54
+edge name _54_
+edge index 55
+edge name _55_
+edge index 56
+edge name _56_
+edge index 57
+edge name _57_
+edge index 58
+edge name _58_
+edge index 59
+edge name _59_
+edge index 60
+edge name _60_
+edge index 61
+edge name _61_
+edge index 62
+edge name _62_
+edge index 63
+edge name _63_
+edge index 64
+edge name _64_
+edge index 65
+edge name _65_
+edge index 66
+edge name _66_
+edge index 67
+edge name _67_
+edge index 68
+edge name _68_
+edge index 69
+edge name _69_
+edge index 70
+edge name _70_
+edge index 71
+edge name _71_
+edge index 72
+edge name _72_
+edge index 73
+edge name _73_
+edge index 74
+edge name _74_
+edge index 75
+edge name _75_
+edge index 76
+edge name _76_
+edge index 77
+edge name _77_
+edge index 78
+edge name _78_
+edge index 79
+edge name _79_
+edge index 80
+edge name _80_
+edge index 81
+edge name _81_
+edge index 82
+edge name _82_
+edge index 83
+edge name _83_
+edge index 84
+edge name _84_
+edge index 85
+edge name _85_
+edge index 86
+edge name _86_
+edge index 87
+edge name _87_
+edge index 88
+edge name _88_
+edge index 89
+edge name _89_
+edge index 90
+edge name _90_
+edge index 91
+edge name _91_
+edge index 92
+edge name _92_
+edge index 93
+edge name _93_
+edge index 94
+edge name _94_
+edge index 95
+edge name _95_
+edge index 96
+edge name _96_
+edge index 97
+edge name _97_
+edge index 98
+edge name _98_
+edge index 99
+edge name _99_
+edge index 100
+edge name _100_
+edge index 101
+edge name _101_
+edge index 102
+edge name _102_
+edge index 103
+edge name _103_
+edge index 104
+edge name _104_
+edge index 105
+edge name _105_
+edge index 106
+edge name _106_
+edge index 107
+edge name _107_
+edge index 108
+edge name _108_
+edge index 109
+edge name _109_
+edge index 110
+edge name _110_
+edge index 111
+edge name _111_
+edge index 112
+edge name r_0[6]
+edge index 113
+edge name r_0[5]
+edge index 114
+edge name r_0[4]
+edge index 115
+edge name r_0[3]
+edge index 116
+edge name r_0[2]
+edge index 117
+edge name r_0[1]
+edge index 118
+edge name r_0[0]
+edge index 119
+edge name r_1[6]
+edge index 120
+edge name r_1[5]
+edge index 121
+edge name r_1[4]
+edge index 122
+edge name r_1[3]
+edge index 123
+edge name r_1[2]
+edge index 124
+edge name r_1[1]
+edge index 125
+edge name r_1[0]
+edge index 126
+edge name m_1[3]
+edge index 127
+edge name m_1[2]
+edge index 128
+edge name m_1[1]
+edge index 129
+edge name m_1[0]
+edge index 130
+edge name sum_1[3]
+edge index 131
+edge name sum_1[2]
+edge index 132
+edge name sum_1[1]
+edge index 133
+edge name sum_1[0]
+edge index 134
+edge name inv_1[3]
+edge index 135
+edge name inv_1[2]
+edge index 136
+edge name inv_1[1]
+edge index 137
+edge name inv_1[0]
+edge index 138
+edge name r_2[5]
+edge index 139
+edge name r_2[4]
+edge index 140
+edge name r_2[3]
+edge index 141
+edge name r_2[2]
+edge index 142
+edge name r_2[1]
+edge index 143
+edge name r_2[0]
+edge index 144
+edge name m_2[3]
+edge index 145
+edge name m_2[2]
+edge index 146
+edge name m_2[1]
+edge index 147
+edge name m_2[0]
+edge index 148
+edge name sum_2[3]
+edge index 149
+edge name sum_2[2]
+edge index 150
+edge name sum_2[1]
+edge index 151
+edge name sum_2[0]
+edge index 152
+edge name inv_2[3]
+edge index 153
+edge name inv_2[2]
+edge index 154
+edge name inv_2[1]
+edge index 155
+edge name inv_2[0]
+edge index 156
+edge name r_3[4]
+edge index 157
+edge name r_3[3]
+edge index 158
+edge name r_3[2]
+edge index 159
+edge name r_3[1]
+edge index 160
+edge name r_3[0]
+edge index 161
+edge name m_3[3]
+edge index 162
+edge name m_3[2]
+edge index 163
+edge name m_3[1]
+edge index 164
+edge name m_3[0]
+edge index 165
+edge name sum_3[3]
+edge index 166
+edge name sum_3[2]
+edge index 167
+edge name sum_3[1]
+edge index 168
+edge name sum_3[0]
+edge index 169
+edge name inv_3[3]
+edge index 170
+edge name inv_3[2]
+edge index 171
+edge name inv_3[1]
+edge index 172
+edge name inv_3[0]
+edge index 173
+edge name r_4[3]
+edge index 174
+edge name r_4[2]
+edge index 175
+edge name r_4[1]
+edge index 176
+edge name r_4[0]
+edge index 177
+edge name m_4[3]
+edge index 178
+edge name m_4[2]
+edge index 179
+edge name m_4[1]
+edge index 180
+edge name m_4[0]
+edge index 181
+edge name sum_4[3]
+edge index 182
+edge name sum_4[2]
+edge index 183
+edge name sum_4[1]
+edge index 184
+edge name sum_4[0]
+edge index 185
+edge name inv_4[3]
+edge index 186
+edge name inv_4[2]
+edge index 187
+edge name inv_4[1]
+edge index 188
+edge name inv_4[0]
+edge index 189
+edge name zeroWire
+edge index 190
+edge name oneWire
+edge index 191
+edge name R_0[5]
+edge index 192
+edge name R_0[4]
+edge index 193
+edge name R_0[3]
+edge index 194
+edge name R_0[2]
+edge index 195
+edge name R_0[1]
+edge index 196
+edge name R_0[0]
+edge index 197
+edge name D[2]
+edge index 198
+edge name D[1]
+edge index 199
+edge name D[0]
+edge index 200
+edge name Q[3]
+edge index 201
+edge name Q[2]
+edge index 202
+edge name Q[1]
+edge index 203
+edge name Q[0]
+edge index 204
+edge name R_n1[3]
+edge index 205
+edge name R_n1[2]
+edge index 206
+edge name R_n1[1]
+edge index 207
+edge name R_n1[0]
+edge index 208
+Parse file is completed.
+findFAs() successfull. Number of found FAs is: 16
+findMuxs() successfull. Number of found Muxs is: 16
+before quicksort
+sortNodesByLevel() successfull
+Parsing part needed time: 0.080319
+check DCs started
+16
+SIMULATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Running first simulation needed time in sec. : 0.000757
+Simulation was executed with SimVectors of Size: 16384
+check DCs in Simulation started
+
+dc candidates before clean up
+inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+
+m_1[0] | Q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[1] | Q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+
+inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+
+m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+
+m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+
+r_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+
+m_4[2] | Q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+Simulation for DCs needed time: 0.048835
+cleanDCcandidates started.
+Amount of DC cells found after clean up : 15
+inv_1[2] | r_0[5] | _7_   lvl: 245
+1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 count: 4
+
+m_1[0] | Q[3] | sum_1[0]   lvl: 232
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[1] | Q[3] | sum_1[1]   lvl: 231
+1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 count: 4
+
+m_1[2] | Q[3] | sum_1[2]   lvl: 230
+1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 count: 3
+
+inv_2[2] | r_1[4] | _35_   lvl: 189
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_1[5] | _39_   lvl: 184
+1 | 1 | 1 | 0 count: 3
+
+m_2[2] | Q[2] | sum_2[2]   lvl: 174
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_3[2] | r_2[3] | _63_   lvl: 133
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_2[4] | _67_   lvl: 128
+1 | 1 | 1 | 0 count: 3
+
+m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+
+r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+
+r_3[3] | Q[0]   lvl: 65
+1 | 0 | 1 | 1 count: 3
+
+m_4[2] | Q[0] | sum_4[2]   lvl: 62
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+
+m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+
+inside const0Prop 
+finished const0 propagation
+inside const1 prop
+finished const1 propagation
+removed dead edges after const prop
+Complete DC computation needed time: 0.048988
+startAdvancedVerification started.
+before quicksort
+sortNodesByLevel() successfull
+read signatureFile started
+read signatureFile ended
+create signature polynom started
+inside while
+end createPolynom
+Starting polynomial has size: 22
+Anfangspolynom ist: [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x205] + [4*x206] + [2*x207] + [1*x208] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+Starting backward rewriting process. 
+Step: 1, Replacement Typ: 6 with Vars: R_n1[0], r_4[0] |  Atomic Num: -1 level: 0
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1177
+replacing buffer
+polynomial after replacement is: [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x205] + [4*x206] + [2*x207] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 2, Replacement Typ: 6 with Vars: R_n1[1], r_4[1] |  Atomic Num: -1 level: 1
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1176
+replacing buffer
+polynomial after replacement is: [2*x176] + [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x205] + [4*x206] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 3, Replacement Typ: 6 with Vars: R_n1[2], r_4[2] |  Atomic Num: -1 level: 2
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1175
+replacing buffer
+polynomial after replacement is: [4*x175] + [2*x176] + [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x205] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 4, Replacement Typ: 6 with Vars: R_n1[3], r_4[3] |  Atomic Num: -1 level: 3
+Atomic Mux-1
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1174
+replacing buffer
+polynomial after replacement is: [-8*x174] + [4*x175] + [2*x176] + [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 22
+Step: 5, Replacement Typ: 2 with Vars: r_4[3], _111_, _110_ |  Atomic Num: -1 level: 44
+Atomic Mux3
+inside replaceSingleNodeWithRepr
+in1112
+replace or
+polynomial after replacement is: [-8*x111] + [-8*x112] + [4*x175] + [2*x176] + [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x111*x112] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 6, Replacement Typ: 1 with Vars: _111_, m_4[3], _109_ |  Atomic Num: -1 level: 45
+Atomic Mux3
+inside replaceSingleNodeWithRepr
+in1178
+replace AND
+polynomial after replacement is: [-8*x111] + [4*x175] + [2*x176] + [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x110*x178] + [32*x198*x201] + [8*x110*x111*x178] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 7, Replacement Typ: 1 with Vars: _110_, sum_4[3], Q[0] |  Atomic Num: -1 level: 46
+Atomic Mux3
+inside replaceSingleNodeWithRepr
+in1182
+replace AND
+polynomial after replacement is: [4*x175] + [2*x176] + [1*x177] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x110*x178] + [-8*x182*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [8*x110*x178*x182*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 8, Replacement Typ: 5 with Vars: _109_, Q[0] |  Atomic Num: -1 level: 47
+Atomic Mux3
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+polynomial after replacement is: [4*x175] + [2*x176] + [1*x177] + [-8*x178] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x178*x204] + [-8*x182*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 9, Replacement Typ: 2 with Vars: r_4[2], _108_, _107_ |  Atomic Num: -1 level: 48
+Atomic Mux2
+inside replaceSingleNodeWithRepr
+in1109
+replace or
+polynomial after replacement is: [4*x108] + [4*x109] + [2*x176] + [1*x177] + [-8*x178] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-4*x108*x109] + [8*x178*x204] + [-8*x182*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 10, Replacement Typ: 1 with Vars: _108_, m_4[2], _106_ |  Atomic Num: -1 level: 49
+Atomic Mux2
+inside replaceSingleNodeWithRepr
+in1179
+replace AND
+polynomial after replacement is: [4*x108] + [2*x176] + [1*x177] + [-8*x178] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [4*x107*x179] + [8*x178*x204] + [-8*x182*x204] + [-4*x107*x108*x179] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 11, Replacement Typ: 1 with Vars: _107_, sum_4[2], Q[0] |  Atomic Num: -1 level: 50
+Atomic Mux2
+inside replaceSingleNodeWithRepr
+in1183
+replace AND
+polynomial after replacement is: [2*x176] + [1*x177] + [-8*x178] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [4*x107*x179] + [8*x178*x204] + [-8*x182*x204] + [4*x183*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [-4*x107*x179*x183*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 12, Replacement Typ: 5 with Vars: _106_, Q[0] |  Atomic Num: -1 level: 51
+Atomic Mux2
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+polynomial after replacement is: [2*x176] + [1*x177] + [-8*x178] + [4*x179] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x178*x204] + [-4*x179*x204] + [-8*x182*x204] + [4*x183*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 13, Replacement Typ: 2 with Vars: r_4[1], _105_, _104_ |  Atomic Num: -1 level: 52
+Atomic Mux1
+inside replaceSingleNodeWithRepr
+in1106
+replace or
+polynomial after replacement is: [2*x105] + [2*x106] + [1*x177] + [-8*x178] + [4*x179] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-2*x105*x106] + [8*x178*x204] + [-4*x179*x204] + [-8*x182*x204] + [4*x183*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 14, Replacement Typ: 1 with Vars: _105_, m_4[1], _103_ |  Atomic Num: -1 level: 53
+Atomic Mux1
+inside replaceSingleNodeWithRepr
+in1180
+replace AND
+polynomial after replacement is: [2*x105] + [1*x177] + [-8*x178] + [4*x179] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [2*x104*x180] + [8*x178*x204] + [-4*x179*x204] + [-8*x182*x204] + [4*x183*x204] + [-2*x104*x105*x180] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 15, Replacement Typ: 1 with Vars: _104_, sum_4[1], Q[0] |  Atomic Num: -1 level: 54
+Atomic Mux1
+inside replaceSingleNodeWithRepr
+in1184
+replace AND
+polynomial after replacement is: [1*x177] + [-8*x178] + [4*x179] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [2*x104*x180] + [8*x178*x204] + [-4*x179*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [-2*x104*x180*x184*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 16, Replacement Typ: 5 with Vars: _103_, Q[0] |  Atomic Num: -1 level: 55
+Atomic Mux1
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+polynomial after replacement is: [1*x177] + [-8*x178] + [4*x179] + [2*x180] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x178*x204] + [-4*x179*x204] + [-2*x180*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 17, Replacement Typ: 2 with Vars: r_4[0], _102_, _101_ |  Atomic Num: -1 level: 56
+Atomic Mux0
+inside replaceSingleNodeWithRepr
+in1103
+replace or
+polynomial after replacement is: [1*x102] + [1*x103] + [-8*x178] + [4*x179] + [2*x180] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-1*x102*x103] + [8*x178*x204] + [-4*x179*x204] + [-2*x180*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 18, Replacement Typ: 1 with Vars: _102_, m_4[0], _100_ |  Atomic Num: -1 level: 57
+Atomic Mux0
+inside replaceSingleNodeWithRepr
+in1181
+replace AND
+polynomial after replacement is: [1*x102] + [-8*x178] + [4*x179] + [2*x180] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [1*x101*x181] + [8*x178*x204] + [-4*x179*x204] + [-2*x180*x204] + [-1*x101*x102*x181] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 19, Replacement Typ: 1 with Vars: _101_, sum_4[0], Q[0] |  Atomic Num: -1 level: 58
+Atomic Mux0
+inside replaceSingleNodeWithRepr
+in1185
+replace AND
+polynomial after replacement is: [-8*x178] + [4*x179] + [2*x180] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [1*x101*x181] + [8*x178*x204] + [-4*x179*x204] + [-2*x180*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [-1*x101*x181*x185*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 20, Replacement Typ: 5 with Vars: _100_, Q[0] |  Atomic Num: -1 level: 59
+Atomic Mux0
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1204
+replace not
+polynomial after replacement is: [-8*x178] + [4*x179] + [2*x180] + [1*x181] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x178*x204] + [-4*x179*x204] + [-2*x180*x204] + [-1*x181*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+nextIndex :178
+eIndices.at(i)178
+This dc present: 178|204|182|inner :m_4[3] | Q[0] | sum_4[3]   lvl: 61
+0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 21, Replacement Typ: 6 with Vars: m_4[3], r_3[3] |  Atomic Num: -1 level: 61
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1158
+replacing buffer
+polynomial after replacement is: [-8*x158] + [4*x179] + [2*x180] + [1*x181] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x158*x204] + [-4*x179*x204] + [-2*x180*x204] + [-1*x181*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 22, Replacement Typ: 6 with Vars: m_4[2], r_3[2] |  Atomic Num: -1 level: 62
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1159
+replacing buffer
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x180] + [1*x181] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x158*x204] + [-4*x159*x204] + [-2*x180*x204] + [-1*x181*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 23, Replacement Typ: 6 with Vars: m_4[1], r_3[1] |  Atomic Num: -1 level: 63
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1160
+replacing buffer
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x181] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x181*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 24, Replacement Typ: 6 with Vars: m_4[0], r_3[0] |  Atomic Num: -1 level: 64
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1161
+replacing buffer
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [-8*x182*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 25, Replacement Typ: 5 with Vars: Q[0], sum_4[3] |  Atomic Num: -1 level: 65
+Atomic Mux-1
+Here we are between two atomics
+atomic block is adder 
+skipping quotient replacement
+Step: 26, Replacement Typ: 3 with Vars: sum_4[3], _96_, _95_ |  Atomic Num: 15 level: 70
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in197
+replace xor
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x96*x204] + [-8*x97*x204] + [8*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [16*x96*x97*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 27, Replacement Typ: 5 with Vars: _96_, r_3[3] |  Atomic Num: 15 level: 71
+Atomic Mux-1
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1158
+replace not
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [8*x96*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [-16*x96*x158*x204]
+inside applyGeneralDCOnRewriting
+nextIndex :96
+eIndices.at(i)96
+This dc present: 158|96|inner :r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+size of dc2
+dcs before adding [1*x96*x158]
+return index[-16*x96*x158*x204]
+elements in dc cubes : [-16*x96*x158*x204]
+tempMon is [1*x96*x158*x204]
+polynomial afterwards:
+ [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] 
+ + [-1*x197] + [-8*x204] + [8*x96*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204]
+  + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] 
+  + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202]
+   + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + (+1*v1)[-16*x96*x158*x204]
+solve ILP
+ggt is -16
+viNum = 2
+diNum = 1
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 3 columns and 4 nonzeros
+Model fingerprint: 0x8d8c473c
+Variable types: 0 continuous, 3 integer (1 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+05]
+  Objective range  [1e+01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 10.0000000
+Presolve removed 2 rows and 3 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.08 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 0 10 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+v1 = 16
+poly before dc opt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [8*x96*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + (+1*v1)[-16*x96*x158*x204]
+applyDCSolutionToPolynomial started.
+polynomial after  dc opt replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [8*x96*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 31
+Step: 28, Replacement Typ: 2 with Vars: _95_, _93_, _94_ |  Atomic Num: 14 level: 72
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in194
+replace or
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [8*x94*x204] + [8*x95*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [-8*x94*x95*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 29, Replacement Typ: 1 with Vars: _94_, inv_4[2], r_3[2] |  Atomic Num: 14 level: 73
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1187
+replace AND
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [8*x94*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [8*x159*x187*x204] + [-8*x94*x159*x187*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 30, Replacement Typ: 1 with Vars: _93_, _92_, _91_ |  Atomic Num: 14 level: 74
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in193
+replace AND
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x183*x204] + [2*x184*x204] + [1*x185*x204] + [8*x92*x93*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [8*x159*x187*x204] + [-8*x92*x93*x159*x187*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 31, Replacement Typ: 3 with Vars: sum_4[2], _92_, _91_ |  Atomic Num: 14 level: 75
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in193
+replace xor
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x92*x204] + [4*x93*x204] + [16*x158*x204] + [-4*x159*x204] + [-2*x160*x204] + [-1*x161*x204] + [2*x184*x204] + [1*x185*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [8*x159*x187*x204] + [-8*x92*x93*x159*x187*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 33
+Step: 32, Replacement Typ: 3 with Vars: _92_, inv_4[2], r_3[2] |  Atomic Num: 14 level: 76
+Atomic Mux-1
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1187
+replace xor
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x92*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+nextIndex :92
+eIndices.at(i)92
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+size of dc3
+dcs before adding [1*x92*x159*x187]
+polynomial afterwards: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x92*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+solve ILP
+ggt is 0
+ggt is 0!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+viNum = 3
+diNum = 0
+Academic license - for non-commercial use only - expires 2025-05-17
+bignumber used is 200000
+GUROBI: start optimization.
+Gurobi Optimizer version 9.1.2 build v9.1.2rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 0 rows, 3 columns and 0 nonzeros
+Model fingerprint: 0x7d09e2d1
+Variable types: 0 continuous, 3 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [0e+00, 0e+00]
+Found heuristic solution: objective 0.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+GUROBI: Optimization ended.
+GUROBI OPTIMIZATION MODEL STATUS CODE IS 2
+Obj: 0
+end ILP
+poly before dc opt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x92*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+applyDCSolutionToPolynomial started.
+polynomial after  dc opt replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x92*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 33, Replacement Typ: 2 with Vars: _91_, _89_, _90_ |  Atomic Num: 13 level: 77
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in190
+replace or
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x90*x204] + [4*x91*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [-4*x90*x91*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 34, Replacement Typ: 1 with Vars: _90_, inv_4[1], r_3[1] |  Atomic Num: 13 level: 78
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1188
+replace AND
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [4*x90*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [4*x160*x188*x204] + [-4*x90*x160*x188*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 35, Replacement Typ: 1 with Vars: _89_, _88_, _87_ |  Atomic Num: 13 level: 79
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in189
+replace AND
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [4*x88*x89*x204] + [2*x184*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [4*x160*x188*x204] + [-4*x88*x89*x160*x188*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 36, Replacement Typ: 3 with Vars: sum_4[1], _88_, _87_ |  Atomic Num: 13 level: 80
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in189
+replace xor
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [2*x88*x204] + [2*x89*x204] + [16*x158*x204] + [-2*x160*x204] + [-1*x161*x204] + [1*x185*x204] + [4*x187*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [4*x160*x188*x204] + [-4*x88*x89*x160*x188*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 32
+Step: 37, Replacement Typ: 3 with Vars: _88_, inv_4[1], r_3[1] |  Atomic Num: 13 level: 81
+Atomic Mux-1
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1188
+replace xor
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [2*x88*x204] + [16*x158*x204] + [-1*x161*x204] + [1*x185*x204] + [4*x187*x204] + [2*x188*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 29
+Step: 38, Replacement Typ: 2 with Vars: _87_, _84_, _86_ |  Atomic Num: 12 level: 83
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in185
+replace or
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [2*x85*x204] + [2*x87*x204] + [16*x158*x204] + [-1*x161*x204] + [-2*x85*x87*x204] + [1*x185*x204] + [4*x187*x204] + [2*x188*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 31
+Step: 39, Replacement Typ: 1 with Vars: _86_, inv_4[0], r_3[0] |  Atomic Num: 12 level: 84
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1189
+replace AND
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x204] + [2*x85*x204] + [16*x158*x204] + [-1*x161*x204] + [1*x185*x204] + [4*x187*x204] + [2*x188*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [2*x161*x189*x204] + [-2*x85*x161*x189*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 31
+Step: 40, Replacement Typ: 5 with Vars: sum_4[0], _84_ |  Atomic Num: 12 level: 86
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in185
+replace not
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-7*x204] + [1*x85*x204] + [16*x158*x204] + [-1*x161*x204] + [4*x187*x204] + [2*x188*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204] + [2*x161*x189*x204] + [-2*x85*x161*x189*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 30
+Step: 41, Replacement Typ: 3 with Vars: _84_, inv_4[0], r_3[0] |  Atomic Num: 12 level: 87
+Atomic Mux-1
+Here we are between two atomics
+atomic block is adder 
+inside replaceSingleNodeWithRepr
+in1189
+replace xor
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-7*x204] + [16*x158*x204] + [4*x187*x204] + [2*x188*x204] + [1*x189*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x198*x204] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+inside applyGeneralDCOnRewriting
+nextIndex :187
+eIndices.at(i)187
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 27
+Step: 42, Replacement Typ: 5 with Vars: inv_4[2], D[2] |  Atomic Num: -1 level: 90
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1198
+replace not
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-3*x204] + [16*x158*x204] + [2*x188*x204] + [1*x189*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x199*x204] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 25
+Step: 43, Replacement Typ: 5 with Vars: inv_4[1], D[1] |  Atomic Num: -1 level: 91
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1199
+replace not
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-1*x204] + [16*x158*x204] + [1*x189*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [1*x200*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 23
+Step: 44, Replacement Typ: 5 with Vars: inv_4[0], D[0] |  Atomic Num: -1 level: 92
+Atomic Mux-1
+inside replaceSingleNodeWithRepr
+in1200
+replace not
+polynomial after replacement is: [-8*x158] + [4*x159] + [2*x160] + [1*x161] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [16*x158*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203]
+return from applyGeneralDCOnRewriting
+Poly size: 20
+Step: 45, Replacement Typ: 6 with Vars: r_3[0], r_2[0] |  Atomic Num: -1 level: 99
+Atomic Mux-1
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1144
+replacing buffer
+polynomial after replacement is: [1*x144] + [-8*x158] + [4*x159] + [2*x160] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [16*x158*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203]
+inside applyGeneralDCOnRewriting
+nextIndex :158
+eIndices.at(i)158
+This dc present: 158|96|inner :r_3[3] | _95_   lvl: 72
+1 | 1 | 1 | 0 count: 3
+return from applyGeneralDCOnRewriting
+Poly size: 20
+Step: 46, Replacement Typ: 2 with Vars: r_3[3], _80_, _79_ |  Atomic Num: -1 level: 104
+Atomic Mux14
+inside replaceSingleNodeWithRepr
+in181
+replace or
+polynomial after replacement is: [-8*x80] + [-8*x81] + [1*x144] + [4*x159] + [2*x160] + [8*x80*x81] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [16*x80*x204] + [16*x81*x204] + [-16*x80*x81*x204] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203]
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 47, Replacement Typ: 1 with Vars: _80_, m_3[2], _78_ |  Atomic Num: -1 level: 105
+Atomic Mux14
+inside replaceSingleNodeWithRepr
+in1163
+replace AND
+polynomial after replacement is: [-8*x80] + [1*x144] + [4*x159] + [2*x160] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x79*x163] + [16*x80*x204] + [8*x79*x80*x163] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [16*x79*x163*x204] + [-16*x79*x80*x163*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 48, Replacement Typ: 1 with Vars: _79_, sum_3[2], Q[1] |  Atomic Num: -1 level: 106
+Atomic Mux14
+inside replaceSingleNodeWithRepr
+in1167
+replace AND
+polynomial after replacement is: [1*x144] + [4*x159] + [2*x160] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [-8*x79*x163] + [-8*x167*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [16*x79*x163*x204] + [16*x167*x203*x204] + [8*x79*x163*x167*x203] + [-16*x79*x163*x167*x203*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 49, Replacement Typ: 5 with Vars: _78_, Q[1] |  Atomic Num: -1 level: 107
+Atomic Mux14
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+polynomial after replacement is: [1*x144] + [4*x159] + [2*x160] + [-8*x163] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x163*x203] + [16*x163*x204] + [-8*x167*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+inside applyGeneralDCOnRewriting
+nextIndex :159
+eIndices.at(i)159
+This dc present: 187|159|92|inner :inv_4[2] | r_3[2] | _91_   lvl: 77
+1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 count: 7
+return from applyGeneralDCOnRewriting
+Poly size: 24
+Step: 50, Replacement Typ: 2 with Vars: r_3[2], _77_, _76_ |  Atomic Num: -1 level: 108
+Atomic Mux13
+inside replaceSingleNodeWithRepr
+in178
+replace or
+polynomial after replacement is: [4*x77] + [4*x78] + [1*x144] + [-4*x77*x78] + [2*x160] + [-8*x163] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x163*x203] + [16*x163*x204] + [-8*x167*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 51, Replacement Typ: 1 with Vars: _77_, m_3[1], _75_ |  Atomic Num: -1 level: 109
+Atomic Mux13
+inside replaceSingleNodeWithRepr
+in1164
+replace AND
+polynomial after replacement is: [4*x77] + [1*x144] + [2*x160] + [-8*x163] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [4*x76*x164] + [-4*x76*x77*x164] + [8*x163*x203] + [16*x163*x204] + [-8*x167*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 52, Replacement Typ: 1 with Vars: _76_, sum_3[1], Q[1] |  Atomic Num: -1 level: 110
+Atomic Mux13
+inside replaceSingleNodeWithRepr
+in1168
+replace AND
+polynomial after replacement is: [1*x144] + [2*x160] + [-8*x163] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [4*x76*x164] + [8*x163*x203] + [16*x163*x204] + [-8*x167*x203] + [4*x168*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204] + [-4*x76*x164*x168*x203]
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 53, Replacement Typ: 5 with Vars: _75_, Q[1] |  Atomic Num: -1 level: 111
+Atomic Mux13
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+polynomial after replacement is: [1*x144] + [2*x160] + [-8*x163] + [4*x164] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x163*x203] + [16*x163*x204] + [-4*x164*x203] + [-8*x167*x203] + [4*x168*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+inside applyGeneralDCOnRewriting
+return from applyGeneralDCOnRewriting
+Poly size: 26
+Step: 54, Replacement Typ: 2 with Vars: r_3[1], _74_, _73_ |  Atomic Num: -1 level: 112
+Atomic Mux12
+inside replaceSingleNodeWithRepr
+in175
+replace or
+polynomial after replacement is: [2*x74] + [2*x75] + [1*x144] + [-2*x74*x75] + [-8*x163] + [4*x164] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x163*x203] + [16*x163*x204] + [-4*x164*x203] + [-8*x167*x203] + [4*x168*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 55, Replacement Typ: 1 with Vars: _74_, m_3[0], _72_ |  Atomic Num: -1 level: 113
+Atomic Mux12
+inside replaceSingleNodeWithRepr
+in1165
+replace AND
+polynomial after replacement is: [2*x74] + [1*x144] + [-8*x163] + [4*x164] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [2*x73*x165] + [-2*x73*x74*x165] + [8*x163*x203] + [16*x163*x204] + [-4*x164*x203] + [-8*x167*x203] + [4*x168*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 56, Replacement Typ: 1 with Vars: _73_, sum_3[0], Q[1] |  Atomic Num: -1 level: 114
+Atomic Mux12
+inside replaceSingleNodeWithRepr
+in1169
+replace AND
+polynomial after replacement is: [1*x144] + [-8*x163] + [4*x164] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [2*x73*x165] + [8*x163*x203] + [16*x163*x204] + [-4*x164*x203] + [-8*x167*x203] + [4*x168*x203] + [2*x169*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204] + [-2*x73*x165*x169*x203]
+return from applyGeneralDCOnRewriting
+Poly size: 28
+Step: 57, Replacement Typ: 5 with Vars: _72_, Q[1] |  Atomic Num: -1 level: 115
+Atomic Mux12
+Here we are between two atomics
+atomic block is mux
+inside replaceSingleNodeWithRepr
+in1203
+replace not
+polynomial after replacement is: [1*x144] + [-8*x163] + [4*x164] + [2*x165] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x163*x203] + [16*x163*x204] + [-4*x164*x203] + [-2*x165*x203] + [-8*x167*x203] + [4*x168*x203] + [2*x169*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
+inside applyGeneralDCOnRewriting
+nextIndex :163
+eIndices.at(i)163
+This dc present: 163|203|167|inner :m_3[2] | Q[1] | sum_3[2]   lvl: 118
+1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 count: 7
+size of dc1
+dcs before adding [1*x163]
+return index[-16*x163*x203*x204]
+return index[16*x163*x204]
+return index[8*x163*x203]
+return index[-8*x163]
+size of dc2
+dcs before adding [-1*x163*x167]
+size of dc2
+dcs before adding [-1*x163*x203]
+return index[-16*x163*x203*x204]
+return index[8*x163*x203]
+size of dc3
+dcs before adding [1*x163*x167*x203]
+elements in dc cubes : [-8*x163]
+elements in dc cubes : [8*x163*x203]
+elements in dc cubes : [16*x163*x204]
+elements in dc cubes : [-16*x163*x203*x204]
+tempMon is [1*x163]
+tempMon is [2*x163*x203]
+tempMon is [1*x163*x204]
+tempMon is [2*x163*x203*x204]
+polynomial afterwards: [1*x144] + (+1*v3)[-8*x163] + [4*x164] + [2*x165] + [-32*x192] + [-16*x193] + [-8*x194] + [-4*x195] + [-2*x196] + [-1*x197] + [8*x163*x203] + (+1*v3)[16*x163*x204] + [-4*x164*x203] + [-2*x165*x203] + [-8*x167*x203] + [4*x168*x203] + [2*x169*x203] + [32*x198*x201] + [16*x198*x202] + [16*x199*x201] + [8*x198*x203] + [8*x199*x202] + [8*x200*x201] + [4*x199*x203] + [4*x200*x202] + [2*x200*x203] + [-16*x163*x203*x204] + [16*x167*x203*x204]
