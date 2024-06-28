@@ -144,13 +144,20 @@ The below code implements the above logic
 								of sig Indices.*/
 
 							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1; //for sign check , step 
-							  map_modified[*modifiedMonom.getVars()].first++;// track the count
-            				  map_modified[*modifiedMonom.getVars()].second += sign;}// track the sign for sign check.
+							auto var_size = modifiedMonom.getSize();
+							  varIndex* vars_modified = modifiedMonom.getVars();
+							  for(int j =0; j < var_size; ++j)
+							  { 
+								vec_vars.push_back(vars_modified[j]);}// store all the vars in a vector 
+							  ++map_modified_1[vec_vars].first;// use this vector as a key and update their occurrences
+            				  		  map_modified_1[vec_vars].second += sign;//track the sign for sign check.
+							  vec_vars.clear();}// 
 					
 					for(auto &w:map_modified){
-						std::cout << "map_modified key " << w.first << std::endl;
-            			std::cout << "map_modified count " << w.second.first << std::endl;
-            			std::cout << "map_modified sign " << w.second.second << std::endl;
+					printVector(w.first); //function to print the key
+					std::cout << std::endl;	            			
+					std::cout << "map_modified count " << w.second.first << std::endl;
+            				std::cout << "map_modified sign " << w.second.second << std::endl;
 						if (w.second.first  == pTemp.size() && w.second.second==0){ //for step 5. 
 							cout<<"dc cube successfully found "<<endl;
 							/* write a code to multiply the orginal 
@@ -213,21 +220,19 @@ Pick the literal that passes the above step and use findexact('foundliteral') to
 						if(pure_dc_set.find(elem1) == pure_dc_set.end())
 						dc_cubes_split.insert(*elem1);}
 					}
-					for (auto it_set = dc_cubes_split.begin();it_set != dc_cubes_split.end();++it_set){
-						cout<<"elements in the split cubes :"<<*it_set<<endl;
-						}// to display the split candidates.Can be commented out.
+					{...…. same code as in type 2 ...….}
 
-					for (auto it_set = dc_cubes_split.begin(); it_set != dc_cubes_split.end(); ++it_set) {
- 				   			 modifiedMonom = it_set->removeVars(sigIndicesSet);
-							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1;
-							  map_modified[*modifiedMonom.getVars()].first++;
-            				  map_modified[*modifiedMonom.getVars()].second += sign;}
+
 					for(auto &w:map_modified){
-						std::cout << "map_modified key " << w.first << std::endl;
-            			std::cout << "map_modified count " << w.second.first << std::endl;
-            			std::cout << "map_modified sign " << w.second.second << std::endl;
+						
+            					std::cout << "map_modified count " << w.second.first << std::endl;
+            					std::cout << "map_modified sign " << w.second.second << std::endl;
 						if (w.second.first  == pTemp.size()-1){
-							tempMon_single = w.first;
+ 							int array_size = w.first.size();
+       					 		varIndex* array_vars = new varIndex[array_size]; 
+						 	std::copy(w.first.begin(), w.first.end(), array_vars); 
+							Monom2 tempMon_single(array_vars, array_size);// construct a new monomial using the vars in the vector 
+														
 							cout<<"find the exact match for"<<tempMon_single<<endl;
 							res_pure = this->poly.findExact(tempMon_single);
 							if(res_pure == NULL){continue;}
