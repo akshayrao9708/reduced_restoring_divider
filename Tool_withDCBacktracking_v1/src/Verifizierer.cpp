@@ -765,12 +765,12 @@ void Verifizierer::executeReplacements() {
 		cout << " Atomic Num: " << currNode->adder << " level: " << currNode->revLevel << endl;
 		cout <<"Atomic Mux"<< currNode->mux<<endl;
 		//|| currNode->mux == circuit.mux_size-1
-		/*
+		
 		if (currNode->mux == circuit.mux_size || currNode->mux == circuit.mux_size-1 ){
 			cout<<"circuit_mux:"<<circuit.mux_size<<endl;
 			flag=1;
 		}
-		*/
+		
 		
 
 		//*/
@@ -794,11 +794,11 @@ void Verifizierer::executeReplacements() {
 		// Check if representants are available. If so, create backTrack point of type 1.(
 		//	
 		//cout<<"currNode_next->outputs.at(0)->name"<<currNode_next->outputs.at(0)->name<<endl;
-	
-		if(currNode->inputs.at(0)->name == "r_2[0]"){
+	/*
+		if(currNode->inputs.at(0)->name == "r_1[1]"){
 			break;
 		}
-
+*/
 		if (backTrackedRepr == false && !stopBacktrack) {
 			varIndex out, in1, in2;
 			out = currNode->outputs.at(0)->eIndex;
@@ -839,12 +839,12 @@ void Verifizierer::executeReplacements() {
 		
 		std::string s1 = currNode->outputs.at(0)->name;
 		
-	
+	/*
 		if(s1[0] == 'Q' && s1[2] == '0')
 		{cout<<"skipping quotient replacement"<<endl;
 		//cout<<"the value of count"<<count_1<<endl;
 			continue;} 
-		
+	*/	
 		
 
 		this->replaceSingleNodeWithRepr(*currNode, backTrackedRepr);
@@ -852,7 +852,7 @@ void Verifizierer::executeReplacements() {
 		sumtRewrite += clock() - tRewrite;
 		backTrackedRepr = false;
 
-		cout << "polynomial after replacement is: " << this->poly << endl;
+		//cout << "polynomial after replacement is: " << this->poly << endl;
 	
 		// Check whether a proven dc can be applied to the polynomial. If so, apply the DC optimization to the polynomial.
 //		if (betweenAtomics) dcAdded = this->applyGeneralDCOnRewriting(stopBacktrack, it, backTrackedDC, backTrackDCPoly, backTrackDCIterator, marginDC, specialMargin, tDCOp);
@@ -1089,10 +1089,10 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 			if (sol.at(i) != 0) 
 			cout << "v" << i << " = " << sol.at(i) << endl;
 		}
-		cout << "poly before dc opt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1: " << this->poly << endl;
+		//cout << "poly before dc opt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1: " << this->poly << endl;
 		
 		applyDCSolutionToPolynomial(sol, this->poly.maxDCNum);
-		cout << "polynomial after  dc opt replacement is: " << this->poly << endl;
+		//cout << "polynomial after  dc opt replacement is: " << this->poly << endl;
 		break;
 		}
 		else{
@@ -3058,17 +3058,31 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 						cout<<"elements in the split cubes :"<<*it_set<<endl;
 						}// to display the split candidates.Can be commented out.
 
+					std::map<std::vector<varIndex>,std::pair<int, int>> map_modified_1;
+					std::vector<varIndex> vec_vars;
+
+
 					for (auto it_set = dc_cubes_split.begin(); it_set != dc_cubes_split.end(); ++it_set) {
  				   			 modifiedMonom = it_set->removeVars(sigIndicesSet);
 							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1;
-							  map_modified[*modifiedMonom.getVars()].first++;
-            				  map_modified[*modifiedMonom.getVars()].second += sign;}
-					for(auto &w:map_modified){
-						std::cout << "map_modified key " << w.first << std::endl;
+							  auto var_size = modifiedMonom.getSize();
+							  varIndex* vars_modified = modifiedMonom.getVars();
+							   for(int j =0; j < var_size; ++j)
+							  { 
+								vec_vars.push_back(vars_modified[j]);}
+								++map_modified_1[vec_vars].first;
+            				    map_modified_1[vec_vars].second += sign;
+							  vec_vars.clear();}
+					
+					for(auto &w:map_modified_1){
+						//std::cout << "map_modified key " << w.first << std::endl;
             			std::cout << "map_modified count " << w.second.first << std::endl;
             			std::cout << "map_modified sign " << w.second.second << std::endl;
 						if (w.second.first  == pTemp.size()-1){
-							tempMon_single = w.first;
+						 int array_size = w.first.size();
+       					 varIndex* array_vars = new varIndex[array_size]; 
+						 std::copy(w.first.begin(), w.first.end(), array_vars); 
+						Monom2 tempMon_single(array_vars, array_size);
 							cout<<"find the exact match for"<<tempMon_single<<endl;
 							res_pure = this->poly.findExact(tempMon_single);
 							if(res_pure == NULL){continue;}
@@ -3107,7 +3121,10 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					res_cubes = this->poly.findContaining(tempMon_split_cube);
 					if(res_cubes.empty()){cout<<" no dc cubes present "<<endl; continue;}
 					std::set<Monom2> dc_cubes_split;
-					std::map<Monom2, std::pair<int, int>> map_modified;
+					//std::map<Monom2, std::pair<int, int>> map_modified;
+					std::map<std::vector<varIndex>,std::pair<int, int>> map_modified_1;
+					std::vector<varIndex> vec_vars;
+
 					Monom2 modifiedMonom;
 					
 					//remove duplicates found in pure dcs.
@@ -3122,20 +3139,29 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					for (auto it_set = dc_cubes_split.begin(); it_set != dc_cubes_split.end(); ++it_set) {
  				   			 modifiedMonom = it_set->removeVars(sigIndicesSet);
 							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1;
-							  map_modified[*modifiedMonom.getVars()].first++;
-            				  map_modified[*modifiedMonom.getVars()].second += sign;}
+							  auto var_size = modifiedMonom.getSize();
+							  varIndex* vars_modified = modifiedMonom.getVars();
+							  for(int j =0; j < var_size; ++j)
+							  { 
+								vec_vars.push_back(vars_modified[j]);}
+							  ++map_modified_1[vec_vars].first;
+            				  map_modified_1[vec_vars].second += sign;
+							  vec_vars.clear();}
 					
-					for(auto &w:map_modified){
-						std::cout << "map_modified key " << w.first << std::endl;
-            			std::cout << "map_modified count " << w.second.first << std::endl;
-            			std::cout << "map_modified sign " << w.second.second << std::endl;
-						if (w.second.first  == pTemp.size() && w.second.second==0){
-							cout<<"dc cube successfully found "<<endl;
-							/* write a code to multiply the orginal 
-							dc poly with the vars found in w.first and this->polynomial 
-							addSingleDCPolynomial()*/ 
-						}
-					}
+					
+							for (auto& w : map_modified_1) {
+							std::cout << "map_modified key = ";
+							printVector(w.first); //function to print the key
+							std::cout << std::endl;
+							std::cout << "map_modified count = " << w.second.first << std::endl;
+							std::cout << "map_modified sign = " << w.second.second << std::endl;
+							if (w.second.first == pTemp.size() && w.second.second == 0) {
+								std::cout << "dc cube successfully found" << std::endl;
+								/* Write code to multiply the original
+								dc poly with the vars found in w.first and this->polynomial
+								addSingleDCPolynomial() */
+   									 }
+							}
 
 
 				}
@@ -3162,7 +3188,7 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 			
 			//this->addSingleDCPolynomial(pTemp);
 
-		cout << "polynomial afterwards: " << this->poly << endl;
+		//cout << "polynomial afterwards: " << this->poly << endl;
 		}
 	}
 	delete[] tempVars;
@@ -7166,5 +7192,16 @@ void Verifizierer::write_dd (DdManager *gbm, DdNode *dd, char* filename) {
     Cudd_DumpDot(gbm, 1, ddnodearray, NULL, NULL, outfile); // dump the function to .dot file
     free(ddnodearray);
     fclose (outfile); // close the file */
+}
+
+void printVector(const std::vector<varIndex>& vec) {
+    std::cout << "[";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        std::cout << vec[i];
+        if (i != vec.size() - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "]";
 }
 
