@@ -292,5 +292,5 @@ public:
 	std::set<int> dcSignals;
 	std::set<input4dc> proven4DCs;
 };
-
+void printVector(const std::vector<varIndex>& vec);
 #endif /* VERIFIZIERER_H_ */
