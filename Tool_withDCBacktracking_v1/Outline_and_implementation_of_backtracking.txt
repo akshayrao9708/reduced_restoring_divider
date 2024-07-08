@@ -1,0 +1,277 @@
+Outline and implementation of backtracking
+
+1. To update the signals' occurrence after rewriting sets of atomic blocks are complete. 
+In this case, for n bit divider, the list is updated every n-1 atomic blocks are completed
+
+For ex:n =4 bit , update the list after 3,6,9,12, 21, 24
+
+to implement this feature 
+
+		IN circuit.cpp file 
+
+		this->foundMuxs = this->findMuxs();
+		this->foundAdders = this->findFAs();
+		check_atomic_block_flag = sqrt(foundMuxs.size());// number of muxes in each stage.
+		//cout <<"check_atomic_block_flag"<<check_atomic_block_flag<<endl;
+		number_of_stages = check_atomic_block_flag*2;// number of stages
+		//cout <<"number of stages "<<number_of_stages<<endl;
+
+		
+		IN Verifizierer.cpp 
+		before rewriting starts
+		for(int k =1; k <=(circuit.number_of_stages) ; ++k){
+		stages_deque.push_back(k*(circuit.check_atomic_block_flag-1));}
+		deque structure to assist updating of occurrence list .
+contains values =3,6,9,12, 21, 24 for 4 bit example.
+
+// code to provide heads up on the occurrence list at the beginning of rewriting 
+const std::set<Monom2> *get_ptr = this->poly.getSet();
+	std::unordered_map<varIndex , int> occurance_map;
+	std::unordered_map<varIndex , pair <int,vector<int>::iterator>>occurance_skip_map;
+	for(std::set<Monom2>::iterator it_get =get_ptr->begin();it_get != get_ptr->end();++it_get)
+	   {varIndex*  get_vars_array = it_get->getVars();
+		for(auto k=0; k < it_get->getSize(); ++k)
+		{++occurance_map[get_vars_array[k]];}}
+	std::unordered_map<varIndex , int>::iterator it_map_1= occurance_map.begin();
+	while(it_map_1!= occurance_map.end())
+	{if(it_map_1->second==1){ it_map_1= occurance_map.erase(it_map_1);}
+		else{++it_map_1;}}
+		
+	for(auto m1 : occurance_map){
+		cout<<"map key : "<<m1.first<<endl;
+		cout<<"map value :"<<m1.second<<endl;}
+
+
+// After rewriting starts. we need to update the mux and adder counters so that we can use them to update the occurrence list,
+after the count has reached a predetermined value. Since at the last stage we have n muxes/adders and after rewriting the last stage
+the backward rewriting will only traverse n-1 muxes and n-1 adders, therefore we use mux_counter_int(intial count) to adjust the actual mux counter
+(mux_counter). 
+
+if( circuit.node(*(it)).mux!=-1&& circuit.node(*(it+1)).mux==-1 && (!rewrite ) && (!enable_backtrack)){
+			++mux_counter_int;
+			if (mux_counter_int>1){
+				++mux_counter;
+			}}
+		else if(((currNode->adder !=-1 && currNode->type ==vp::Node::XOR && this->circuit.node(*(it-1)).type == vp::Node::XOR) ||(currNode->adder !=-1 && this->circuit.node(*(it+1)).adder ==-1))&& 
+		(!rewrite) && (!enable_backtrack)){
+			++adder_counter_int;
+			cout<<" ++adder_counter_int before if"<<++adder_counter_int<<endl;
+			if (++adder_counter_int > 1){
+				cout<<"++adder_counter_int in if :"<< ++adder_counter_int<<endl;
+				++adder_counter;
+			}
+		}
+
+// To enable update_occurance_count , which will update the occurrence list .
+if (((adder_counter+mux_counter) == stages_deque.front()) && (adder_counter+mux_counter!=0) && (betweenAtomics) && (!rewrite) &&(!enable_backtrack))
+			{cout<<"set update_occurance_count "<<endl;
+			 update_occurance_count = true;
+			 stages_deque.pop_front();}
+		else{
+				update_occurance_count = false;
+			}
+
+2. After the replacement of the signal and applygeneraldconrewriting, we update the occurrence list
+if (update_occurance_count){
+				std::unordered_map<varIndex , int> occurance_map_temp;
+				//cout<<"total numbe of monomials are"<< this->poly.polySet.size()<<endl;
+			   	const std::set<Monom2> *occurance_ptr = this->poly.getSet();
+				for(std::set<Monom2>::iterator it_get =occurance_ptr->begin();it_get != occurance_ptr->end();++it_get)
+				{varIndex*  get_vars_array = it_get->getVars();
+					for(auto k=0; k < it_get->getSize(); ++k)
+					{++occurance_map_temp[get_vars_array[k]];}}
+			
+			std::unordered_map<varIndex , int>::iterator it_map_occur= occurance_map_temp.begin();
+			while(it_map_occur!= occurance_map_temp.end())
+				{if(it_map_occur->second < 0.25*this->poly.polySet.size()){ it_map_occur= occurance_map_temp.erase(it_map_occur);}//
+// This is the threshold check, where we decide which signals to keep.
+					else{++it_map_occur;}}
+			swap(occurance_map,occurance_map_temp);
+			if(!occurance_map.empty()){
+			check_back_track = true;
+			for(auto m1 : occurance_map){
+					cout<<"map key : "<<m1.first<<endl;
+					cout<<"map value :"<<m1.second<<endl;}}
+			else {check_back_track = false;}
+			}
+
+3.We use the Boolean check_back_track to keep track of the signals included in the occurance_map(keeps the signal as key, and their occurrences as value)
+When these signals are rewritten, we need to set a backtrack point 
+
+// this check is present before replacing of signals and applygeneraldconrewriting.
+			if(check_back_track && !rewrite &&!enable_backtrack){
+			for(auto &m2 : occurance_map){
+				if(currNode->outputs.at(0)->eIndex == m2.first){
+				cout<<"set backtrack point"<<endl;
+				backTrack_Delay_iterator.push_back(it);// to store the backtrack point 
+				poly_save_size = this->poly.size();// to store the current size 
+				backTrack_Delay_poly.push_back(this->poly);// to store the respective polynomial
+				signal_save.push_back(m2.first); // save the signal for future use 
+				check_exponential = true;} }
+				}
+
+
+4. We use the variable check_exponential  to check what happens after the replacement of the signal that is present in the occurrence list 
+
+After the replacement of the signal and applygeneraldconrewriting
+			
+			if(check_exponential && !rewrite ){
+			cout <<"poly size check "<<1.65*poly_save_size<<endl;
+			if( this->poly.size() >1.65*poly_save_size && !backTrack_Delay_iterator.empty() && !backTrack_Delay_poly.empty()){
+				last_saved_backtrack_iterator.push_back(it);// save the iterator before backtracking 
+				cout<<"enable_backtrack"<<endl;
+				enable_backtrack = true;// set Boolean enable_backtrack to true
+				it  = backTrack_Delay_iterator.back();// get the iterator of the recently saved backtrack point
+				this->poly = backTrack_Delay_poly.back();// get the polynomial 
+				current_signal = signal_save.back();
+				skip=true; //enable skipping of the signal
+				--it;}
+		}
+Here, we save the current iterator in last_saved_backtrack_iterator.push_back(it) to make sure that after backtracking and skipping the signal we
+have to come back to the same point where backtracking was called. Another reason for doing so will be explained later.
+We enable skip to skip the signal.
+
+Below code is present before replacing the signal 
+
+	if(enable_backtrack){
+			if (it == last_saved_backtrack_iterator.back()){// to check if backtrack is completed
+					last_saved_backtrack_iterator.pop_back();
+					cout<<"backtrack complete"<<endl;
+					enable_backtrack=false;
+			}
+
+		}
+
+		if(skip){// skip the signal present in the occurance map
+			//for(auto &m2 : occurance_map){
+			if(currNode->outputs.at(0)->eIndex == current_signal){
+			cout<<"skip the signal"<<currNode->outputs.at(0)->eIndex<<endl;
+			backTrack_Delay_iterator.pop_back();
+			backTrack_Delay_poly.pop_back();
+			signal_save.pop_back();
+			occurance_skip_map[current_signal].first =0;
+			occurance_skip_map[current_signal].second = it;
+			skip_track = true;
+			skip =false;// disable skip 
+			continue; }
+			}
+
+5.The signal that is skipped has to be tracked because it has to be rewritten when the signal no longer reduces or remains constant.
+We do so using  occurance_skip_map, which stores the skipped signal's count and iterator.
+
+The below code is used to keep track of the skipped signal and check the condition that is written above.
+We should also make sure that only one signal is rewritten at a time. This is important for the completeness.
+
+if((skip_track && betweenAtomics)|| (skip_track &&circuit.node(*(it)).mux ==-1 && circuit.node(*(it)).adder ==-1))
+//track between atomic blocks or during non atomic blocks
+{
+		 	// only one rewrite should happen at a time.
+			for(auto it_occur = occurance_skip_map.begin(); it_occur!= occurance_skip_map.end(); ++it_occur){
+				cout<<"count of :"<<it_occur->first<< ":"<< poly.findContainingVar(it_occur->first).size()<<endl;
+
+//check constant condition
+				if(!(this->poly.findContainingVar(it_occur->first).size() < it_occur->second.first)&& this->poly.findContainingVar(it_occur->first).size() == it_occur->second.first && 
+				!enable_backtrack && it_occur->second.first !=0 &&!rewrite) 
+				{cout<<"rewrite now"<<it_occur->first<<endl;
+				last_saved_iterator.push_back(it);
+				it = it_occur->second.second;
+				--it;
+				rewrite = true;
+				check_back_track = false;
+				break;
+				}
+				else{
+				it_occur->second.first=  this->poly.findContainingVar(it_occur->first).size();// update the count
+				check_back_track = true;
+	
+				}
+			}
+			
+		}
+
+similarly here also we save the recent iterator in last_saved_iterator.push_back(it) , to make sure the rewriting is complete 
+Once the rewrite is complete, we set the Boolean rewrite to false
+
+if (rewrite){
+			if (it == last_saved_iterator.back()){
+					last_saved_iterator.pop_back();
+					cout<<"rewite false"<<endl;
+					rewrite=false;
+			}
+
+		}
+
+When rewrite is on, we do not check for exponential blow-up or update the counter of the atomic block.
+When backtracking is on, we should not rewrite.
+When backtracking, do not update the counter of the atomic block
+
+The above conditions are taken care.
+
+
+NOTES:
+
+The reason why backtracking and rewriting should be complete is 
+Since the check_exponential is switched on as soon as any signal in the occurrence list is replaced
+backtracking can happen when there is a significant increase in polynomial size.
+
+Since we always backtrack to the most recent point. Usually, the old backtrack points remain.
+
+If there is situation where the rewriting is happening in the stage_{n-2} and there is significant increase in the polynomial size
+and now there are only old backtrack points present, the algorithm will backtrack to say stage_{n-1}/ stage_{n}. Now , if do not check 
+for backtracking completeness, then we skip the signal in stage_{n-1}/ stage{n) but we do not return back to stage_{n-2} and  now lets say
+there is also a skipped signal available for rewriting which might belong to stage_{n-2}, and we rewrite the skipped signal.
+The current iterator will be mismatched or lost and there
+are possibilities that some signals are not replaced at all and verification will fail.
+
+To avoid such situations, we need to check the completeness of both the rewriting of a skipped signal and the backtracking to skip a signal.
+
+Even with these precautions, the verification might fail because we do not restrict only one backtracking at a time. So there can be 
+multiple backtracks within the backtracks. Which be avoided by add !enable_backtrack during check_exponentital
+
+if(check_exponential && !rewrite ){
+			cout <<"poly size check "<<1.65*poly_save_size<<endl;
+			if( this->poly.size() >1.65*poly_save_size && !backTrack_Delay_iterator.empty() && !backTrack_Delay_poly.empty() 
+				&& !enable_backtrack){
+				last_saved_backtrack_iterator.push_back(it);// save the iterator before backtracking 
+				cout<<"enable_backtrack"<<endl;
+				enable_backtrack = true;// set Boolean enable_backtrack to true
+				it  = backTrack_Delay_iterator.back();// get the iterator of the recently saved backtrack point
+				this->poly = backTrack_Delay_poly.back();// get the polynomial 
+				current_signal = signal_save.back();
+				skip=true; //enable skipping of the signal
+				--it;}
+		}
+
+
+However, this will cause exponential blow-up, and the tool takes a lot of computation time.
+
+Currently these are limitations.
+
+
+Possible Solutions:
+
+1. Instead of updating the occurrence list every n-1 atomic block, extend the frequency. 
+example, for 4 bit , instead of updating after 3,6,9 atomic blocks , update after 3,9,15 atomic blocks
+
+2. Try to avoid backtracking to old points or restrict the number of backtrack points or remove old backtrack points.
+
+3. Check the type of backtrack points, if the signals that we want skip is of buffer type, then we don't need to skip such points.
+or if we the signal we want to skip is going to be replaced as input, then we don't have to replace is, for example,
+inv_4[0] = 1-d_[0] , here we need to skip inv_4[0] because it will be replaced by input d[0] which will not be written again.
+
+4.The major problem is to handle the completeness of rewriting of skipped signals and backtracking to a point to skip a signal.
+It will become more challenging if it is combined with backtracking of DC.
+Need a method to make it more simpler. 
+
+One way would be use the heuristics mentioned in possible solutions (1,2,3), and instead of tracking the skipped signal for its 
+count, we can replace each skipped signal at the end of each stage. So that we don't miss out on any signals. 
+  
+
+
+
+
+
+
+
+
+
