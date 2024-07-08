@@ -21,6 +21,7 @@
 #include <vector>
 #include <cassert>
 #include <deque>
+#include <cstdint>
 
 // Local includes.
 #include "Monom2.h"

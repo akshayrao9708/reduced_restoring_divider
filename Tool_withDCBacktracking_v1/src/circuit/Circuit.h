@@ -4,7 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include<cmath>
+#include <unordered_map>
+#include <cmath>
 #include <set>
 #include <regex>
 #include <queue>
@@ -14,6 +15,7 @@
 //#include "../Verifizierer.h"
 #include "../helperStructs/fullAdder.hpp"
 #include "../helperStructs/extBlock.hpp"
+#include "../helperStructs/gendc.hpp"
 
 using namespace std;
 //Added multiplexer class 
@@ -61,6 +63,10 @@ namespace vp
 		vector<fullAdder> foundAdders;
 		vector<Multiplexer> foundMuxs;// added container for multiplxer 
 		vector<extBlock> foundExtBlocks;
+		mutable int check_atomic_block_flag;
+		mutable int number_of_stages;
+		vector<gendc> dcCandidatesInit; 
+		unordered_map<string, string> replacedSignals;
 		//vector<Atomic> aigAtomics;
 		//map<Edge, int> edgeIndex;  // DONE: edgeIndex is now simply a member variable of edge objects.
 		//map<int, Edge> primaryEdgeIndex;
@@ -124,6 +130,10 @@ namespace vp
 		void removeNode(Node* oldNode);
 		int removeDeadEdges();
 		void recursivelyRemoveEdge(Edge* deletedEdge);
+		
+		void createDCCandidatesFromAtomics();
+		void applyTransitivityForReplacedSignals();
+		
 		int checkForDoubleNot();
 		void pushNotFanouts();
 		void insertNot(Edge* newInput, Edge* oldOutput, int changeNodeIndex);

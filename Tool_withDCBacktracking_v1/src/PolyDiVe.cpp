@@ -55,7 +55,6 @@ int main(int argc, char* argv[]) {
 	timeDC += clock() - tstartDC; // Zeitmessung endet.
 	timeDC = timeDC/CLOCKS_PER_SEC;
 	cout << "Complete DC computation needed time: " << timeDC << endl;
-//	return 0;
 	double timeRewriting = 0.0;
 	double tstartRewriting = clock();
 	test1.startAdvancedVerification(argv[2]);

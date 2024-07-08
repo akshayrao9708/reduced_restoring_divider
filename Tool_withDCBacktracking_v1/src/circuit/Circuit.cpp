@@ -174,54 +174,24 @@ namespace vp
 		
 		std::cout << "Parse file is completed." << std::endl; 
 		
-		// TODO: Don't use simplifications and all here, but call them all single from Verifizierer instance.
-
-		//time1 += clock() - tstart; // Zeitmessung endet.
-		//time1 = time1/CLOCKS_PER_SEC;
-		//cout << "Parsing file needed time in sec.: " << time1 << endl;
-		//buildAdjacencyMatrix();
+		
 		this->foundMuxs = this->findMuxs();
 		this->foundAdders = this->findFAs();
+		//cout<<"foundMuxs.size():"<<foundMuxs.size()+foundAdders.size()<<endl;
+		check_atomic_block_flag = sqrt(foundMuxs.size());
+		//cout <<"check_atomic_block_flag"<<check_atomic_block_flag<<endl;
+		number_of_stages = check_atomic_block_flag*2;
+		//cout <<"number of stages "<<number_of_stages<<endl;
+
+		// New function to already create DC candidates before constant propagation.
+		this->createDCCandidatesFromAtomics();
+
+
+		const0Prop();
+		const1Prop();
 		
-
-//		// Find for all FAs previous and next FAs and get next and prev. indices.
-//		this->setFanInsOutsOfFAs();
-//
-//		this->foundExtBlocks = this->initExtBlocksFromAdders();
-//
-//		this->extendBlocksWithRemainingGates();
-//
-//		this->addSingleNodesToExtBlocks();
-
-//		for (size_t i=0; i < foundExtBlocks.size(); ++i) {
-////			cout << "pos " << i << " full adder is: " << nodes.at(foundAdders.at(i).and1).name << "|" <<
-////					nodes.at(foundAdders.at(i).and2).name << "|" << nodes.at(foundAdders.at(i).xor1).name << "|" <<
-////					nodes.at(foundAdders.at(i).xor2).name << "|" << nodes.at(foundAdders.at(i).or1).name << "|" << endl;
-//			cout << "pos " << i << " EAB is: ";
-//			for (auto& elem: foundExtBlocks.at(i).memNodes) {
-//				cout << nodes.at(elem).name << "|";
-//			}
-//			cout << endl;
-//		}
-
-//		if (!manualLevels) this->orderAllNodesAdvanced();
-
-//		for (auto& currNode: this->nodes) {
-//			cout << " ,name: " << currNode.name << " ,block: " << currNode.block << " ,revLevel: " << currNode.revLevel << endl;
-//		}
-
-		//this->orderAllNodes(foundAdders);
-		
-		// Constant propagation BEFORE sorting of nodes.
-		//*
-//call checkDCCandidatesGeneral before const0 prop and const1 prop
-		//test2.checkDCCandidatesGeneral();
-		time4 = 0.0;
-		tstart = clock();
-
-		//const0Prop();
-		//const1Prop();
-
+		// New function to manage signals which were replaced during constant propagation.
+		this->applyTransitivityForReplacedSignals();
 		
 		//cout << "const propagation done." << endl;
 		
@@ -579,6 +549,10 @@ namespace vp
 				}	
 			}
 		}
+		
+		// Add replaced signals information to map to remember it for later use.
+		this->replacedSignals.emplace(oldEdge->name, newEdge->name);
+		
 		// Remove old edge and delete contents of old node. Old node cannot be deleted from node list due to indexing.
 		this->removeNode(&this->nodes.at(prevNodeIndex));
 		this->removeEdge(&*oldEdge);
@@ -1983,6 +1957,58 @@ void Circuit::changeSortedNodePosManually(int oldPos, int newPos) {
 		it = this->sortedNodes.begin();
 		std::advance(it, oldPos + 1);
 		this->sortedNodes.erase(it);
+	}
+}
+
+//_____________________________________________________________________________________________________________________________________
+void Circuit::createDCCandidatesFromAtomics() {
+	std::vector<std::string> atomicInputSignals;
+	for (auto& elem: this->foundAdders) {
+		atomicInputSignals.clear();
+		atomicInputSignals.emplace_back(this->node(elem.xor1).inputs.at(0)->name);
+		atomicInputSignals.emplace_back(this->node(elem.xor1).inputs.at(1)->name);
+		string internXorName = this->node(elem.xor1).outputs.at(0)->name;
+		if (internXorName != this->node(elem.xor2).inputs.at(0)->name) atomicInputSignals.emplace_back(this->node(elem.xor2).inputs.at(0)->name);
+		else atomicInputSignals.emplace_back(this->node(elem.xor2).inputs.at(1)->name);
+		this->dcCandidatesInit.emplace_back(atomicInputSignals);
+	}
+	for (auto& elem: this->foundMuxs) {
+		atomicInputSignals.clear();
+		string selector = this->node(elem.neg).inputs.at(0)->name;
+		atomicInputSignals.emplace_back(selector);
+		string selectorNegated = this->node(elem.neg).outputs.at(0)->name;
+		if (this->node(elem.and1).inputs.at(0)->name == selector || this->node(elem.and1).inputs.at(0)->name == selectorNegated) {
+			atomicInputSignals.emplace_back(this->node(elem.and1).inputs.at(1)->name);
+		} else {
+			atomicInputSignals.emplace_back(this->node(elem.and1).inputs.at(0)->name);
+		}
+		if (this->node(elem.and2).inputs.at(0)->name == selector || this->node(elem.and2).inputs.at(0)->name == selectorNegated) {
+			atomicInputSignals.emplace_back(this->node(elem.and2).inputs.at(1)->name);
+		} else {
+			atomicInputSignals.emplace_back(this->node(elem.and2).inputs.at(0)->name);
+		}
+		this->dcCandidatesInit.emplace_back(atomicInputSignals);
+	}
+}
+
+//_____________________________________________________________________________________________________________________________________
+void Circuit::applyTransitivityForReplacedSignals() {
+	bool changed = true;
+	string new1;
+	string new2;
+	std::unordered_map<string, string>::iterator nextIt;
+	while (changed) {
+		changed = false;
+		for (std::unordered_map<string, string>::iterator it = this->replacedSignals.begin(); it != this->replacedSignals.end(); ++it) {
+			if (replacedSignals.find(it->second) != this->replacedSignals.end()) {
+				replacedSignals[it->first] = replacedSignals.find(it->second)->second;
+				//new1 = it->first;
+				//new2 = replacedSignals.find(it->second);
+				//nextIt = replacedSignals.erase(it);
+				//replacedSignals.emplace(new1, new2);
+				changed = true;
+			}
+		}
 	}
 }
 

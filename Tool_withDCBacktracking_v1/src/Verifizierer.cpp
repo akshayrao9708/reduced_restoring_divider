@@ -140,7 +140,7 @@ void Verifizierer::startAdvancedVerification(const string& sigFile) {
 	if (this->poly.getSet()->size() == 0) cout << "VERIFICATION SUCCESSFUL." << endl;
 		else  {
 			cout << "Ending polynomial is not empty." << this->poly.size()<<endl;
-			cout<<"ending polynomial is "<<this->poly<<endl;
+			//cout<<"ending polynomial is "<<this->poly<<endl;
 			cout << "Apply input constraint." << endl;
 		
 			bool successful = applyICOnPolynomial(this->poly);
@@ -552,7 +552,6 @@ void Verifizierer::replaceSingleNodeWithRepr(vp::Node& currNode, bool backTracke
 	//cout << "test: " << in1Inverted << "|" << in2Inverted << endl;
 	out = currNode.outputs.at(0)->eIndex;
 	in1 = currNode.inputs.at(0)->eIndex;
-	cout<<"in1"<<in1<<endl;
 	if (backTrackedRepr) {
 		if (in1 != this->represent[in1].sig->eIndex) {
 			this->represent[in1].activated = true;
@@ -708,7 +707,7 @@ void Verifizierer::executeReplacements() {
 	sumt3 = 0.0;
 	t4 = 0.0;
 	sumt4 = 0.0;
-	vp::Node* currNode, *currNode_next;
+	vp::Node* currNode;
 	size_t startPolySize = this->poly.size();
 	int startMargin = 2 * startPolySize; //200
 	int multiplyMargin = 2;//2
@@ -725,7 +724,11 @@ void Verifizierer::executeReplacements() {
 //	cout << endl;
 //	cout << "Chosen additive margin: " << additiveMargin << endl;
 	vector<Polynom> backTrackDCPoly;
+	vector<Polynom> backTrack_Delay_poly;
+	vector<vector<int>::iterator> backTrack_Delay_iterator;
 	vector<vector<int>::iterator> backTrackDCIterator;
+	vector<vector<int>::iterator> last_saved_iterator;
+	vector<vector<int>::iterator> last_saved_backtrack_iterator;
 	vector<int> marginDC;
 	vector<Polynom> backTrackREPRPoly;
 	vector<vector<int>::iterator> backTrackREPRIterator;
@@ -736,8 +739,45 @@ void Verifizierer::executeReplacements() {
 	mpz_class carryCoef;
 	bool stopBacktrack = false;
 	bool betweenAtomics = false;
-	
+	bool update_occurance_count = false;
+	bool check_back_track =false;
+	bool rewrite_final_signals= false;
+	vector<int>::iterator it_back_save;
+	int  poly_save_size;
+	bool check_exponential = false;
+	bool enable_backtrack= false, enable_rewrite=false, skip_track = false;
+	Polynom poly_save;
+	bool skip = false;
+	varIndex  current_signal;
+	vector<varIndex> signal_save;
+	int rewrite_final_signals_count =0;
+	int mux_counter_int =0, adder_counter_int =0, mux_counter =0, adder_counter =0;
+	std::deque<int> stages_deque;
+	bool rewrite= false;
+	for(int k =1; k <=(circuit.number_of_stages) ; ++k){
+		stages_deque.push_back(k*(circuit.check_atomic_block_flag-1));
+	}
+	/*for(auto d : stages_deque){
+		cout<<"element in stages_deque"<<d<<endl;
+	}*/
 	cout << "Starting backward rewriting process. " << endl;
+	const std::set<Monom2> *get_ptr = this->poly.getSet();
+	std::unordered_map<varIndex , int> occurance_map;
+	std::unordered_map<varIndex , pair <int,vector<int>::iterator>>occurance_skip_map;
+	for(std::set<Monom2>::iterator it_get =get_ptr->begin();it_get != get_ptr->end();++it_get)
+	   {varIndex*  get_vars_array = it_get->getVars();
+		for(auto k=0; k < it_get->getSize(); ++k)
+		{++occurance_map[get_vars_array[k]];}}
+	std::unordered_map<varIndex , int>::iterator it_map_1= occurance_map.begin();
+	while(it_map_1!= occurance_map.end())
+	{if(it_map_1->second==1){ it_map_1= occurance_map.erase(it_map_1);}
+		else{++it_map_1;}}
+		
+	
+	for(auto m1 : occurance_map){
+		cout<<"map key : "<<m1.first<<endl;
+		cout<<"map value :"<<m1.second<<endl;}
+
 
 	//if (this->poly.size() < 100) cout << "Anfangspolynom ist: " << this->poly << endl;
 	tstart = clock(); // Zeitmessung beginnt.
@@ -748,7 +788,6 @@ void Verifizierer::executeReplacements() {
 	//* Start backward rewriting.
 	for (vector<int>::iterator it= this->circuit.sortedNodes.begin(); it != this->circuit.sortedNodes.end(); ++it) {
 		//cout << "next step" << endl;
-		
 		currNode = &this->circuit.node(*it);
 		if (currNode->type == vp::Node::INPUT_PORT || currNode->type == vp::Node::OUTPUT_PORT || currNode->type == vp::Node::DELETED) continue;
 		tRewrite = clock();
@@ -766,39 +805,91 @@ void Verifizierer::executeReplacements() {
 		cout <<"Atomic Mux"<< currNode->mux<<endl;
 		//|| currNode->mux == circuit.mux_size-1
 		
+		/*
 		if (currNode->mux == circuit.mux_size || currNode->mux == circuit.mux_size-1 ){
-			cout<<"circuit_mux:"<<circuit.mux_size<<endl;
+			//cout<<"circuit_mux:"<<circuit.mux_size<<endl;
 			flag=1;
-		}
+		}*/
 		
 		
 
 		//*/
 		// Check if we are between atomics by comparing currNode adder num with nextNode adder num.
-		if (it+1 != this->circuit.sortedNodes.end()) if (currNode->adder != this->circuit.node(*(it+1)).adder || currNode->mux != this->circuit.node(*(it+1)).mux) betweenAtomics = true;
+		if (it+1 != this->circuit.sortedNodes.end()) if (currNode->adder != this->circuit.node(*(it+1)).adder || (currNode->mux != -1 && this->circuit.node(*(it+1)).mux ==-1)) betweenAtomics = true;
 		else betweenAtomics = false;
-		if (betweenAtomics)
-			{cout << "Here we are between two atomics" << endl;
-			if(currNode->mux != this->circuit.node(*(it+1)).mux) 
-			{   atomic_block ="mux";
-				cout<<"atomic block is mux"<<endl;
+		if( circuit.node(*(it)).mux!=-1&& circuit.node(*(it+1)).mux==-1 && (!rewrite ) && (!enable_backtrack)){
+			++mux_counter_int;
+			if (mux_counter_int>1){
+				++mux_counter;
+			}}
+		else if(((currNode->adder !=-1 && currNode->type ==vp::Node::XOR && this->circuit.node(*(it-1)).type == vp::Node::XOR) ||(currNode->adder !=-1 && this->circuit.node(*(it+1)).adder ==-1))&& 
+		(!rewrite) && (!enable_backtrack)){
+			++adder_counter_int;
+			cout<<" ++adder_counter_int before if"<<++adder_counter_int<<endl;
+			if (++adder_counter_int > 1){
+				cout<<"++adder_counter_int in if :"<< ++adder_counter_int<<endl;
+				++adder_counter;
 			}
-			else if (currNode->adder != this->circuit.node(*(it+1)).adder){
-				atomic_block ="adder";
-				cout<<"atomic block is adder "<<endl;
+		}
+		/*
+		if (circuit.node(*(it)).getType() == 5 && circuit.node(*(it+1)).getType() == 6 &&   circuit.node(*(it)).mux ==-1 && circuit.node(*(it+1)).mux ==-1 && !rewrite && !enable_backtrack){
+			cout <<"between adder_n and mux_n-1"<<endl;
+			     rewrite_final_signals = true;}
+		else{
+			rewrite_final_signals = true;
+		}*/
+
+		cout<<"adder_counter+mux_counter"<<adder_counter+mux_counter<<endl;
+		if (((adder_counter+mux_counter) == stages_deque.front()) && (adder_counter+mux_counter!=0) && (betweenAtomics) && (!rewrite) &&(!enable_backtrack))
+			{cout<<"set update_occurance_count "<<endl;
+			 update_occurance_count = true;
+			 stages_deque.pop_front();}
+		else{
+				update_occurance_count = false;
+			}
+		if(enable_backtrack){
+			if (it == last_saved_backtrack_iterator.back()){
+					last_saved_backtrack_iterator.pop_back();
+					cout<<"backtrack complete"<<endl;
+					enable_backtrack=false;
+			}
+
+		}
+
+		if(skip){
+			//for(auto &m2 : occurance_map){
+			if(currNode->outputs.at(0)->eIndex == current_signal){
+			cout<<"skip the signal"<<currNode->outputs.at(0)->eIndex<<endl;
+			backTrack_Delay_iterator.pop_back();
+			backTrack_Delay_poly.pop_back();
+			signal_save.pop_back();
+			occurance_skip_map[current_signal].first =0;
+			occurance_skip_map[current_signal].second = it;
+			skip_track = true;
+			skip =false;
+			continue; }
+			}
+		if(check_back_track && !rewrite &&!enable_backtrack){
+			for(auto &m2 : occurance_map){
+				if(currNode->outputs.at(0)->eIndex == m2.first){
+				cout<<"set backtrack point"<<endl;
+				backTrack_Delay_iterator.push_back(it);
+				poly_save_size = this->poly.size();
+				backTrack_Delay_poly.push_back(this->poly);
+				signal_save.push_back(m2.first);
+				check_exponential = true;} }
+				}
 			
-						}			
-						}
 		
 		//*
 		// Check if representants are available. If so, create backTrack point of type 1.(
 		//	
 		//cout<<"currNode_next->outputs.at(0)->name"<<currNode_next->outputs.at(0)->name<<endl;
 	/*
-		if(currNode->inputs.at(0)->name == "r_1[1]"){
+		if(currNode->inputs.at(0)->name == "Q[1]"){
 			break;
 		}
-*/
+	*/	
 		if (backTrackedRepr == false && !stopBacktrack) {
 			varIndex out, in1, in2;
 			out = currNode->outputs.at(0)->eIndex;
@@ -837,14 +928,6 @@ void Verifizierer::executeReplacements() {
 		/*to skip quotient bits */
 		
 		
-		std::string s1 = currNode->outputs.at(0)->name;
-		
-	/*
-		if(s1[0] == 'Q' && s1[2] == '0')
-		{cout<<"skipping quotient replacement"<<endl;
-		//cout<<"the value of count"<<count_1<<endl;
-			continue;} 
-	*/	
 		
 
 		this->replaceSingleNodeWithRepr(*currNode, backTrackedRepr);
@@ -865,6 +948,76 @@ void Verifizierer::executeReplacements() {
 		cout<<"return from applyGeneralDCOnRewriting"<<endl;
 		flag = 0;
 		backTrackedDC = false;
+		if(check_exponential && !rewrite ){
+			cout <<"poly size check "<<1.65*poly_save_size<<endl;
+			if( this->poly.size() >1.65*poly_save_size && !backTrack_Delay_iterator.empty() && !backTrack_Delay_poly.empty()){
+				last_saved_backtrack_iterator.push_back(it);
+				cout<<"enable_backtrack"<<endl;
+				enable_backtrack = true;
+				it  = backTrack_Delay_iterator.back();
+				this->poly = backTrack_Delay_poly.back();
+				current_signal = signal_save.back();
+				skip=true;
+				--it;}
+		}
+	
+		if (update_occurance_count){
+				std::unordered_map<varIndex , int> occurance_map_temp;
+				//cout<<"total numbe of monomials are"<< this->poly.polySet.size()<<endl;
+			   	const std::set<Monom2> *occurance_ptr = this->poly.getSet();
+				for(std::set<Monom2>::iterator it_get =occurance_ptr->begin();it_get != occurance_ptr->end();++it_get)
+				{varIndex*  get_vars_array = it_get->getVars();
+					for(auto k=0; k < it_get->getSize(); ++k)
+					{++occurance_map_temp[get_vars_array[k]];}}
+			
+			std::unordered_map<varIndex , int>::iterator it_map_occur= occurance_map_temp.begin();
+			while(it_map_occur!= occurance_map_temp.end())
+				{if(it_map_occur->second < 0.25*this->poly.polySet.size()){ it_map_occur= occurance_map_temp.erase(it_map_occur);}
+					else{++it_map_occur;}}
+			swap(occurance_map,occurance_map_temp);
+			if(!occurance_map.empty()){
+			check_back_track = true;
+			for(auto m1 : occurance_map){
+					cout<<"map key : "<<m1.first<<endl;
+					cout<<"map value :"<<m1.second<<endl;}}
+			else {check_back_track = false;}
+			}
+
+			if((skip_track && betweenAtomics)|| (skip_track &&circuit.node(*(it)).mux ==-1 && circuit.node(*(it)).adder ==-1)){
+		 	// only one rewrite should happen at a time.
+			for(auto it_occur = occurance_skip_map.begin(); it_occur!= occurance_skip_map.end(); ++it_occur){
+				cout<<"count of :"<<it_occur->first<< ":"<< poly.findContainingVar(it_occur->first).size()<<endl;
+				if(!(this->poly.findContainingVar(it_occur->first).size() < it_occur->second.first)&& this->poly.findContainingVar(it_occur->first).size() == it_occur->second.first && 
+				!enable_backtrack && it_occur->second.first !=0 &&!rewrite) 
+				{cout<<"rewrite now"<<it_occur->first<<endl;
+				last_saved_iterator.push_back(it);
+				it = it_occur->second.second;
+				--it;
+				rewrite = true;
+				check_back_track = false;
+				break;
+				}
+				else{
+				it_occur->second.first=  this->poly.findContainingVar(it_occur->first).size();
+				check_back_track = true;
+	
+				}
+			}
+			
+		}
+		if (rewrite){
+			if (it == last_saved_iterator.back()){
+					last_saved_iterator.pop_back();
+					cout<<"rewite false"<<endl;
+					rewrite=false;
+			}
+
+		}
+	
+
+
+
+		
 
 		//*/
 //		if (this->poly.size() > 10000000) {  // Exponential blowup detected. Cancel verification process.
@@ -993,7 +1146,7 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 	bool ret = false;
 	std::string s1;
 	vp::Node* test_node  = &this->circuit.node(*it);
-	std::cout<<"inside applyGeneralDCOnRewriting"<<endl;
+	//std::cout<<"inside applyGeneralDCOnRewriting"<<endl;
 	//cout<<"the value backTrackedDC"<<backTrackedDC<<endl;
 	
 	for (set<gendc>::iterator inner = this->generalDCs.begin(); inner != this->generalDCs.end(); ++inner) {
@@ -1013,8 +1166,8 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 //		}
 //		if (continueDCs && inner->signals.at(0) != "R_0[22]") continue;
 		if (*(it+1) >= this->circuit.getNodesCount()){
-			cout<<"inside if"<<endl; 
-			cout<<"*(it+1) >= this->circuit.getNodesCount()"<<endl; 
+			//cout<<"inside if"<<endl; 
+			//cout<<"*(it+1) >= this->circuit.getNodesCount()"<<endl; 
 			break;
 			}
 
@@ -1035,8 +1188,8 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 		continueDCs = true;
 		for (size_t i=0; i < eIndices.size(); ++i) {
 			if (eIndices.at(i) == nextIndex) {
-				cout<<"nextIndex :"<<nextIndex<<endl;
-				cout<< "eIndices.at(i)"<<eIndices.at(i)<<endl; 
+				//cout<<"nextIndex :"<<nextIndex<<endl;
+				//cout<< "eIndices.at(i)"<<eIndices.at(i)<<endl; 
 			    ++atomic_mux_count; 
 				continueDCs = false; 
 				break; }
@@ -1069,14 +1222,14 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 			cout << "backtrack point on DC set" << endl;
 			break;
 		}
-		*/
+		*/		
 		// Add DCs and immediately solve ILP problem.
 
 
 		++map_1[*inner];
 		// created for version 1.0
 		//to apply optimisation of adders only once and skip mux optimisation && atomic_block!="mux" && 
-		if(map_1[*inner] <=1 &&flag_in ==0 ){ 
+		//if(flag_in ==0 ){ 
 		pair<vector<int>, mpz_class> dcSol;
 		vector<mpz_class> sol;
 		this->addVariableMonomialsFromDC(*inner);
@@ -1085,19 +1238,20 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 		for (auto& elem: dcSol.first) {
 			sol.push_back(elem * dcSol.second);
 		}
+		/*
 		for (size_t i=0; i < sol.size(); ++i) {
 			if (sol.at(i) != 0) 
 			cout << "v" << i << " = " << sol.at(i) << endl;
-		}
+		}*/
 		//cout << "poly before dc opt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1: " << this->poly << endl;
 		
 		applyDCSolutionToPolynomial(sol, this->poly.maxDCNum);
 		//cout << "polynomial after  dc opt replacement is: " << this->poly << endl;
-		break;
-		}
-		else{
-		break;
-		}
+		//break;
+		//}
+		//else{
+		//break;
+		//}
 	}
 	return ret;
 }
@@ -1717,6 +1871,33 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	tstart = clock(); // Zeitmessung beginnt.
 
 	set<gendc> dcCandidates;
+	
+	vector<string> InputsInsert;
+	int level;
+	
+	cout << "Initializing DC candidates:" << endl;
+	set<string> inputsSet;
+	for (auto& elem: this->circuit.dcCandidatesInit) {
+		InputsInsert.clear();
+		inputsSet.clear();
+		for (auto& inner: elem.signals) {
+			//cout << "signal is " << inner << endl;
+			if (inner == "zeroWire" || inner == "oneWire") continue;
+			if (this->circuit.replacedSignals.find(inner) == this->circuit.replacedSignals.end()) {
+				if (this->circuit.edges.count(inner) == 0) continue;
+				else inputsSet.insert(inner); 
+			}
+			else if (this->circuit.replacedSignals.find(inner)->second != "zeroWire" && this->circuit.replacedSignals.find(inner)->second != "oneWire" && this->circuit.edges.count(this->circuit.replacedSignals.find(inner)->second) != 0) {
+				inputsSet.insert(this->circuit.replacedSignals.find(inner)->second); 
+			}
+		}
+		if (inputsSet.size() <= 1) continue;
+		//if (*inputsSet.begin() == "_338_") continue;
+		InputsInsert = std::vector<string>(inputsSet.begin(), inputsSet.end());
+		level = this->circuit.getSmallestLevel(InputsInsert);
+		dcCandidates.insert(gendc(InputsInsert,level));
+	}
+	
 	//vector<vector<int>> extendedAtomicNodes;
 	/*
 	string s1, s2, s3;
@@ -1730,7 +1911,7 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 		dcCandidates.insert(dc(0, s1,s2,s3, level));
 	}
 	//*/
-	//*
+	/*
 	vp::Node* currNode;
 	vp::Node* currNode2;
 	vp::Node* currNode3;
@@ -1751,7 +1932,7 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 		if (currtest->inputs.at(1)->name == "oneWire"){
 		continue;
 		}
-		if (currNode->type == vp::Node::DELETED /*|| currNode->type == vp::Node::NOT*/) 
+		if (currNode->type == vp::Node::DELETED) 
 		{ 
 			continue;
 		}
@@ -1879,11 +2060,6 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 		//cout << "inserted signals: " << s1 << "|" << s2 << "|" << s3 << endl;
 		}
 	}
-	
-		
-	
-
-
 
 
 	//insert Mux dc candidates
@@ -1911,8 +2087,11 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 		dcCandidates.insert(gendc(s1,s2,s3, level));
 		//cout << "inserted signals for mux : " << s1 << "|" << s2 << "|" << s3 << endl;
 	}
-	vector<string> twoInputsInsert1 = {"r_3[3]","Q[0]"};
-	dcCandidates.insert(gendc(twoInputsInsert1, 65));
+	
+	//*/
+	
+	//vector<string> twoInputsInsert1 = {"r_3[3]","Q[0]"};
+	//dcCandidates.insert(gendc(twoInputsInsert1, 65));
 
 
 
@@ -1934,7 +2113,12 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	//extendDCsFanoutFree(dcCandidates, extendedAtomicNodes);
 
 	// Next rule out most candidates by checking simulation vectors.
-	
+	/*
+	cout<<"dc candidates before simulation"<<endl;
+	for (auto& elem: dcCandidates) {
+		cout << elem << endl << endl;
+	}
+	*/
 	cout << "SIMULATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" << endl;
 
 	//this->runFirstSimulation();// runs simulation with random vectors taking IC into account?
@@ -1944,9 +2128,11 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	
 	checkDCsInSimulationGeneral(dcCandidates);//provides inputcombinations that can be Don't cares 
 	cout<<"dc candidates before clean up"<<endl;
+	/*
 	for (auto& elem: dcCandidates) {
 		cout << elem << endl << endl;
 	} 
+	*/
 
 	time1 += clock() - tstart; // Zeitmessung endet.
 	time1 = time1/CLOCKS_PER_SEC;
@@ -1972,11 +2158,12 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	//cout << "imageComp needed time in sec: " << time1 << endl;
 
 	cout << "Amount of DC cells found after clean up : " << dcCandidates.size() << endl;
-
+/*
 	for (auto& elem: dcCandidates) {
 		cout << elem << endl << endl;
 		}
-
+*/
+	/*
 	circuit.const0Prop();
 	cout<<"finished const0 propagation"<<endl;
 	circuit.const1Prop();
@@ -1984,7 +2171,7 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	
 	circuit.removeDeadEdges();	
 	cout<<"removed dead edges after const prop"<<endl;
-
+	*/
 	return dcCandidates;
 }
 
@@ -3009,11 +3196,11 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 			Monom2* res_pure;
 			int count_og=0;
 			tempMon_1 = *it1;
-			cout<<" dc poly size "<<pTemp.size()<<endl;
+			//cout<<" dc poly size "<<pTemp.size()<<endl;
 			//check if dc polynomial contains more than one term
 			auto sz = pTemp.size();
 			std::string s1 = tempMon_1.to_string();
-			cout<<"s1"<< s1<<endl;
+			//cout<<"s1"<< s1<<endl;
 			if(pTemp.size()>1){
 				
 				if(s1=="[1*]")
@@ -3021,14 +3208,15 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					// code for dc with 1 as its term.  eg.  1-a-b+ab
 					for(auto it_og = pTemp.getSet()->begin(); it_og != pTemp.getSet()->end(); ++it_og)
 					{	Monom2 tempMon_og = *it_og;
-						cout<<"find pure dc for "<<tempMon_og<<endl;
+						//cout<<"find pure dc for "<<tempMon_og<<endl;
 						res_pure= this->poly.findExact(tempMon_og);
 						if(res_pure!=NULL)
-						{cout<<"found pure dc "<<*res_pure<<endl;
+						{//cout<<"found pure dc "<<*res_pure<<endl;
 						pure_dc_set.insert(res_pure);
 						++count_og; 
 						}
-						else{cout<<" no pure dc"<<endl;}// no original dc found
+						else{//cout<<" no pure dc"<<endl;
+						}// no original dc found
 					}
 					
 					if(count_og ==pTemp.size()){
@@ -3049,15 +3237,18 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 						//cout<<"value of k"<<k<<endl;
 						tempMon_split_cube = *it_split_cube_copy;
 						res_cubes = this->poly.findContaining(tempMon_split_cube);
-						if(res_cubes.empty()){cout<<" no dc cubes present "<<endl;break;}
+						if(res_cubes.empty()){
+							//cout<<" no dc cubes present "<<endl;
+							break;}
 						for(auto &elem1: res_cubes){
 						if(pure_dc_set.find(elem1) == pure_dc_set.end())
 						dc_cubes_split.insert(*elem1);}
 					}
+					/*
 					for (auto it_set = dc_cubes_split.begin();it_set != dc_cubes_split.end();++it_set){
 						cout<<"elements in the split cubes :"<<*it_set<<endl;
 						}// to display the split candidates.Can be commented out.
-
+					*/
 					std::map<std::vector<varIndex>,std::pair<int, int>> map_modified_1;
 					std::vector<varIndex> vec_vars;
 
@@ -3076,22 +3267,31 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					
 					for(auto &w:map_modified_1){
 						//std::cout << "map_modified key " << w.first << std::endl;
-            			std::cout << "map_modified count " << w.second.first << std::endl;
-            			std::cout << "map_modified sign " << w.second.second << std::endl;
+            			//std::cout << "map_modified count " << w.second.first << std::endl;
+            			//std::cout << "map_modified sign " << w.second.second << std::endl;
 						if (w.second.first  == pTemp.size()-1){
 						 int array_size = w.first.size();
        					 varIndex* array_vars = new varIndex[array_size]; 
 						 std::copy(w.first.begin(), w.first.end(), array_vars); 
 						Monom2 tempMon_single(array_vars, array_size);
-							cout<<"find the exact match for"<<tempMon_single<<endl;
+							//cout<<"find the exact match for"<<tempMon_single<<endl;
 							res_pure = this->poly.findExact(tempMon_single);
 							if(res_pure == NULL){continue;}
+
 							int sign = (res_pure->getFactor()< 0)? -1: 1;
-							if(sign +w.second.second ==0)
+							if(sign +w.second.second ==0){
 							cout<<"dc cube successfully found "<<endl;
-							/* write a code to multiply the orginal 
-							dc poly with the vars found in w.first and this polynomial 
-							addSingleDCPolynomial()*/ 
+							Polynom pTemp_dc_split_type1(this->poly.getVarSize());
+							for(auto it = pTemp.getSet()->begin(); it !=pTemp.getSet()->end(); ++it){
+									Monom2 copy = *it;
+									copy =	copy.multiply(copy, tempMon_single);
+									pTemp_dc_split_type1.addMonom(copy);
+								}
+									cout<<"dc split polynomial :" <<pTemp_dc_split_type1<<endl;
+									addSingleDCPolynomial(pTemp_dc_split_type1);
+							}
+							else{continue;}
+						delete [] array_vars;
 						}
 					}
 		
@@ -3101,14 +3301,16 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					//code to search original dc poly in this->poly
 					for(auto it_og = pTemp.getSet()->begin(); it_og != pTemp.getSet()->end(); ++it_og)
 					{	Monom2 tempMon_og = *it_og;
-						cout<<"find pure dc for "<<tempMon_og<<endl;
+						//cout<<"find pure dc for "<<tempMon_og<<endl;
 						res_pure= this->poly.findExact(tempMon_og);
 						if(res_pure!=NULL)
-						{cout<<"found pure dc "<<*res_pure<<endl;
+						{//cout<<"found pure dc "<<*res_pure<<endl;
 						pure_dc_set.insert(res_pure);
 						++count_og; 
 						}
-						if(res_pure==NULL){ cout<<" no pure dc"<<endl;}// no original dc found
+						if(res_pure==NULL){ 
+							//cout<<" no pure dc"<<endl;
+							}// no original dc found
 						// TBD if sign check is required
 						
 					}
@@ -3119,7 +3321,8 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					auto it_split_cube  =  pTemp.getSet()->begin();
 					tempMon_split_cube = *it_split_cube;
 					res_cubes = this->poly.findContaining(tempMon_split_cube);
-					if(res_cubes.empty()){cout<<" no dc cubes present "<<endl; continue;}
+					if(res_cubes.empty()){ //cout<<" no dc cubes present "<<endl; 
+					continue;}
 					std::set<Monom2> dc_cubes_split;
 					//std::map<Monom2, std::pair<int, int>> map_modified;
 					std::map<std::vector<varIndex>,std::pair<int, int>> map_modified_1;
@@ -3131,11 +3334,14 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					for(auto &elem1: res_cubes){
 					if(pure_dc_set.find(elem1) == pure_dc_set.end())
 						dc_cubes_split.insert(*elem1);}
-					if(dc_cubes_split.empty()){cout<<"no dc splits available"<<endl;}
-					
+					if(dc_cubes_split.empty()){
+						//cout<<"no dc splits available"<<endl;
+						continue;}
+					/*
 					for (auto it_set = dc_cubes_split.begin();it_set != dc_cubes_split.end();++it_set){
 						cout<<"elements in the split cubes :"<<*it_set<<endl;
-						}
+						}*/
+
 					for (auto it_set = dc_cubes_split.begin(); it_set != dc_cubes_split.end(); ++it_set) {
  				   			 modifiedMonom = it_set->removeVars(sigIndicesSet);
 							  int sign = (modifiedMonom.getFactor() < 0) ? -1 : 1;
@@ -3150,37 +3356,40 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 					
 					
 							for (auto& w : map_modified_1) {
-							std::cout << "map_modified key = ";
-							printVector(w.first); //function to print the key
-							std::cout << std::endl;
-							std::cout << "map_modified count = " << w.second.first << std::endl;
-							std::cout << "map_modified sign = " << w.second.second << std::endl;
+							//std::cout << "map_modified key = ";
+							//printVector(w.first); //function to print the key
+							//std::cout << std::endl;
+							//std::cout << "map_modified count = " << w.second.first << std::endl;
+							//std::cout << "map_modified sign = " << w.second.second << std::endl;
 							if (w.second.first == pTemp.size() && w.second.second == 0) {
-								std::cout << "dc cube successfully found" << std::endl;
-								/* Write code to multiply the original
-								dc poly with the vars found in w.first and this->polynomial
-								addSingleDCPolynomial() */
-   									 }
+								//std::cout << "dc cube successfully found" << std::endl;
+								//printVector(w.first);
+								varIndex *mon_vars = new varIndex[w.first.size()];
+								std::copy(w.first.begin(), w.first.end(), mon_vars); 
+								Monom2 temp_dcsplit_mon(mon_vars,w.first.size());// create monomial from split vars.
+								Polynom pTemp_dc_split(this->poly.getVarSize());
+								for(auto it = pTemp.getSet()->begin(); it !=pTemp.getSet()->end(); ++it){
+									Monom2 copy = *it;
+									copy =	copy.multiply(copy, temp_dcsplit_mon);
+									pTemp_dc_split.addMonom(copy);
+								}
+								//cout<<"dc split polynomial :" <<pTemp_dc_split<<endl;
+								addSingleDCPolynomial(pTemp_dc_split);
+								delete [] mon_vars;
+								}
+									 else{continue;}
 							}
-
-
-				}
-
-			}
+							}
+						}
 			else // for dcs like ab or abc
 
 			{ cout<<"type 3 dc"<<endl;
 				res_1 = this->poly.findContaining(tempMon_1);//get cubes matching the  dc_poly
 				if(res_1.empty()){cout<<"no dc cubes present"<<endl; continue;} // go to next dc candidate
-				std::set<Monom2> dc_cubes; 
-				for(auto elem_1 :res_1 ){cout<<"dc split candidates "<<*elem_1<<endl;
-			        dc_cubes.insert(*elem_1);}
-				for(auto it_cube = dc_cubes.begin();it_cube!= dc_cubes.end(); ++it_cube)
-				{Monom2 copy = *it_cube;
+				for(auto it_cube = res_1.begin();it_cube!= res_1.end(); ++it_cube)
+				{Monom2 copy = **it_cube;
 				copy.setFactor(1); 
-				if(dc_cubes.size()>10)
-				{Polynom pTemp1(maxVarIndex+100);}
-				Polynom pTemp1(maxVarIndex+100);
+				Polynom pTemp1(this->poly.getVarSize());
 				pTemp1.addMonom(copy);
 				this->addSingleDCPolynomial(pTemp1);}
 			}
@@ -3201,7 +3410,7 @@ void Verifizierer::addSingleDCPolynomial(Polynom& pDC) {
 	Monom2 tempMon;
 	for (auto& elem: *pDC.getSet()) {
 		tempMon = elem;
-		cout << "tempMon is " << tempMon << endl;
+		//cout << "tempMon is " << tempMon << endl;
 		if (elem.getFactor() == 1) this->poly.addDCListEntry({currDCVar}, {1}, tempMon);
 		else if (elem.getFactor() == -1) this->poly.addDCListEntry({currDCVar}, {-1}, tempMon);
 	}
