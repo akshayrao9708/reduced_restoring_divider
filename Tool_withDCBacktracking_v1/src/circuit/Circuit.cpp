@@ -177,11 +177,13 @@ namespace vp
 		
 		this->foundMuxs = this->findMuxs();
 		this->foundAdders = this->findFAs();
-		//cout<<"foundMuxs.size():"<<foundMuxs.size()+foundAdders.size()<<endl;
-		check_atomic_block_flag = sqrt(foundMuxs.size());
-		//cout <<"check_atomic_block_flag"<<check_atomic_block_flag<<endl;
-		number_of_stages = check_atomic_block_flag*2;
-		//cout <<"number of stages "<<number_of_stages<<endl;
+		if(!foundAdders.empty()){
+			check_atomic_block_flag = sqrt(foundAdders.size());}
+		else if(!foundMuxs.empty()){
+			check_atomic_block_flag = sqrt(foundMuxs.size());}
+		else{
+			check_atomic_block_flag =3;
+		}
 
 		// New function to already create DC candidates before constant propagation.
 		this->createDCCandidatesFromAtomics();

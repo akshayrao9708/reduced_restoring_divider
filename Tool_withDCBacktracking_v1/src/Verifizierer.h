@@ -264,7 +264,7 @@ public:
 	void readPolynomialInformationsForDCs(vector<vector<int>*>& dcVarsVector, vector<vector<int>*>& dcCoefsVector, vector<mpz_class>& monCoefs, vector<size_t>& monLength, int maxActivatedDC);
 	void applyDCSolutionToPolynomial(vector<mpz_class>& sol, int maxActivatedDC);
 	void applyDCSolutionToOtherPolynomial(Polynom& pol, vector<mpz_class>& sol, int maxActivatedDC);
-	bool applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::iterator& it, bool& backTrackedDC, vector<Polynom>& backTrackDCPoly, vector<vector<int>::iterator>& backTrackDCIterator, vector<int>& marginDC, int& specialMargin, int& additiveMargin, double& tDCOp, int flag_in);
+	bool applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::iterator& it, bool& backTrackedDC, vector<Polynom>& backTrackDCPoly, vector<vector<int>::iterator>& backTrackDCIterator, std::vector<std::string>& signal_type, vector<int>& marginDC, int& specialMargin, int& additiveMargin, double& tDCOp, bool& rewrite);
 	void checkStepsWithDCInsertionBeforehand();
 	bool lookForwardForDCInsertion(vector<int>::iterator& it);
 	bool willDCBeInsertedThisStep(vector<int>::iterator& it);

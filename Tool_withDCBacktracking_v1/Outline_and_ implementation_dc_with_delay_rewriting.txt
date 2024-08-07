@@ -1,0 +1,210 @@
+Outline and implementation of delayed backward rewriting with don't care backtracking.
+
+The basic idea is to use a single stack to track both DC cubes at the inputs of atomic blocks and frequently occurring signals. 
+If and when there is a significant increase in the intermediate polynomial size, backtrack to the recent point and enable either 
+dc optimisation or delay rewriting of the signal.
+
+Single stack allows to try out all the possible combinations that can take place due to the two optimisations(dc cubes and delayed rewriting)
+If the signal is skipped, then track it until its count/occurrence does not decrease anymore and rewrite the skipped signal.
+
+
+1. The following code is required to track the number of atomic blocks that are about to be replaced. The atomic blocks are tracked to
+determine the signals that occur frequently. In other words, the occurrence of signals is checked regularly after a specific number of 
+atomic blocks are replaced. 
+
+"atomic_counter" keeps a count of atomic blocks replaced  
+
+	if( circuit.node(*(it)).mux!=-1&& circuit.node(*(it+1)).mux==-1){
+			++mux_counter_int;
+			++atomic_num_map["mux"+std::to_string(circuit.node(*(it)).mux)];
+			
+			if ((mux_counter_int>1) && (atomic_num_map["mux"+std::to_string(circuit.node(*(it)).mux)]==1)){
+			\\ To make sure that we don't update the atomic_counter when we backtrack.
+
+				++atomic_counter;
+			}}
+		else if(((currNode->adder !=-1 && currNode->type ==vp::Node::XOR && this->circuit.node(*(it-1)).type == vp::Node::XOR) 
+		||(currNode->adder !=-1 && this->circuit.node(*(it+1)).adder ==-1))){
+			++adder_counter_int;
+			++atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)];
+			if (++adder_counter_int > 1 && atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)]==1){
+			 \\ To make sure that we don't update the atomic_counter when we backtrack.
+
+				++atomic_counter;
+			}
+		}
+		cout<<"atomic_counter : "<<atomic_counter<<endl;
+		/* to check if the number of atomic blocks has reached the 
+		set limit */
+
+"atomic_count_limit" is a specific number used to check the occurrence of the signal 
+
+		if (atomic_counter == atomic_count_limit)
+			{cout<<"set update_occurrence_count "<<endl;
+			 update_occurrence_count = true; // enable Boolean update_occurrence_count to track the occurrence of the signal. 
+			 atomic_counter = 0;}// set count of atomic blocks to zero if the limit is reached.
+		else{
+				update_occurrence_count = false;
+			}
+
+
+
+2. The following code iterates across the polynomials to update the signals that occur more than a certain threshold
+Map "occurrence_map" stores the signals with high occurrence along with their count.
+A set "occurrence_set" stores the signals with high occurrence, which is used to set backtrack points.
+The following code occurs after replaceSingleNodeWithRepr and applyGeneralDCOnRewriting.
+
+			if (update_occurrence_count){
+				
+			   	const std::set<Monom2> *occurrence_ptr = this->poly.getSet();
+				for(std::set<Monom2>::iterator it_get =occurrence_ptr->begin();it_get != occurrence_ptr->end();++it_get)
+				{for(auto k=0; k < it_get->getSize(); ++k)
+				{
+					if(poly.getRefList()[it_get->getVars()[k]].getSize()>= 0.22*this->poly.polySet.size())
+			{
+				int count = poly.getRefList()[it_get->getVars()[k]].getSize();
+				occurrence_map.insert({it_get->getVars()[k],count});
+				occurrence_set.insert(it_get->getVars()[k]);
+			}}}
+			if(!occurrence_map.empty()){
+			check_back_track = true; // to enable setting of backtrack points 
+			for(auto m1 : occurrence_map){
+					cout<<"map key : "<<m1.first<<endl;
+					cout<<"map value :"<<m1.second<<endl;}}
+			else {check_back_track = false;}
+			}
+
+3. The following code is required to set a backtrack point when the signal present in occurrence_set is about to be replaced
+setting of the backtrack point is disabled when a skipped signal is rewritten; otherwise, the rewriting takes more time and can
+also lead to an infinite loop.  
+
+			if(check_back_track &&!rewrite){ // 
+			for(auto &m2 : occurrence_set){
+				if(currNode->outputs.at(0)->eIndex == m2){ // if the high occurrence signal is about to be replaced next
+				if (currNode->type != vp::Node::BUFFER && currNode->outputs.at(0)->name[0] !='r' && currNode->inputs.at(0)->name[0] !='D' && currNode->							inputs.at(0)->name[0] !='R'){ // to filter out of unnecessary backtrack points.
+				if(signal_save.empty()) {set_skip_point = true;} // to avoid setting backtrack points on the same signal ,if the signal exists in the stack
+				else{
+				for (auto &saved_sig :signal_save){
+					if(saved_sig == currNode->outputs.at(0)->eIndex){
+						cout<<"skip point already present"<<endl;
+						set_skip_point = false;
+						break;}
+					else{set_skip_point = true;}}}
+				if(set_skip_point){
+				cout<<"set delayed backtrack point"<<endl;
+				marginDC.push_back((multiplyMargin* this->poly.size()) + additiveMargin);// 
+				backTrackDC_DelayIterator.push_back(it); // save the current iterator 
+				poly_save_size = this->poly.size(); // save the current polynomial 
+				backTrackDC_DelayPoly.push_back(this->poly);
+				signal_save.push_back(m2);
+				signal_type.push_back("skip");} // 
+				}
+			}}}
+		
+
+4. The following code manages the backtracking when the size of the polynomial exceeds a certain threshold.
+
+
+	int margin;
+		if (marginDC.size() != 0) margin = marginDC.back();
+		else if (marginREPR.size() != 0) margin = marginREPR.back();
+		else margin = startMargin;
+		cout<<"margin :"<<margin<<endl;
+		if (this->poly.size() > margin && !stopBacktrack) {
+			cout << "Monomials causing backtrack are : " << this->poly.size() << endl;
+			cout << "Threshold size reached: Backtrack to last DC usage." << endl << endl << endl;
+			if (maxSize < this->poly.size()) maxSize = this->poly.size();
+			if (backTrackDC_DelayIterator.size() == 0) {
+				cout << "No more dc backtrack points availabe. Try repr backtrack." << endl;
+			} else { // DC backtrack.
+
+				if(*it< *backTrackDC_DelayIterator.back() && !rewrite){ 
+
+//to avoid backtracking while rewriting the skipped signal  and to avoid the possibility of backtracking to point which comes after the current iterator,
+ the condition *it< *backTrackDC_DelayIterator.back() is checked 
+
+				cout<<"iterator criteria is met "<<endl;
+				it = backTrackDC_DelayIterator.back();
+				--it;
+				this->poly = backTrackDC_DelayPoly.back();
+				backTrackDC_DelayIterator.pop_back();
+				backTrackDC_DelayPoly.pop_back();
+				stopCount++;
+
+following checks what type of optimisation is supposed to be used. 
+
+				if (signal_type.back()=="dc"){ // enable dc optimisation 
+				backTrackedDC = true;
+				cout << "backtrack type dc" << endl;
+				signal_type.pop_back();
+				skip = false;
+				}
+				else if(signal_type.back()=="skip"){ //.enable skipping of the signal
+					backTrackedDC = false;
+					skip = true;
+					current_signal = signal_save.back();
+					signal_save.pop_back();
+					signal_type.pop_back();
+					cout << "backtrack type to skip signal" << endl;
+				}
+			}
+			}
+			
+		}
+	
+
+If DC optimisation is enabled, the optimisation is taken care of in the function applyGeneralDCOnRewriting()
+
+4. The following code is deployed if the backtrack type is delayed backward rewriting
+   
+   occurrence_skip_map tracks the skipped signal 
+
+		if(skip){
+			if(currNode->outputs.at(0)->eIndex == current_signal){
+			cout<<"skip the signal"<<currNode->outputs.at(0)->eIndex<<endl;
+			occurrence_skip_map[current_signal].first =0;
+			occurrence_skip_map[current_signal].second = it;
+			skip_track = true; // to enable tracking of skipped signal
+			skip =false;
+			continue; }
+			}
+
+The following code tracks the skipped signal and rewrites the skipped signal when its count does not decrease anymore 
+
+5.if(!backTrackedDC && ((skip_track && betweenAtomics)|| (skip_track &&circuit.node(*(it)).mux ==-1 && circuit.node(*(it)).adder ==-1))){
+		 	// only one rewrite should happen at a time.
+	
+for(auto it_occur = occurrence_skip_map.begin(); it_occur!= occurrence_skip_map.end(); ++it_occur){
+				cout<<"count of :"<<it_occur->first<< ":"<< poly.findContainingVar(it_occur->first).size()<<endl;
+
+if(!(this->poly.findContainingVar(it_occur->first).size() < it_occur->second.first)&& this->poly.findContainingVar(it_occur->first).size() == it_occur->second.first && 
+				 it_occur->second.first !=0 &&!rewrite) 
+				{
+				if(*it < *it_occur->second.second){
+				last_saved_iterator.push_back(it);
+				it = it_occur->second.second; 
+
+//to set the iterator to the point where this signal was skipped. Doing so, rewrites the signal from the point where it was skipped
+				--it;
+				rewrite = true;
+				cout<<"rewrite now"<<it_occur->first<<endl;
+				break;}
+				}
+				else{
+				it_occur->second.first=  this->poly.findContainingVar(it_occur->first).size();
+				}
+			}
+			
+		}
+The following is required to check if the rewriting of the skipped signal is completed. otherwise, we might backtrack and miss rewriting some signal,
+which will result in failure.
+
+		if (rewrite){
+			if (it == last_saved_iterator.back()){
+					last_saved_iterator.pop_back();
+					cout<<"rewite false"<<endl;
+					rewrite=false;
+			}
+
+		}
+

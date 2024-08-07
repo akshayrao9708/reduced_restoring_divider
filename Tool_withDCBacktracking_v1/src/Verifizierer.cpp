@@ -718,20 +718,19 @@ void Verifizierer::executeReplacements() {
 //	cin >> multiplyMargin;
 //	cout << endl;
 //	cout << "Chosen multiplicative margin: " << multiplyMargin << endl;
-	int additiveMargin = 0;//2
+	int additiveMargin = 2;//2
 //	cout << "Enter additive margin for backtracking: " << endl;
 //	cin >> additiveMargin;
 //	cout << endl;
 //	cout << "Chosen additive margin: " << additiveMargin << endl;
-	vector<Polynom> backTrackDCPoly;
-	vector<Polynom> backTrack_Delay_poly;
-	vector<vector<int>::iterator> backTrack_Delay_iterator;
-	vector<vector<int>::iterator> backTrackDCIterator;
+	vector<Polynom> backTrackDC_DelayPoly;
+	vector<vector<int>::iterator> backTrackDC_DelayIterator;
 	vector<vector<int>::iterator> last_saved_iterator;
 	vector<vector<int>::iterator> last_saved_backtrack_iterator;
 	vector<int> marginDC;
 	vector<Polynom> backTrackREPRPoly;
 	vector<vector<int>::iterator> backTrackREPRIterator;
+	std::map<string , int> atomic_num_map;
 	vector<int> marginREPR;
 	bool backTrackedDC = false;
 	bool backTrackedRepr = false;
@@ -739,7 +738,7 @@ void Verifizierer::executeReplacements() {
 	mpz_class carryCoef;
 	bool stopBacktrack = false;
 	bool betweenAtomics = false;
-	bool update_occurance_count = false;
+	bool update_occurrence_count = false;
 	bool check_back_track =false;
 	bool rewrite_final_signals= false;
 	vector<int>::iterator it_back_save;
@@ -748,36 +747,40 @@ void Verifizierer::executeReplacements() {
 	bool enable_backtrack= false, enable_rewrite=false, skip_track = false;
 	Polynom poly_save;
 	bool skip = false;
+	int atomic_count_limit = circuit.check_atomic_block_flag-1, atomic_counter =0;
 	varIndex  current_signal;
 	vector<varIndex> signal_save;
+	vector<string> signal_type;
 	int rewrite_final_signals_count =0;
 	int mux_counter_int =0, adder_counter_int =0, mux_counter =0, adder_counter =0;
-	std::deque<int> stages_deque;
-	bool rewrite= false;
-	for(int k =1; k <=(circuit.number_of_stages) ; ++k){
-		stages_deque.push_back(k*(circuit.check_atomic_block_flag-1));
-	}
-	/*for(auto d : stages_deque){
-		cout<<"element in stages_deque"<<d<<endl;
-	}*/
+	bool rewrite= false, set_skip_point =false;
 	cout << "Starting backward rewriting process. " << endl;
-	const std::set<Monom2> *get_ptr = this->poly.getSet();
-	std::unordered_map<varIndex , int> occurance_map;
-	std::unordered_map<varIndex , pair <int,vector<int>::iterator>>occurance_skip_map;
-	for(std::set<Monom2>::iterator it_get =get_ptr->begin();it_get != get_ptr->end();++it_get)
-	   {varIndex*  get_vars_array = it_get->getVars();
-		for(auto k=0; k < it_get->getSize(); ++k)
-		{++occurance_map[get_vars_array[k]];}}
-	std::unordered_map<varIndex , int>::iterator it_map_1= occurance_map.begin();
-	while(it_map_1!= occurance_map.end())
-	{if(it_map_1->second==1){ it_map_1= occurance_map.erase(it_map_1);}
-		else{++it_map_1;}}
-		
 	
-	for(auto m1 : occurance_map){
+	
+	std::unordered_map<varIndex , int> occurrence_map;// data structure to track high occurrence signal and its count.
+	std::unordered_set<varIndex> occurrence_set;//data structure to track high occurrence signal
+	std::unordered_map<varIndex , pair <int,vector<int>::iterator>>occurrence_skip_map; //data structure to track skipped signals
+	
+	
+	/* can be enabled to obtain heads-up on the occurrences of signal before rewriting starts
+	const std::set<Monom2> *get_ptr = this->poly.getSet();
+	for(std::set<Monom2>::iterator it_get =get_ptr->begin();it_get != get_ptr->end();++it_get)
+	   {for(auto k=0; k < it_get->getSize(); ++k)
+		{
+			if(poly.getRefList()[it_get->getVars()[k]].getSize()>1)
+			{
+				int count = poly.getRefList()[it_get->getVars()[k]].getSize();
+				occurrence_map.insert({it_get->getVars()[k],count});
+			}
+
+		}
+		}
+
+	for(auto m1 : occurrence_map){
 		cout<<"map key : "<<m1.first<<endl;
 		cout<<"map value :"<<m1.second<<endl;}
 
+	*/
 
 	//if (this->poly.size() < 100) cout << "Anfangspolynom ist: " << this->poly << endl;
 	tstart = clock(); // Zeitmessung beginnt.
@@ -803,133 +806,86 @@ void Verifizierer::executeReplacements() {
 		cout << " | ";
 		cout << " Atomic Num: " << currNode->adder << " level: " << currNode->revLevel << endl;
 		cout <<"Atomic Mux"<< currNode->mux<<endl;
-		//|| currNode->mux == circuit.mux_size-1
 		
-		/*
-		if (currNode->mux == circuit.mux_size || currNode->mux == circuit.mux_size-1 ){
-			//cout<<"circuit_mux:"<<circuit.mux_size<<endl;
-			flag=1;
-		}*/
-		
-		
-
 		//*/
 		// Check if we are between atomics by comparing currNode adder num with nextNode adder num.
-		if (it+1 != this->circuit.sortedNodes.end()) if (currNode->adder != this->circuit.node(*(it+1)).adder || (currNode->mux != -1 && this->circuit.node(*(it+1)).mux ==-1)) betweenAtomics = true;
+		if (it+1 != this->circuit.sortedNodes.end()) if ( (currNode->adder != -1 && this->circuit.node(*(it+1)).adder !=-1 && currNode->adder != this->circuit.node(*(it+1)).adder ) || (currNode->mux != -1 && this->circuit.node(*(it+1)).mux ==-1)) betweenAtomics = true;
 		else betweenAtomics = false;
-		if( circuit.node(*(it)).mux!=-1&& circuit.node(*(it+1)).mux==-1 && (!rewrite ) && (!enable_backtrack)){
+		
+	
+	/*following code keeps a count of atomic blocks that are ready to be replaced*/	
+		if( circuit.node(*(it)).mux!=-1&& circuit.node(*(it+1)).mux==-1){
 			++mux_counter_int;
-			if (mux_counter_int>1){
-				++mux_counter;
+			++atomic_num_map["mux"+std::to_string(circuit.node(*(it)).mux)];
+			// && (atomic_num_map["mux"+std::to_string(circuit.node(*(it)).mux)]==1)
+			if ((mux_counter_int>1) && (atomic_num_map["mux"+std::to_string(circuit.node(*(it)).mux)]==1)){
+				++atomic_counter;
 			}}
-		else if(((currNode->adder !=-1 && currNode->type ==vp::Node::XOR && this->circuit.node(*(it-1)).type == vp::Node::XOR) ||(currNode->adder !=-1 && this->circuit.node(*(it+1)).adder ==-1))&& 
-		(!rewrite) && (!enable_backtrack)){
+		else if(((currNode->adder !=-1 && currNode->type ==vp::Node::XOR && this->circuit.node(*(it-1)).type == vp::Node::XOR) 
+		||(currNode->adder !=-1 && this->circuit.node(*(it+1)).adder ==-1))){
 			++adder_counter_int;
-			cout<<" ++adder_counter_int before if"<<++adder_counter_int<<endl;
-			if (++adder_counter_int > 1){
-				cout<<"++adder_counter_int in if :"<< ++adder_counter_int<<endl;
-				++adder_counter;
+			++atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)];
+			// && atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)]==1
+			if (++adder_counter_int > 1 && atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)]==1){
+				++atomic_counter;
 			}
 		}
-		/*
-		if (circuit.node(*(it)).getType() == 5 && circuit.node(*(it+1)).getType() == 6 &&   circuit.node(*(it)).mux ==-1 && circuit.node(*(it+1)).mux ==-1 && !rewrite && !enable_backtrack){
-			cout <<"between adder_n and mux_n-1"<<endl;
-			     rewrite_final_signals = true;}
+		cout<<"atomic_counter : "<<atomic_counter<<endl;
+		/* to check if the number of atomic blocks have reached the 
+		set limit */
+		if (atomic_counter == atomic_count_limit)
+			{cout<<"set update_occurrence_count "<<endl;
+			 update_occurrence_count = true;
+			 atomic_counter = 0;}
 		else{
-			rewrite_final_signals = true;
-		}*/
-
-		cout<<"adder_counter+mux_counter"<<adder_counter+mux_counter<<endl;
-		if (((adder_counter+mux_counter) == stages_deque.front()) && (adder_counter+mux_counter!=0) && (betweenAtomics) && (!rewrite) &&(!enable_backtrack))
-			{cout<<"set update_occurance_count "<<endl;
-			 update_occurance_count = true;
-			 stages_deque.pop_front();}
-		else{
-				update_occurance_count = false;
+				update_occurrence_count = false;
 			}
-		if(enable_backtrack){
-			if (it == last_saved_backtrack_iterator.back()){
-					last_saved_backtrack_iterator.pop_back();
-					cout<<"backtrack complete"<<endl;
-					enable_backtrack=false;
-			}
-
-		}
 
 		if(skip){
-			//for(auto &m2 : occurance_map){
 			if(currNode->outputs.at(0)->eIndex == current_signal){
 			cout<<"skip the signal"<<currNode->outputs.at(0)->eIndex<<endl;
-			backTrack_Delay_iterator.pop_back();
-			backTrack_Delay_poly.pop_back();
-			signal_save.pop_back();
-			occurance_skip_map[current_signal].first =0;
-			occurance_skip_map[current_signal].second = it;
+			occurrence_skip_map[current_signal].first =0;
+			occurrence_skip_map[current_signal].second = it;
 			skip_track = true;
 			skip =false;
 			continue; }
 			}
-		if(check_back_track && !rewrite &&!enable_backtrack){
-			for(auto &m2 : occurance_map){
-				if(currNode->outputs.at(0)->eIndex == m2.first){
-				cout<<"set backtrack point"<<endl;
-				backTrack_Delay_iterator.push_back(it);
+
+
+		// Set back_track points for signal present in occurrence map
+		if(check_back_track &&!rewrite){
+			for(auto &m2 : occurrence_set){
+				if(currNode->outputs.at(0)->eIndex == m2){
+					if (currNode->type != vp::Node::BUFFER && currNode->outputs.at(0)->name[0] !='r' && currNode->inputs.at(0)->name[0] !='D' && currNode->inputs.at(0)->name[0] !='R'){
+				if(signal_save.empty()) {set_skip_point = true;}
+				else{
+				for (auto &saved_sig :signal_save){
+					if(saved_sig == currNode->outputs.at(0)->eIndex){
+						cout<<"skip point already present"<<endl;
+						set_skip_point = false;
+						break;}
+					else{set_skip_point = true;}}}
+				if(set_skip_point){
+				cout<<"set delayed backtrack point"<<endl;
+				marginDC.push_back((multiplyMargin* this->poly.size()) + additiveMargin);
+				backTrackDC_DelayIterator.push_back(it);
 				poly_save_size = this->poly.size();
-				backTrack_Delay_poly.push_back(this->poly);
-				signal_save.push_back(m2.first);
-				check_exponential = true;} }
+				backTrackDC_DelayPoly.push_back(this->poly);
+				signal_save.push_back(m2);
+				signal_type.push_back("skip");}
 				}
+			}}}
+		
 			
 		
 		//*
 		// Check if representants are available. If so, create backTrack point of type 1.(
 		//	
 		//cout<<"currNode_next->outputs.at(0)->name"<<currNode_next->outputs.at(0)->name<<endl;
-	/*
-		if(currNode->inputs.at(0)->name == "Q[1]"){
-			break;
-		}
-	*/	
-		if (backTrackedRepr == false && !stopBacktrack) {
-			varIndex out, in1, in2;
-			out = currNode->outputs.at(0)->eIndex;
-			in1 = currNode->inputs.at(0)->eIndex;
-			bool alreadyTracked = false;
-			if (this->represent[in1].sig != 0 && this->represent[in1].tracked == false) {
-				if (!(in1 == this->represent[in1].sig->eIndex)) { // Save backtrack Point.
-					backTrackREPRPoly.push_back(this->poly);
-					backTrackREPRIterator.push_back(it);
-					marginREPR.push_back(multiplyMargin * this->poly.size() + additiveMargin);
-					//backTrackType.push_back(1);
-					//cout << "backtrack point on Repr set" << endl;
-					//cout << "in1: " << in1 << " represent by: " << this->represent[in1].sig->eIndex << endl;
-					alreadyTracked = true;
-					this->represent[in1].tracked = true;
-				}
-			}
-			if (alreadyTracked == false) {
-				if (!(currNode->type == vp::Node::NOT || currNode->type == vp::Node::BUFFER)) {
-					in2 = currNode->inputs.at(1)->eIndex;
-					if (this->represent[in2].sig != 0 && this->represent[in2].tracked == false) {
-						if (!(in2 == this->represent[in2].sig->eIndex)) { // Save backtrack Point.
-						  // Save backtrack Point.
-							backTrackREPRPoly.push_back(this->poly);
-							backTrackREPRIterator.push_back(it);
-							marginREPR.push_back(multiplyMargin * this->poly.size() + additiveMargin);
-							//backTrackType.push_back(1);
-							//cout << "backtrack point on Repr set" << endl;
-							//cout << "in2: " << in2 << " represent by: " << this->represent[in2].sig->eIndex << endl;
-							this->represent[in2].tracked = true;
-						}
-					}
-				}
-			}
-		}
-		/*to skip quotient bits */
-		
-		
-		
-
+		/*
+		if(currNode->outputs.at(0)->name == "r_1[0]"){
+			break;}	*/
+	
 		this->replaceSingleNodeWithRepr(*currNode, backTrackedRepr);
 //		this->replaceSingleNodeSimple(*currNode);
 		sumtRewrite += clock() - tRewrite;
@@ -944,63 +900,55 @@ void Verifizierer::executeReplacements() {
 //		t2 = clock();
 		if (backTrackedDC) betweenAtomics = true;
 		//go to applyGeneralDCOnRewriting if rewriting is between atomic blocks
-		if (betweenAtomics) this->applyGeneralDCOnRewriting(stopBacktrack, it, backTrackedDC, backTrackDCPoly, backTrackDCIterator, marginDC, multiplyMargin, additiveMargin, tDCOp,flag);
+		if (betweenAtomics) this->applyGeneralDCOnRewriting(stopBacktrack, it, backTrackedDC, backTrackDC_DelayPoly, backTrackDC_DelayIterator,signal_type, marginDC, multiplyMargin, additiveMargin, tDCOp,rewrite);
 		cout<<"return from applyGeneralDCOnRewriting"<<endl;
-		flag = 0;
-		backTrackedDC = false;
-		if(check_exponential && !rewrite ){
-			cout <<"poly size check "<<1.65*poly_save_size<<endl;
-			if( this->poly.size() >1.65*poly_save_size && !backTrack_Delay_iterator.empty() && !backTrack_Delay_poly.empty()){
-				last_saved_backtrack_iterator.push_back(it);
-				cout<<"enable_backtrack"<<endl;
-				enable_backtrack = true;
-				it  = backTrack_Delay_iterator.back();
-				this->poly = backTrack_Delay_poly.back();
-				current_signal = signal_save.back();
-				skip=true;
-				--it;}
-		}
+		
 	
-		if (update_occurance_count){
-				std::unordered_map<varIndex , int> occurance_map_temp;
+		if (update_occurrence_count){
+				//std::unordered_map<varIndex , int> occurrence_map_temp;
 				//cout<<"total numbe of monomials are"<< this->poly.polySet.size()<<endl;
-			   	const std::set<Monom2> *occurance_ptr = this->poly.getSet();
-				for(std::set<Monom2>::iterator it_get =occurance_ptr->begin();it_get != occurance_ptr->end();++it_get)
-				{varIndex*  get_vars_array = it_get->getVars();
-					for(auto k=0; k < it_get->getSize(); ++k)
-					{++occurance_map_temp[get_vars_array[k]];}}
-			
-			std::unordered_map<varIndex , int>::iterator it_map_occur= occurance_map_temp.begin();
-			while(it_map_occur!= occurance_map_temp.end())
-				{if(it_map_occur->second < 0.25*this->poly.polySet.size()){ it_map_occur= occurance_map_temp.erase(it_map_occur);}
+			   	const std::set<Monom2> *occurrence_ptr = this->poly.getSet();
+				for(std::set<Monom2>::iterator it_get =occurrence_ptr->begin();it_get != occurrence_ptr->end();++it_get)
+				{for(auto k=0; k < it_get->getSize(); ++k)
+				{
+					if(poly.getRefList()[it_get->getVars()[k]].getSize()>= 0.22*this->poly.polySet.size())
+			{
+				int count = poly.getRefList()[it_get->getVars()[k]].getSize();
+				occurrence_map.insert({it_get->getVars()[k],count});
+				occurrence_set.insert(it_get->getVars()[k]);
+			}}}
+			/*
+			std::unordered_map<varIndex , int>::iterator it_map_occur= occurrence_map_temp.begin();
+			while(it_map_occur!= occurrence_map_temp.end())
+				{if(it_map_occur->second < 0.25*this->poly.polySet.size()){ it_map_occur= occurrence_map_temp.erase(it_map_occur);}
 					else{++it_map_occur;}}
-			swap(occurance_map,occurance_map_temp);
-			if(!occurance_map.empty()){
+			//swap(occurrence_map,occurrence_map_temp);
+			occurrence_map.insert(occurrence_map_temp.begin(),occurrence_map_temp.end());*/
+			if(!occurrence_map.empty()){
 			check_back_track = true;
-			for(auto m1 : occurance_map){
+			for(auto m1 : occurrence_map){
 					cout<<"map key : "<<m1.first<<endl;
 					cout<<"map value :"<<m1.second<<endl;}}
 			else {check_back_track = false;}
 			}
 
-			if((skip_track && betweenAtomics)|| (skip_track &&circuit.node(*(it)).mux ==-1 && circuit.node(*(it)).adder ==-1)){
+			if(!backTrackedDC && ((skip_track && betweenAtomics)|| (skip_track &&circuit.node(*(it)).mux ==-1 && circuit.node(*(it)).adder ==-1))){
 		 	// only one rewrite should happen at a time.
-			for(auto it_occur = occurance_skip_map.begin(); it_occur!= occurance_skip_map.end(); ++it_occur){
+			for(auto it_occur = occurrence_skip_map.begin(); it_occur!= occurrence_skip_map.end(); ++it_occur){
 				cout<<"count of :"<<it_occur->first<< ":"<< poly.findContainingVar(it_occur->first).size()<<endl;
 				if(!(this->poly.findContainingVar(it_occur->first).size() < it_occur->second.first)&& this->poly.findContainingVar(it_occur->first).size() == it_occur->second.first && 
-				!enable_backtrack && it_occur->second.first !=0 &&!rewrite) 
-				{cout<<"rewrite now"<<it_occur->first<<endl;
+				 it_occur->second.first !=0 &&!rewrite) 
+				{
+				if(*it < *it_occur->second.second){
 				last_saved_iterator.push_back(it);
 				it = it_occur->second.second;
 				--it;
 				rewrite = true;
-				check_back_track = false;
-				break;
+				cout<<"rewrite now"<<it_occur->first<<endl;
+				break;}
 				}
 				else{
 				it_occur->second.first=  this->poly.findContainingVar(it_occur->first).size();
-				check_back_track = true;
-	
 				}
 			}
 			
@@ -1013,7 +961,7 @@ void Verifizierer::executeReplacements() {
 			}
 
 		}
-	
+	backTrackedDC = false;
 
 
 
@@ -1030,45 +978,39 @@ void Verifizierer::executeReplacements() {
 		if (marginDC.size() != 0) margin = marginDC.back();
 		else if (marginREPR.size() != 0) margin = marginREPR.back();
 		else margin = startMargin;
+		cout<<"margin :"<<margin<<endl;
 		if (this->poly.size() > margin && !stopBacktrack) {
-			bool dcTracked = false;
-			//cout << "Monomials causing backtrack are : " << this->poly.size() << endl;
-//			cout << "Threshold size reached: Backtrack to last DC usage." << endl << endl << endl;
+			cout << "Monomials causing backtrack are : " << this->poly.size() << endl;
+			cout << "Threshold size reached: Backtrack to last DC usage." << endl << endl << endl;
 			if (maxSize < this->poly.size()) maxSize = this->poly.size();
-			if (backTrackDCIterator.size() == 0) {
-				//cout << "No more dc backtrack points availabe. Try repr backtrack." << endl;
+			if (backTrackDC_DelayIterator.size() == 0) {
+				cout << "No more dc backtrack points availabe. Try repr backtrack." << endl;
 			} else { // DC backtrack.
-				it = backTrackDCIterator.back();
+				if(*it< *backTrackDC_DelayIterator.back() && !rewrite){
+				cout<<"iterator criteria is met "<<endl;
+				it = backTrackDC_DelayIterator.back();
 				--it;
-				this->poly = backTrackDCPoly.back();
-				backTrackDCIterator.pop_back();
-				backTrackDCPoly.pop_back();
+				this->poly = backTrackDC_DelayPoly.back();
+				backTrackDC_DelayIterator.pop_back();
+				backTrackDC_DelayPoly.pop_back();
 				stopCount++;
+				if (signal_type.back()=="dc"){
 				backTrackedDC = true;
-				dcTracked = true;
 				cout << "backtrack type dc" << endl;
-			}
-			if (!dcTracked) {
-				if (backTrackREPRIterator.size() == 0) {
-//					cout << "No more backtrack points available. Run verification without backtracking from here." << endl;
-//					return;
-					stopBacktrack = true;
-				} else { // REPR backtrack.
-					// First reactivate all DCs.
-					it = backTrackREPRIterator.back();
-					--it;
-					this->poly = backTrackREPRPoly.back();
-					backTrackREPRIterator.pop_back();
-					backTrackREPRPoly.pop_back();
-					stopCount++; 
-					backTrackedRepr = true; 
-//					cout << "backtrack type repr" << endl;
-//					maxActivatedDC = 0;
-//					dcPolSave.clear();
-//					dcPolSizeTracking.clear();
-//					dcTracking.clear();
+				signal_type.pop_back();
+				skip = false;
+				}
+				else if(signal_type.back()=="skip"){
+					backTrackedDC = false;
+					skip = true;
+					current_signal = signal_save.back();
+					signal_save.pop_back();
+					signal_type.pop_back();
+					cout << "backtrack type to skip signal" << endl;
 				}
 			}
+			}
+			
 		}
 		
 		//comment from int margin till line 882 to skip back-tracking 
@@ -1142,7 +1084,7 @@ void Verifizierer::executeReplacements() {
 }
 
 // _______________________________________________________________________________________________________________________________________
-bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::iterator& it, bool& backTrackedDC, vector<Polynom>& backTrackDCPoly, vector<vector<int>::iterator>& backTrackDCIterator, vector<int>& marginDC, int& multMargin, int& additiveMargin, double& tDCOp, int flag_in =0) {
+bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::iterator& it, bool& backTrackedDC, vector<Polynom>& backTrackDC_DelayPoly, vector<vector<int>::iterator>& backTrackDC_DelayIterator, vector<string>& signal_type, vector<int>& marginDC, int& multMargin, int& additiveMargin, double& tDCOp, bool& rewrite) {
 	bool ret = false;
 	std::string s1;
 	vp::Node* test_node  = &this->circuit.node(*it);
@@ -1166,30 +1108,14 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 //		}
 //		if (continueDCs && inner->signals.at(0) != "R_0[22]") continue;
 		if (*(it+1) >= this->circuit.getNodesCount()){
-			//cout<<"inside if"<<endl; 
-			//cout<<"*(it+1) >= this->circuit.getNodesCount()"<<endl; 
 			break;
 			}
 
 		int nextIndex = this->circuit.node(*(it+1)).outputs.at(0)->eIndex;
 		
-		/*
-		if(flag_in==1){
-			cout<<"inside mux_if"<<endl;
-			cout<<"test_node->inputs.at(0)->eIndex "<< test_node->inputs.at(0)->eIndex<<endl;
-			for (size_t i=0; i < eIndices.size(); ++i){
-				if (eIndices.at(i) == test_node->inputs.at(0)->eIndex){
-					cout<<"this dc is there"<<*inner<<endl;
-				}
-
-			}
-		}
-		*/
 		continueDCs = true;
 		for (size_t i=0; i < eIndices.size(); ++i) {
 			if (eIndices.at(i) == nextIndex) {
-				//cout<<"nextIndex :"<<nextIndex<<endl;
-				//cout<< "eIndices.at(i)"<<eIndices.at(i)<<endl; 
 			    ++atomic_mux_count; 
 				continueDCs = false; 
 				break; }
@@ -1213,16 +1139,16 @@ bool Verifizierer::applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::i
 //		break;  // This is needed so only one DC can be added in one step.
 		//*
 		// Save backtrack informations. Comment the below if block to skip back tracking
-		/*
-		if (backTrackedDC == false && atomic_mux_count > 1) {
-			backTrackDCPoly.push_back(this->poly);
-			backTrackDCIterator.push_back(it);
+		
+		if (backTrackedDC == false && !rewrite) {
+			backTrackDC_DelayPoly.push_back(this->poly);
+			backTrackDC_DelayIterator.push_back(it);
+			signal_type.push_back("dc");
 			marginDC.push_back((multMargin * this->poly.size()) + additiveMargin);
 			//backTrackType.push_back(0);
 			cout << "backtrack point on DC set" << endl;
 			break;
-		}
-		*/		
+		}	
 		// Add DCs and immediately solve ILP problem.
 
 
@@ -2145,7 +2071,7 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	time1 = 0.0;
 	tstart = clock(); // Zeitmessung beginnt.
 
-	//imageComputationForDCsGeneral(dcCandidates); // For remaining dcCandidates use imageComputation.
+	imageComputationForDCsGeneral(dcCandidates); // For remaining dcCandidates use imageComputation.
 	
 	
 
@@ -2158,11 +2084,11 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	//cout << "imageComp needed time in sec: " << time1 << endl;
 
 	cout << "Amount of DC cells found after clean up : " << dcCandidates.size() << endl;
-/*
+
 	for (auto& elem: dcCandidates) {
 		cout << elem << endl << endl;
 		}
-*/
+
 	/*
 	circuit.const0Prop();
 	cout<<"finished const0 propagation"<<endl;
