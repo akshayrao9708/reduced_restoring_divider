@@ -11,6 +11,9 @@ using std::cout;
 std::string atomic_block;
 std::map<gendc, int> map_1;
 int  set_dc = 0;
+clock_t max_search_time=0;
+size_t max_polysize_dc =0;
+int dc_cubesfound_count =0;
 
 int atomic_mux_count =0;
 // ***************************************************************************************************************************************
@@ -130,7 +133,7 @@ void Verifizierer::startAdvancedVerification(const string& sigFile) {
 	this->poly.addPolynom(this->createSignaturePolynom(this->readSignatureFile(sigFile)));	
 	
 	cout << "Starting polynomial has size: " << this->poly.polySet.size() << endl;
-	cout << "Anfangspolynom ist: " << this->poly << endl;
+	//cout << "Anfangspolynom ist: " << this->poly << endl;
 	
 	this->executeReplacements();
 	
@@ -710,7 +713,8 @@ void Verifizierer::executeReplacements() {
 	vp::Node* currNode;
 	size_t startPolySize = this->poly.size();
 	int startMargin = 2 * startPolySize; //200
-	int multiplyMargin = 2;//2
+	int multiplyMargin = 1
+	;//2
 	int count_1 =0;
 	int flag = 0;
 	
@@ -821,6 +825,15 @@ void Verifizierer::executeReplacements() {
 			if ((mux_counter_int>1) && (atomic_num_map["mux"+std::to_string(circuit.node(*(it)).mux)]==1)){
 				++atomic_counter;
 			}}
+		/*
+		else if((currNode->adder != -1 && this->circuit.node(*(it+1)).adder !=-1 && currNode->adder != this->circuit.node(*(it+1)).adder ) ||(currNode->adder != -1 && this->circuit.node(*(it+1)).adder ==-1)){
+			++adder_counter_int;
+			++atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)];
+			// && atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)]==1
+			if (++adder_counter_int >= 0 && atomic_num_map["FA"+std::to_string(circuit.node(*(it)).adder)]==1){
+				++atomic_counter;
+			}
+		}*/
 		else if(((currNode->adder !=-1 && currNode->type ==vp::Node::XOR && this->circuit.node(*(it-1)).type == vp::Node::XOR) 
 		||(currNode->adder !=-1 && this->circuit.node(*(it+1)).adder ==-1))){
 			++adder_counter_int;
@@ -840,7 +853,7 @@ void Verifizierer::executeReplacements() {
 		else{
 				update_occurrence_count = false;
 			}
-
+		// skip the signal if backtrack point type is skip signal
 		if(skip){
 			if(currNode->outputs.at(0)->eIndex == current_signal){
 			cout<<"skip the signal"<<currNode->outputs.at(0)->eIndex<<endl;
@@ -856,7 +869,8 @@ void Verifizierer::executeReplacements() {
 		if(check_back_track &&!rewrite){
 			for(auto &m2 : occurrence_set){
 				if(currNode->outputs.at(0)->eIndex == m2){
-					if (currNode->type != vp::Node::BUFFER && currNode->outputs.at(0)->name[0] !='r' && currNode->inputs.at(0)->name[0] !='D' && currNode->inputs.at(0)->name[0] !='R'){
+					if (currNode->type != vp::Node::BUFFER  && currNode->outputs.at(0)->name[0] !='r' && currNode->inputs.at(0)->name[0] !='D' &&currNode->inputs.at(0)->name[0] !='R'){ //&& currNode->outputs.at(0)->name[0] !='r' && currNode->inputs.at(0)->name[0] !='D'
+				// to avoid duplicate skip backtrack points 
 				if(signal_save.empty()) {set_skip_point = true;}
 				else{
 				for (auto &saved_sig :signal_save){
@@ -865,6 +879,7 @@ void Verifizierer::executeReplacements() {
 						set_skip_point = false;
 						break;}
 					else{set_skip_point = true;}}}
+				// Set skip or delayed backtrackpoints 
 				if(set_skip_point){
 				cout<<"set delayed backtrack point"<<endl;
 				marginDC.push_back((multiplyMargin* this->poly.size()) + additiveMargin);
@@ -882,10 +897,7 @@ void Verifizierer::executeReplacements() {
 		// Check if representants are available. If so, create backTrack point of type 1.(
 		//	
 		//cout<<"currNode_next->outputs.at(0)->name"<<currNode_next->outputs.at(0)->name<<endl;
-		/*
-		if(currNode->outputs.at(0)->name == "r_1[0]"){
-			break;}	*/
-	
+		
 		this->replaceSingleNodeWithRepr(*currNode, backTrackedRepr);
 //		this->replaceSingleNodeSimple(*currNode);
 		sumtRewrite += clock() - tRewrite;
@@ -911,7 +923,7 @@ void Verifizierer::executeReplacements() {
 				for(std::set<Monom2>::iterator it_get =occurrence_ptr->begin();it_get != occurrence_ptr->end();++it_get)
 				{for(auto k=0; k < it_get->getSize(); ++k)
 				{
-					if(poly.getRefList()[it_get->getVars()[k]].getSize()>= 0.22*this->poly.polySet.size())
+					if(poly.getRefList()[it_get->getVars()[k]].getSize()>= 0.35*this->poly.polySet.size()) // 0.35*this->poly.polySet.size() : specific threshold for occurrence count
 			{
 				int count = poly.getRefList()[it_get->getVars()[k]].getSize();
 				occurrence_map.insert({it_get->getVars()[k],count});
@@ -1012,7 +1024,7 @@ void Verifizierer::executeReplacements() {
 			}
 			
 		}
-		
+		 
 		//comment from int margin till line 882 to skip back-tracking 
 		//*/
 		//if ((step % 1 == 0) && this->poly.size() < 100) cout << "Zwischenpolynom ist:" << this->poly << endl;
@@ -1076,11 +1088,16 @@ void Verifizierer::executeReplacements() {
 	sumt4 = sumt4/CLOCKS_PER_SEC;
 	cout << "Backward rewriting total all together time in sec. : " << time1 << endl;
 	cout << "Start polynomial size was: " << startPolySize << endl;
-	cout << "Maximum polynomial size was: " << maxSize << endl;
+	
 	//cout << "Maximum polynomial size without DCs was: " << maxSizeNoDCs << endl;
 	cout << "Number of backtrackings: " << stopCount << endl;
 //	cout << "Number of ILP optimizations: " << numILPOptimizations << endl;
 //	cout << "Number of DCs dismissed: " << numDismissedDCs << endl;
+	cout<<"Number of DCs found"<<dc_cubesfound_count<<endl;
+	cout << "Maximum time to search dc_cubes: " << static_cast<double>(max_search_time) / CLOCKS_PER_SEC << " seconds" << std::endl;
+	cout<<"Maximum polynomial size during dc cube search "<<max_polysize_dc<<endl;
+	cout << "Maximum polynomial size was: " << maxSize << endl;
+
 }
 
 // _______________________________________________________________________________________________________________________________________
@@ -2071,7 +2088,7 @@ set<gendc> Verifizierer::checkDCCandidatesGeneral() {
 	time1 = 0.0;
 	tstart = clock(); // Zeitmessung beginnt.
 
-	imageComputationForDCsGeneral(dcCandidates); // For remaining dcCandidates use imageComputation.
+	//imageComputationForDCsGeneral(dcCandidates); // For remaining dcCandidates use imageComputation.
 	
 	
 
@@ -3067,9 +3084,10 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 	vector<varIndex> sigIndices;
 	vector<varIndex>  res_dc;
 	const int dcSize = dontCare.signals.size();
+	clock_t tstart_searchDC, tRewrite, sumtRewrite;
 
 	
-
+	tstart_searchDC = clock();
 	for (auto& elem: dontCare.signals) {
 		
 		sigIndices.push_back(this->circuit.edges.at(elem).eIndex);
@@ -3115,6 +3133,7 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 			/*cout << "polynomial before: " << this->poly << endl;
 			cout << "added poynomial after ILP optimization: " << pTemp << endl;
 			this->poly.addPolynom(pTemp);*/
+			
 			auto it1 = pTemp.getSet()->begin();// iterator to the first monomial of the poly.
 			Monom2 tempMon_1, tempMon_split_cube, tempMon_single;
 			std::vector<Monom2*> res_1,res_cubes;
@@ -3207,6 +3226,7 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 							int sign = (res_pure->getFactor()< 0)? -1: 1;
 							if(sign +w.second.second ==0){
 							cout<<"dc cube successfully found "<<endl;
+							++dc_cubesfound_count;
 							Polynom pTemp_dc_split_type1(this->poly.getVarSize());
 							for(auto it = pTemp.getSet()->begin(); it !=pTemp.getSet()->end(); ++it){
 									Monom2 copy = *it;
@@ -3290,6 +3310,7 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 							if (w.second.first == pTemp.size() && w.second.second == 0) {
 								//std::cout << "dc cube successfully found" << std::endl;
 								//printVector(w.first);
+								++dc_cubesfound_count;
 								varIndex *mon_vars = new varIndex[w.first.size()];
 								std::copy(w.first.begin(), w.first.end(), mon_vars); 
 								Monom2 temp_dcsplit_mon(mon_vars,w.first.size());// create monomial from split vars.
@@ -3317,6 +3338,7 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 				copy.setFactor(1); 
 				Polynom pTemp1(this->poly.getVarSize());
 				pTemp1.addMonom(copy);
+				++dc_cubesfound_count;
 				this->addSingleDCPolynomial(pTemp1);}
 			}
 		
@@ -3324,10 +3346,23 @@ void Verifizierer::addVariableMonomialsFromDC(gendc dontCare) {
 			//this->addSingleDCPolynomial(pTemp);
 
 		//cout << "polynomial afterwards: " << this->poly << endl;
+		 // End timing the search operation.
+
+            // Update the maximum search time if the current search took longer.
+           
+				
 		}
 	}
 	delete[] tempVars;
 	delete[] dcPhases;
+	clock_t search_time = clock() - tstart_searchDC;
+    double search_time_seconds = static_cast<double>(search_time) / CLOCKS_PER_SEC;
+
+    // Update the maximum search time if the current search took longer.
+    if (search_time_seconds > static_cast<double>(max_search_time) / CLOCKS_PER_SEC) {
+        max_search_time = search_time;
+        max_polysize_dc = this->poly.size();
+    }
 }
 
 // ____________________________________________________________________________________________________________________________

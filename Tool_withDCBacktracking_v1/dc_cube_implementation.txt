@@ -1,3 +1,4 @@
+
 Rough outline of dc cube logic and implementation:
 
 aim : to restrict the addition of dc cubes and find the exact match for the given dc in the backward rewriting polynomial.
@@ -13,6 +14,14 @@ type1 contains constant 1 as the first terms/ monomials  in the given dc polynom
 type 3: size of the dc_poly =1 , eg when (a,b)= (1,1) or (a,b,c) =(1,1,1)
 
 type 2 : dc_poly that does not belong to type1 or type 3 . eg. a -ab, a-ab-ac+abc.
+
+findExact : parameter -> monomial, returns pointer to the monomial.
+
+getSet() : returns pointer to a set of monomials 
+
+findContaining : parameter -> monomial, returns a vector of pointers to monomials.
+
+removeVars : member function of Monom, takes the signals of dc cubes and returns a monomial that is free of dc-signals 
 
 The initial set-up of the program include the following lines of code:
 			

@@ -34,7 +34,9 @@
 #define VERIFIZIERER_H_
 
 typedef int varIndex;
-
+extern clock_t max_search_time;
+extern size_t max_polysize_dc;
+extern int dc_cubesfound_count;
 struct dc_cand{
 string dc_sign;
 int count_dc_match =0;
@@ -264,7 +266,7 @@ public:
 	void readPolynomialInformationsForDCs(vector<vector<int>*>& dcVarsVector, vector<vector<int>*>& dcCoefsVector, vector<mpz_class>& monCoefs, vector<size_t>& monLength, int maxActivatedDC);
 	void applyDCSolutionToPolynomial(vector<mpz_class>& sol, int maxActivatedDC);
 	void applyDCSolutionToOtherPolynomial(Polynom& pol, vector<mpz_class>& sol, int maxActivatedDC);
-	bool applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::iterator& it, bool& backTrackedDC, vector<Polynom>& backTrackDCPoly, vector<vector<int>::iterator>& backTrackDCIterator, std::vector<std::string>& signal_type, vector<int>& marginDC, int& specialMargin, int& additiveMargin, double& tDCOp, bool& rewrite);
+	bool applyGeneralDCOnRewriting(bool& stopBacktrack, vector<int>::iterator& it, bool& backTrackedDC, vector<Polynom>& backTrackDC_DelayPoly, vector<vector<int>::iterator>& backTrackDC_DelayIterator, std::vector<std::string>& signal_type, vector<int>& marginDC, int& specialMargin, int& additiveMargin, double& tDCOp, bool& rewrite);
 	void checkStepsWithDCInsertionBeforehand();
 	bool lookForwardForDCInsertion(vector<int>::iterator& it);
 	bool willDCBeInsertedThisStep(vector<int>::iterator& it);
@@ -291,6 +293,7 @@ public:
 	std::set<int> dcFAs;
 	std::set<int> dcSignals;
 	std::set<input4dc> proven4DCs;
+	
 };
 void printVector(const std::vector<varIndex>& vec);
 #endif /* VERIFIZIERER_H_ */
